@@ -20,7 +20,6 @@ spring:
         format_sql: true
 
 server:
-  port: ${PORT:8080}
 
 jwt:
   secret: ${JWT_SECRET:YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY=}
@@ -37,13 +36,6 @@ springdoc:
     title: HRV API
     description: Heart Rate Variability tracking and analytics REST API
     version: 1.0.0
-spring:
-  datasource:
-    hikari:
-      initialization-fail-timeout: -1  # starta appen även om DB är nere
-  jpa:
-    hibernate:
-      ddl-auto: update
 
 management:
   health:
