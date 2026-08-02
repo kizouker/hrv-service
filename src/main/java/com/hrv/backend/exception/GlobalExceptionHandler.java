@@ -1,6 +1,7 @@
 package com.hrv.backend.exception;
 
 import io.swagger.v3.oas.annotations.Hidden;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.*;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
@@ -16,7 +17,16 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
 
     record ErrorBody(int status, String error, Object message, Instant timestamp) {}
-
+    @ExceptionHandler(DataAccessException.class)
+    public ResponseEntity<Map<String, Object>> handleDatabaseError(DataAccessException ex) {
+        return ResponseEntity
+                .status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(Map.of(
+                        "error", "Database unavailable",
+                        "message", "Could not connect to the database. Please try again later.",
+                        "timestamp", Instant.now().toString()
+                ));
+    }
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorBody> notFound(ResourceNotFoundException ex) {
         return body(HttpStatus.NOT_FOUND, ex.getMessage());
