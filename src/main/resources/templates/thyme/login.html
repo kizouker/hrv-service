@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRV — Logga in</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+           background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .card { background: #fff; border-radius: 20px; padding: 40px; width: 100%; max-width: 400px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .logo { text-align: center; margin-bottom: 28px; }
+    .logo h1 { font-size: 28px; font-weight: 800; color: #1a1a2e; }
+    .logo p { color: #888; font-size: 13px; margin-top: 4px; }
+    .pulse { display: inline-block; width: 10px; height: 10px; background: #6c63ff; border-radius: 50%; animation: pulse 1.5s infinite; margin-right: 6px; }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.6} }
+    .tabs { display: flex; background: #f5f6fa; border-radius: 12px; padding: 4px; margin-bottom: 24px; }
+    .tab { flex: 1; text-align: center; padding: 9px; border-radius: 9px; font-size: 14px; font-weight: 600; cursor: pointer; color: #888; border: none; background: none; }
+    .tab.active { background: #fff; color: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .form { display: none; } .form.active { display: block; }
+    label { font-size: 12px; font-weight: 600; color: #555; display: block; margin-bottom: 6px; }
+    input { width: 100%; padding: 12px 14px; border: 1.5px solid #e0e1ea; border-radius: 10px; font-size: 14px; margin-bottom: 14px; outline: none; transition: border-color .2s; }
+    input:focus { border-color: #6c63ff; }
+    .btn { width: 100%; padding: 13px; background: #6c63ff; color: #fff; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; }
+    .btn:hover { background: #5a52e0; }
+    .error { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 10px 14px; color: #dc2626; font-size: 13px; margin-bottom: 16px; }
+    .nav { display: flex; gap: 16px; justify-content: center; margin-top: 20px; }
+    .nav a { font-size: 13px; color: #6c63ff; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">
+    <h1><span class="pulse"></span>HRV Tracker</h1>
+    <p>Heart Rate Variability — Thymeleaf</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('login')">Logga in</button>
+    <button class="tab" onclick="show('register')">Registrera</button>
+  </div>
+
+  <div th:if="${error}" class="error" th:text="${error}"></div>
+
+  <!-- Login -->
+  <form id="login" class="form active" method="post" th:action="@{/thyme/login}">
+    <label>E-post</label>
+    <input type="email" name="email" placeholder="din@email.com" required>
+    <label>Lösenord</label>
+    <input type="password" name="password" placeholder="••••••••" required>
+    <button class="btn" type="submit">Logga in</button>
+  </form>
+
+  <!-- Register via JS → REST API -->
+  <form id="register" class="form" onsubmit="doRegister(event)">
+    <label>Namn</label>
+    <input type="text" id="reg-name" placeholder="Rickard Åberg" required>
+    <label>E-post</label>
+    <input type="email" id="reg-email" placeholder="din@email.com" required>
+    <label>Lösenord</label>
+    <input type="password" id="reg-pass" placeholder="Min 8 tecken" required minlength="8">
+    <div id="reg-error" class="error" style="display:none"></div>
+    <button class="btn" type="submit">Skapa konto</button>
+  </form>
+
+  <div class="nav">
+    <a th:href="@{/react}">Byt till React-versionen →</a>
+    <a href="/swagger-ui.html">API Docs</a>
+  </div>
+</div>
+
+<script>
+function show(tab) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', ['login','register'][i]===tab));
+  document.querySelectorAll('.form').forEach(f => f.classList.toggle('active', f.id===tab));
+}
+
+async function doRegister(e) {
+  e.preventDefault();
+  const err = document.getElementById('reg-error');
+  err.style.display = 'none';
+  try {
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        fullName: document.getElementById('reg-name').value,
+        email: document.getElementById('reg-email').value,
+        password: document.getElementById('reg-pass').value
+      })
+    });
+    if (!res.ok) { const d = await res.json(); throw new Error(d.message || 'Fel'); }
+    const data = await res.json();
+    document.cookie = `hrv_token=${data.token};path=/;max-age=86400`;
+    window.location = '/thyme/dashboard';
+  } catch(ex) {
+    err.textContent = ex.message;
+    err.style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>

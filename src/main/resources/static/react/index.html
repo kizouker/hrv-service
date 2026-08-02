@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HRV App — React</title>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f6fa;color:#1a1a2e}
+  .topbar{background:#1a1a2e;color:#fff;padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+  .topbar h1{font-size:17px;font-weight:700}
+  .topbar nav{display:flex;gap:16px;align-items:center}
+  .topbar button{background:none;border:none;color:#aab;font-size:13px;cursor:pointer;font-weight:500}
+  .topbar button:hover{color:#fff}
+  .topbar button.active{color:#7dd3fc}
+  .main{max-width:1000px;margin:0 auto;padding:28px 20px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+  .stat{background:#fff;border-radius:14px;padding:18px;border:1px solid #e8eaf0}
+  .stat-label{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px}
+  .stat-value{font-size:30px;font-weight:800;color:#1a1a2e;margin-top:4px;line-height:1}
+  .stat-unit{font-size:12px;color:#aaa;margin-top:3px}
+  .grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+  .card{background:#fff;border-radius:14px;border:1px solid #e8eaf0;overflow:hidden}
+  .card-head{padding:14px 18px;border-bottom:1px solid #f0f1f5;font-size:13px;font-weight:700;color:#444;display:flex;justify-content:space-between;align-items:center}
+  table{width:100%;border-collapse:collapse}
+  th{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;padding:10px 16px;text-align:left;border-bottom:1px solid #f0f1f5}
+  td{font-size:13px;padding:11px 16px;border-bottom:1px solid #f8f9fa;color:#333}
+  .badge-ok{background:#dcfce7;color:#16a34a;border-radius:100px;padding:2px 8px;font-size:11px;font-weight:700}
+  .badge-low{background:#fef9c3;color:#ca8a04;border-radius:100px;padding:2px 8px;font-size:11px;font-weight:700}
+  .form-area{padding:16px 18px}
+  input,textarea{width:100%;padding:10px 12px;border:1.5px solid #e0e1ea;border-radius:9px;font-size:13px;margin-bottom:10px;outline:none;font-family:inherit}
+  input:focus,textarea:focus{border-color:#6c63ff}
+  .btn{padding:11px 20px;background:#6c63ff;color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;width:100%}
+  .btn:hover{background:#5a52e0}
+  .btn-sm{width:auto;padding:7px 14px;font-size:12px}
+  .login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e,#16213e)}
+  .login-card{background:#fff;border-radius:20px;padding:40px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .logo{text-align:center;margin-bottom:28px}
+  .logo h1{font-size:28px;font-weight:800}
+  .logo p{color:#888;font-size:13px;margin-top:4px}
+  .tabs{display:flex;background:#f5f6fa;border-radius:12px;padding:4px;margin-bottom:24px}
+  .tab{flex:1;text-align:center;padding:9px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;color:#888;border:none;background:none}
+  .tab.active{background:#fff;color:#1a1a2e;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+  .error-box{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 14px;color:#dc2626;font-size:13px;margin-bottom:14px}
+  .success-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;color:#16a34a;font-size:13px;margin-bottom:14px}
+  .empty{text-align:center;color:#aaa;padding:28px;font-size:13px}
+  .pulse{display:inline-block;width:10px;height:10px;background:#6c63ff;border-radius:50%;animation:pulse 1.5s infinite;margin-right:6px}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
+  .sync-step{display:flex;gap:14px;margin-bottom:14px}
+  .sync-num{width:28px;height:28px;background:#6c63ff;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+  .endpoint{background:#f0f4ff;border-radius:8px;padding:10px 14px;font-family:monospace;font-size:13px;color:#4338ca;margin:8px 0}
+  pre.code{background:#1a1a2e;color:#e8eaf0;border-radius:10px;padding:16px;font-size:12px;line-height:1.6;overflow-x:auto;margin:12px 0}
+  @media(max-width:680px){.stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const API = '';
+const getToken = () => localStorage.getItem('hrv_token');
+const authHeaders = () => ({'Content-Type':'application/json','Authorization':'Bearer '+getToken()});
+const fmt = (n,d=1) => n != null ? (+n).toFixed(d) : '—';
+const fmtDate = s => new Date(s).toLocaleString('sv-SE',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+
+// ── Auth ──────────────────────────────────────────────────────────────────────
+function Login({onLogin}) {
+  const [tab, setTab] = React.useState('login');
+  const [error, setError] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [pass, setPass] = React.useState('');
+  const [name, setName] = React.useState('');
+
+  const doLogin = async e => {
+    e.preventDefault(); setError('');
+    try {
+      const r = await fetch(API+'/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
+      if(!r.ok) throw new Error('Fel email eller lösenord');
+      const d = await r.json();
+      localStorage.setItem('hrv_token', d.token);
+      onLogin(d);
+    } catch(ex){ setError(ex.message); }
+  };
+
+  const doRegister = async e => {
+    e.preventDefault(); setError('');
+    try {
+      const r = await fetch(API+'/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fullName:name,email,password:pass})});
+      if(!r.ok){const d=await r.json();throw new Error(d.message||'Registrering misslyckades');}
+      const d = await r.json();
+      localStorage.setItem('hrv_token', d.token);
+      onLogin(d);
+    } catch(ex){ setError(ex.message); }
+  };
+
+  return (
+    <div className="login-wrap">
+      <div className="login-card">
+        <div className="logo">
+          <h1><span className="pulse"></span>HRV Tracker</h1>
+          <p>React · Spring Boot API</p>
+        </div>
+        <div className="tabs">
+          <button className={'tab'+(tab==='login'?' active':'')} onClick={()=>setTab('login')}>Logga in</button>
+          <button className={'tab'+(tab==='register'?' active':'')} onClick={()=>setTab('register')}>Registrera</button>
+        </div>
+        {error && <div className="error-box">{error}</div>}
+        {tab==='login' ? (
+          <form onSubmit={doLogin}>
+            <input type="email" placeholder="E-post" value={email} onChange={e=>setEmail(e.target.value)} required/>
+            <input type="password" placeholder="Lösenord" value={pass} onChange={e=>setPass(e.target.value)} required/>
+            <button className="btn" type="submit">Logga in</button>
+          </form>
+        ) : (
+          <form onSubmit={doRegister}>
+            <input type="text" placeholder="Ditt namn" value={name} onChange={e=>setName(e.target.value)} required/>
+            <input type="email" placeholder="E-post" value={email} onChange={e=>setEmail(e.target.value)} required/>
+            <input type="password" placeholder="Lösenord (min 8 tecken)" value={pass} onChange={e=>setPass(e.target.value)} required minLength={8}/>
+            <button className="btn" type="submit">Skapa konto</button>
+          </form>
+        )}
+        <p style={{textAlign:'center',marginTop:16,fontSize:12,color:'#aaa'}}>
+          <a href="/thyme/login" style={{color:'#6c63ff'}}>Byt till Thymeleaf-versionen</a>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ── Dashboard ─────────────────────────────────────────────────────────────────
+function Dashboard({user}) {
+  const [readings, setReadings] = React.useState([]);
+  const [summary, setSummary] = React.useState(null);
+  const [rmssd,setRmssd]=React.useState('');
+  const [sdnn,setSdnn]=React.useState('');
+  const [hr,setHr]=React.useState('');
+  const [notes,setNotes]=React.useState('');
+  const [saved,setSaved]=React.useState(false);
+
+  React.useEffect(()=>{ loadData(); },[]);
+
+  const loadData = async () => {
+    const [r1,r2] = await Promise.all([
+      fetch(API+'/api/hrv',{headers:authHeaders()}).then(r=>r.json()),
+      fetch(API+'/api/hrv/analytics/summary?days=30',{headers:authHeaders()}).then(r=>r.json())
+    ]);
+    setReadings(Array.isArray(r1)?r1:[]);
+    setSummary(r2);
+  };
+
+  const addReading = async e => {
+    e.preventDefault();
+    await fetch(API+'/api/hrv',{method:'POST',headers:authHeaders(),body:JSON.stringify({
+      measuredAt:new Date().toISOString(),
+      rmssd:rmssd?+rmssd:null, sdnn:sdnn?+sdnn:null,
+      meanHr:hr?+hr:null, notes:notes||null
+    })});
+    setSaved(true); setRmssd(''); setSdnn(''); setHr(''); setNotes('');
+    setTimeout(()=>{ setSaved(false); loadData(); },1200);
+  };
+
+  return (
+    <div className="main">
+      <div className="stats">
+        <div className="stat"><div className="stat-label">Snitt RMSSD</div><div className="stat-value">{fmt(summary?.avgRmssd)}</div><div className="stat-unit">ms (30 dagar)</div></div>
+        <div className="stat"><div className="stat-label">Baseline</div><div className="stat-value">{fmt(summary?.baseline)}</div><div className="stat-unit">ms RMSSD</div></div>
+        <div className="stat"><div className="stat-label">Mätningar</div><div className="stat-value">{summary?.readingCount??'—'}</div><div className="stat-unit">senaste 30 dagarna</div></div>
+        <div className="stat"><div className="stat-label">Snitt HR</div><div className="stat-value">{fmt(summary?.avgMeanHr,0)}</div><div className="stat-unit">bpm</div></div>
+      </div>
+
+      <div className="grid">
+        <div className="card">
+          <div className="card-head">Senaste mätningar <span style={{fontSize:11,color:'#aaa'}}>{readings.length} totalt</span></div>
+          <table>
+            <thead><tr><th>Datum</th><th>RMSSD</th><th>SDNN</th><th>HR</th><th>Status</th><th>Notering</th></tr></thead>
+            <tbody>
+              {readings.slice(0,10).map(r=>(
+                <tr key={r.id}>
+                  <td>{fmtDate(r.measuredAt)}</td>
+                  <td>{fmt(r.rmssd)}</td>
+                  <td>{fmt(r.sdnn)}</td>
+                  <td>{fmt(r.meanHr,0)}</td>
+                  <td>{r.rmssd!=null ? (r.rmssd>=40 ? <span className="badge-ok">Bra</span> : <span className="badge-low">Låg</span>) : '—'}</td>
+                  <td style={{color:'#aaa',fontSize:12}}>{r.notes||''}</td>
+                </tr>
+              ))}
+              {readings.length===0 && <tr><td colSpan={6} className="empty">Inga mätningar än</td></tr>}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="card">
+          <div className="card-head">+ Ny mätning</div>
+          <div className="form-area">
+            {saved && <div className="success-box">✅ Sparad!</div>}
+            <form onSubmit={addReading}>
+              <input type="number" placeholder="RMSSD (ms)" value={rmssd} onChange={e=>setRmssd(e.target.value)} step="0.1"/>
+              <input type="number" placeholder="SDNN (ms)" value={sdnn} onChange={e=>setSdnn(e.target.value)} step="0.1"/>
+              <input type="number" placeholder="HR (bpm)" value={hr} onChange={e=>setHr(e.target.value)} step="0.1"/>
+              <input type="text" placeholder="Notering (t.ex. morgon, yoga)" value={notes} onChange={e=>setNotes(e.target.value)}/>
+              <button className="btn" type="submit">Spara</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Sync page ─────────────────────────────────────────────────────────────────
+function Sync() {
+  return (
+    <div className="main">
+      <div className="card" style={{marginBottom:16,padding:24}}>
+        <h2 style={{fontSize:16,fontWeight:700,marginBottom:14}}>📱 Synka från iPhone / Apple Watch</h2>
+        <p style={{fontSize:13,color:'#555',lineHeight:1.7,marginBottom:14}}>
+          Skicka HRV-mätningar direkt från HealthKit via REST API. Alla endpoints kräver JWT-token.
+        </p>
+        <div className="sync-step"><div className="sync-num">1</div><div style={{fontSize:13,color:'#444',paddingTop:3}}>Logga in → hämta JWT → spara i iOS Keychain</div></div>
+        <div className="sync-step"><div className="sync-num">2</div><div style={{fontSize:13,color:'#444',paddingTop:3}}>Hämta senaste sync-datum som anchor för HealthKit-query</div></div>
+        <div className="endpoint">GET /api/sync/status</div>
+        <div className="sync-step"><div className="sync-num">3</div><div style={{fontSize:13,color:'#444',paddingTop:3}}>Skicka alla samples sedan senaste synken — duplicerade ignoreras</div></div>
+        <div className="endpoint">POST /api/sync/healthkit</div>
+      </div>
+
+      <div className="card" style={{padding:24}}>
+        <h2 style={{fontSize:16,fontWeight:700,marginBottom:10}}>Swift-kod</h2>
+        <pre className="code">{`// Hämta RMSSD från HealthKit och synka
+let type = HKQuantityType(.heartRateVariabilitySDNN)
+let query = HKSampleQuery(sampleType: type,
+    predicate: HKQuery.predicateForSamples(
+        withStart: lastSyncDate, end: Date()),
+    limit: HKObjectQueryNoLimit,
+    sortDescriptors: nil) { _, samples, _ in
+
+    let readings = samples?.compactMap { s -> [String:Any]? in
+        guard let q = s as? HKQuantitySample else { return nil }
+        return [
+            "measuredAt": ISO8601DateFormatter().string(from: q.startDate),
+            "sdnn": q.quantity.doubleValue(for: .init(from: "ms"))
+        ]
+    } ?? []
+
+    var req = URLRequest(url: URL(string: "\\(baseURL)/api/sync/healthkit")!)
+    req.httpMethod = "POST"
+    req.setValue("Bearer \\(token)", forHTTPHeaderField: "Authorization")
+    req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    req.httpBody = try? JSONSerialization.data(withJSONObject: [
+        "sourceName": "Apple Watch",
+        "appleDeviceId": UIDevice.current.identifierForVendor?.uuidString ?? "",
+        "readings": readings
+    ])
+    URLSession.shared.dataTask(with: req).resume()
+}
+healthStore.execute(query)`}</pre>
+      </div>
+    </div>
+  );
+}
+
+// ── App shell ─────────────────────────────────────────────────────────────────
+function App() {
+  const [user, setUser] = React.useState(() => {
+    const t = localStorage.getItem('hrv_token');
+    if(!t) return null;
+    try { const p=JSON.parse(atob(t.split('.')[1])); return {email:p.sub}; } catch{ return null; }
+  });
+  const [page, setPage] = React.useState('dashboard');
+
+  const logout = () => { localStorage.removeItem('hrv_token'); setUser(null); };
+
+  if(!user) return <Login onLogin={d=>setUser(d)}/>;
+
+  return (
+    <div>
+      <div className="topbar">
+        <h1><span className="pulse"></span>HRV Tracker</h1>
+        <nav>
+          <button className={page==='dashboard'?'active':''} onClick={()=>setPage('dashboard')}>Dashboard</button>
+          <button className={page==='sync'?'active':''} onClick={()=>setPage('sync')}>iOS Sync</button>
+          <span style={{color:'#7dd3fc',fontSize:13}}>{user.email}</span>
+          <button onClick={logout}>Logga ut</button>
+        </nav>
+      </div>
+      {page==='dashboard' && <Dashboard user={user}/>}
+      {page==='sync' && <Sync/>}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: hrv-postgres
+    environment:
+      POSTGRES_DB: hrvdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - hrv-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: hrv-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/hrvdb
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      # ⚠ Change this before deploying to production!
+      JWT_SECRET: dGVzdC1zZWNyZXQta2V5LXRoYXQtaXMtbG9uZy1lbm91Z2gtZm9yLUhNQUMtU0hBLTI1Ng==
+      JWT_EXPIRATION_MS: 86400000
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+volumes:
+  hrv-pgdata:

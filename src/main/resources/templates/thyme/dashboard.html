@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRV Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f6fa; color: #1a1a2e; }
+    .topbar { background: #1a1a2e; color: #fff; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar h1 { font-size: 17px; font-weight: 700; }
+    .topbar nav { display: flex; gap: 20px; align-items: center; }
+    .topbar a { color: #aab; text-decoration: none; font-size: 13px; font-weight: 500; }
+    .topbar a:hover { color: #fff; }
+    .topbar .user { font-size: 13px; color: #7dd3fc; }
+
+    .main { max-width: 1000px; margin: 0 auto; padding: 28px 20px; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+    .stat { background: #fff; border-radius: 14px; padding: 18px; border: 1px solid #e8eaf0; }
+    .stat-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: .5px; }
+    .stat-value { font-size: 30px; font-weight: 800; color: #1a1a2e; margin-top: 4px; line-height: 1; }
+    .stat-unit { font-size: 12px; color: #aaa; margin-top: 3px; }
+
+    .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+    .card { background: #fff; border-radius: 14px; border: 1px solid #e8eaf0; overflow: hidden; }
+    .card-head { padding: 14px 18px; border-bottom: 1px solid #f0f1f5; font-size: 13px; font-weight: 700; color: #444; display: flex; justify-content: space-between; align-items: center; }
+    table { width: 100%; border-collapse: collapse; }
+    th { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; padding: 10px 16px; text-align: left; border-bottom: 1px solid #f0f1f5; }
+    td { font-size: 13px; padding: 11px 16px; border-bottom: 1px solid #f8f9fa; color: #333; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafbff; }
+
+    .badge-ok { background: #dcfce7; color: #16a34a; border-radius: 100px; padding: 2px 8px; font-size: 11px; font-weight: 700; }
+    .badge-low { background: #fef9c3; color: #ca8a04; border-radius: 100px; padding: 2px 8px; font-size: 11px; font-weight: 700; }
+
+    .add-form { padding: 16px 18px; }
+    .add-form input { width: 100%; padding: 10px 12px; border: 1.5px solid #e0e1ea; border-radius: 9px; font-size: 13px; margin-bottom: 10px; outline: none; }
+    .add-form input:focus { border-color: #6c63ff; }
+    .btn { padding: 10px 20px; background: #6c63ff; color: #fff; border: none; border-radius: 9px; font-size: 13px; font-weight: 700; cursor: pointer; width: 100%; }
+    .btn:hover { background: #5a52e0; }
+    .success { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px; font-size: 12px; color: #16a34a; margin-bottom: 10px; display: none; }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <h1>⚡ HRV Tracker</h1>
+  <nav>
+    <span class="user" th:text="${user.fullName}">Användare</span>
+    <a th:href="@{/thyme/sync}">📱 iOS Sync</a>
+    <a th:href="@{/react}">React-version</a>
+    <a th:href="@{/thyme/logout}">Logga ut</a>
+  </nav>
+</div>
+
+<div class="main">
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Snitt RMSSD (30d)</div>
+      <div class="stat-value" th:text="${summary.avgRmssd != null ? #numbers.formatDecimal(summary.avgRmssd, 1, 1) : '—'}">—</div>
+      <div class="stat-unit">ms</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Baseline (30d)</div>
+      <div class="stat-value" th:text="${summary.baseline != null ? #numbers.formatDecimal(summary.baseline, 1, 1) : '—'}">—</div>
+      <div class="stat-unit">ms RMSSD</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Mätningar</div>
+      <div class="stat-value" th:text="${summary.readingCount}">0</div>
+      <div class="stat-unit">senaste 30 dagar</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Snitt HR</div>
+      <div class="stat-value" th:text="${summary.avgMeanHr != null ? #numbers.formatDecimal(summary.avgMeanHr, 1, 0) : '—'}">—</div>
+      <div class="stat-unit">bpm</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- Readings tabell -->
+    <div class="card">
+      <div class="card-head">
+        Senaste mätningar
+        <span style="font-size:11px;color:#aaa" th:text="${readings.size()} + ' totalt'"></span>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Datum</th><th>RMSSD</th><th>SDNN</th><th>HR</th><th>Status</th><th>Notering</th></tr>
+        </thead>
+        <tbody>
+          <tr th:each="r, i : ${readings}" th:if="${i.index < 10}">
+            <td th:text="${#temporals.format(r.measuredAt, 'dd MMM HH:mm')}">—</td>
+            <td th:text="${r.rmssd != null ? #numbers.formatDecimal(r.rmssd,1,1) : '—'}">—</td>
+            <td th:text="${r.sdnn != null ? #numbers.formatDecimal(r.sdnn,1,1) : '—'}">—</td>
+            <td th:text="${r.meanHr != null ? #numbers.formatDecimal(r.meanHr,1,0) : '—'}">—</td>
+            <td>
+              <span th:if="${r.rmssd != null and r.rmssd >= 40}" class="badge-ok">Bra</span>
+              <span th:if="${r.rmssd != null and r.rmssd < 40}" class="badge-low">Låg</span>
+              <span th:if="${r.rmssd == null}">—</span>
+            </td>
+            <td th:text="${r.notes ?: ''}">—</td>
+          </tr>
+          <tr th:if="${readings.isEmpty()}">
+            <td colspan="6" style="text-align:center;color:#aaa;padding:28px">Inga mätningar än — lägg till en!</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Lägg till mätning -->
+    <div class="card">
+      <div class="card-head">+ Ny mätning</div>
+      <div class="add-form">
+        <div class="success" id="ok">✅ Mätning sparad!</div>
+        <input type="number" id="rmssd" placeholder="RMSSD (ms) t.ex. 55.3" step="0.1">
+        <input type="number" id="sdnn" placeholder="SDNN (ms) t.ex. 48.1" step="0.1">
+        <input type="number" id="pnn50" placeholder="pNN50 (%) t.ex. 22.5" step="0.1">
+        <input type="number" id="hr" placeholder="Hjärtfrekvens (bpm)" step="0.1">
+        <input type="text" id="notes" placeholder="Notering (t.ex. morgon, yoga)">
+        <button class="btn" onclick="addReading()">Spara mätning</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+async function addReading() {
+  const token = document.cookie.split(';').find(c=>c.trim().startsWith('hrv_token='))?.split('=')[1];
+  const res = await fetch('/api/hrv', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','Authorization':'Bearer '+token},
+    body: JSON.stringify({
+      measuredAt: new Date().toISOString(),
+      rmssd: parseFloat(document.getElementById('rmssd').value)||null,
+      sdnn: parseFloat(document.getElementById('sdnn').value)||null,
+      pnn50: parseFloat(document.getElementById('pnn50').value)||null,
+      meanHr: parseFloat(document.getElementById('hr').value)||null,
+      notes: document.getElementById('notes').value||null
+    })
+  });
+  if (res.ok) { document.getElementById('ok').style.display='block'; setTimeout(()=>location.reload(),1000); }
+}
+</script>
+</body>
+</html>
