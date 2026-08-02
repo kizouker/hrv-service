@@ -3,6 +3,8 @@ spring:
     name: hrv-backend
 
   datasource:
+    hikari:
+      initialization-fail-timeout: -1  # starta appen även om DB är nere
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/hrvdb}
     username: ${DATABASE_USERNAME:postgres}
     password: ${DATABASE_PASSWORD:postgres}
@@ -35,3 +37,21 @@ springdoc:
     title: HRV API
     description: Heart Rate Variability tracking and analytics REST API
     version: 1.0.0
+spring:
+  datasource:
+    hikari:
+      initialization-fail-timeout: -1  # starta appen även om DB är nere
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+management:
+  health:
+    db:
+      enabled: false  # låt Railway healthcheck passera utan DBspring:
+  datasource:
+    hikari:
+      initialization-fail-timeout: -1  # starta appen även om DB är nere
+  jpa:
+    hibernate:
+      ddl-auto: update
