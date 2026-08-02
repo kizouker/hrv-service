@@ -39,6 +39,10 @@ springdoc:
     version: 1.0.0
 
 management:
+  endpoints:
+    web:
+      exposure:
+        include: health
   health:
     db:
       enabled: false
