@@ -20,6 +20,7 @@ spring:
         format_sql: true
 
 server:
+  port: ${PORT:8080}
 
 jwt:
   secret: ${JWT_SECRET:YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY=}
@@ -40,10 +41,4 @@ springdoc:
 management:
   health:
     db:
-      enabled: false  # låt Railway healthcheck passera utan DBspring:
-  datasource:
-    hikari:
-      initialization-fail-timeout: -1  # starta appen även om DB är nere
-  jpa:
-    hibernate:
-      ddl-auto: update
+      enabled: false
