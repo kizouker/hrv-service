@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +38,19 @@ public class AuthService {
         User user = userRepository.findByEmail(req.email()).orElseThrow();
         String token = jwtUtil.generateToken(user);
         return new AuthResponse(token, user.getEmail(), user.getFullName());
+    }
+
+    @Transactional
+    public void deleteAccount(User user) {
+        userRepository.delete(user);
+    }
+
+    @Transactional
+    public void changePassword(User user, String currentPassword, String newPassword) {
+        if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
+            throw new IllegalArgumentException("Incorrect current password");
+        }
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
     }
 }

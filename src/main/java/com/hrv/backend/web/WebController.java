@@ -45,7 +45,7 @@ public class WebController {
             response.addCookie(cookie);
             return "redirect:/thyme/dashboard";
         } catch (Exception e) {
-            model.addAttribute("error", "Fel email eller lösenord");
+            model.addAttribute("error", "Invalid email or password");
             return "thyme/login";
         }
     }
