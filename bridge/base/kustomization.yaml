@@ -1,0 +1,14 @@
+#! kustomization.yaml
+# Generated code, do not edit
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+    - 0-hrv-backend-namespace.yaml
+    - app-deployment.yaml
+    - app-expose.yaml
+    - app-service.yaml
+    - default-network-policy.yaml
+    - postgres-deployment.yaml
+    - postgres-expose.yaml
+    - postgres-hrv-pgdata-persistentVolumeClaim.yaml
+    - postgres-service.yaml

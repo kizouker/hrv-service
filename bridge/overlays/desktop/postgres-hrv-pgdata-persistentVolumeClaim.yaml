@@ -1,0 +1,9 @@
+#! postgres-hrv-pgdata-persistentVolumeClaim.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: postgres-hrv-pgdata
+    namespace: hrv-backend
+spec:
+    storageClassName: "hostpath" # see docker/desktop-storage-provisioner

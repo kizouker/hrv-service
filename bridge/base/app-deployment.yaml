@@ -1,0 +1,44 @@
+#! app-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: app
+    namespace: hrv-backend
+    labels:
+        com.docker.compose.project: hrv-backend
+        com.docker.compose.service: app
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: hrv-backend
+            com.docker.compose.service: app
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: hrv-backend
+                com.docker.compose.service: app
+                com.docker.compose.network.default: "true"
+        spec:
+            restartPolicy: unless-stopped
+            containers:
+                - name: hrv-backend
+                  image: hrv-backend-app
+                  imagePullPolicy: IfNotPresent
+                  env:
+                    - name: DATABASE_PASSWORD
+                      value: "postgres"
+                    - name: DATABASE_URL
+                      value: "jdbc:postgresql://postgres:5432/hrvdb"
+                    - name: DATABASE_USERNAME
+                      value: "postgres"
+                    - name: JWT_EXPIRATION_MS
+                      value: "86400000"
+                    - name: JWT_SECRET
+                      value: "dGVzdC1zZWNyZXQta2V5LXRoYXQtaXMtbG9uZy1lbm91Z2gtZm9yLUhNQUMtU0hBLTI1Ng=="
+                  ports:
+                    - name: app-8080
+                      containerPort: 8080

@@ -116,7 +116,7 @@ function Login({onLogin}) {
           <form onSubmit={doRegister}>
             <input type="text" placeholder="Your name" value={name} onChange={e=>setName(e.target.value)} required/>
             <input type="email" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} required/>
-            <input type="password" placeholder="Password (min 8 characters)" value={pass} onChange={e=>setPass(e.target.value)} required minLength={8}/>
+            <input type="password" placeholder="Password (min 12 chars, upper, lower, number, symbol)" value={pass} onChange={e=>setPass(e.target.value)} required minLength={8}/>
             <button className="btn" type="submit">Create account</button>
           </form>
         )}
