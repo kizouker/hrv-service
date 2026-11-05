@@ -24,7 +24,7 @@ class AuthControllerIntegrationTest {
 
     @Test
     void registerAndLogin_returnsJwt() throws Exception {
-        var register = new RegisterRequest("Test User", "test@hrv.com", "Password1!");
+        var register = new RegisterRequest("Test User", "test@hrv.com", "Str0ngP@ssword!");
 
         // Register
         mockMvc.perform(post("/api/auth/register")
@@ -38,7 +38,7 @@ class AuthControllerIntegrationTest {
         mockMvc.perform(post("/api/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(
-                        new LoginRequest("test@hrv.com", "Password1!"))))
+                        new LoginRequest("test@hrv.com", "Str0ngP@ssword!"))))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.token").isNotEmpty());
     }
@@ -54,7 +54,7 @@ class AuthControllerIntegrationTest {
 
     @Test
     void register_invalidEmail_returns400() throws Exception {
-        var bad = new RegisterRequest("Bad", "not-an-email", "Password1!");
+        var bad = new RegisterRequest("Bad", "not-an-email", "Str0ngP@ssword!");
         mockMvc.perform(post("/api/auth/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(bad)))
