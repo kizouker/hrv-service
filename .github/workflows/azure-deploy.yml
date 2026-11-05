@@ -1,0 +1,68 @@
+# CD: provision/update Azure infra with Bicep, then build, push, and deploy
+# the container image to Azure Container Apps.
+# Exam topics: OIDC federated credentials (no stored secrets), environments +
+# approvals, Bicep deployments, ACR, Container Apps revisions.
+#
+# One-time setup (see AZURE.md):
+#   1. az ad app create + federated credential for this repo/branch
+#   2. Role assignments: Contributor + Key Vault Secrets Officer on the RG
+#   3. GitHub secrets: AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID
+#      GitHub variables: AZURE_RG, AZURE_LOCATION
+name: Deploy to Azure
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - doc/**
+  workflow_dispatch:
+
+permissions:
+  id-token: write # required for OIDC -> Azure login
+  contents: read
+
+env:
+  RG: ${{ vars.AZURE_RG }}
+  LOCATION: ${{ vars.AZURE_LOCATION }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production # enable "required reviewers" here for an exam demo
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy infrastructure (Bicep)
+        uses: azure/arm-deploy@v2
+        with:
+          resourceGroupName: ${{ env.RG }}
+          template: infra/main.bicep
+          parameters: >
+            environmentName=hrv-prod
+            dbAdminPassword=${{ secrets.DB_ADMIN_PASSWORD }}
+            jwtSecret=${{ secrets.JWT_SECRET }}
+
+      - name: Build and push image to ACR (cloud build)
+        run: |
+          ACR=$(az acr list -g "$RG" --query "[0].loginServer" -o tsv)
+          az acr build -r "$ACR" -t hrv-backend:${{ github.sha }} -t hrv-backend:latest .
+
+      - name: Update Container App to new image
+        run: |
+          APP=$(az containerapp list -g "$RG" --query "[0].name" -o tsv)
+          ACR=$(az acr list -g "$RG" --query "[0].loginServer" -o tsv)
+          az containerapp update -n "$APP" -g "$RG" -i "$ACR/hrv-backend:${{ github.sha }}"
+
+      - name: Smoke test /actuator/health
+        run: |
+          APP=$(az containerapp list -g "$RG" --query "[0].name" -o tsv)
+          FQDN=$(az containerapp show -n "$APP" -g "$RG" --query properties.configuration.ingress.fqdn -o tsv)
+          curl -fsS "https://$FQDN/actuator/health" | grep -q '"status":"UP"'
