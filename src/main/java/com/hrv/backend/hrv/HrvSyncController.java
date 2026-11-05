@@ -14,6 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -59,21 +60,24 @@ public class HrvSyncController {
             @AuthenticationPrincipal User user,
             @Valid @RequestBody HealthKitSyncRequest req) {
 
-        // Collect timestamps already in DB to skip duplicates
+        // Collect timestamps already in DB to skip duplicates.
+        // Truncate both sides: sub-millisecond precision does not survive a
+        // DB round-trip, so raw Instants would never match re-posted payloads.
         List<HrvReading> existing = hrvRepository.findAllByUserIdOrderByMeasuredAtDesc(user.getId());
         Set<Instant> existingTimestamps = existing.stream()
-                .map(HrvReading::getMeasuredAt)
+                .map(r -> r.getMeasuredAt().truncatedTo(ChronoUnit.MILLIS))
                 .collect(Collectors.toSet());
 
         List<HrvReadingResponse> saved = new ArrayList<>();
         int skipped = 0;
 
         for (var reading : req.readings()) {
-            if (existingTimestamps.contains(reading.measuredAt())) {
+            Instant key = reading.measuredAt().truncatedTo(ChronoUnit.MILLIS);
+            if (existingTimestamps.contains(key)) {
                 skipped++;
             } else {
                 saved.add(hrvService.create(user, reading));
-                existingTimestamps.add(reading.measuredAt()); // prevent intra-batch dupes
+                existingTimestamps.add(key); // prevent intra-batch dupes
             }
         }
 

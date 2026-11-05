@@ -24,7 +24,9 @@ public class HrvService {
         HrvReading reading = HrvReading.builder()
                 .user(user)
                 .deviceId(req.deviceId())
-                .measuredAt(req.measuredAt())
+                // DB timestamps keep microsecond precision; truncate so stored
+                // values match what duplicate detection compares later.
+                .measuredAt(req.measuredAt().truncatedTo(ChronoUnit.MILLIS))
                 .rmssd(req.rmssd())
                 .sdnn(req.sdnn())
                 .pnn50(req.pnn50())
@@ -54,7 +56,7 @@ public class HrvService {
         HrvReading reading = hrvRepository.findByIdAndUserId(id, user.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Reading not found"));
         reading.setDeviceId(req.deviceId());
-        reading.setMeasuredAt(req.measuredAt());
+        reading.setMeasuredAt(req.measuredAt().truncatedTo(ChronoUnit.MILLIS));
         reading.setRmssd(req.rmssd());
         reading.setSdnn(req.sdnn());
         reading.setPnn50(req.pnn50());
