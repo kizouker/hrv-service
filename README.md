@@ -110,3 +110,28 @@ gh repo create hrv-backend --public --push
 # 4. Set JWT_SECRET in Variables tab
 # 5. Your URL: https://hrv-backend-production.up.railway.app
 ```
+
+## hrvctl control tool (Kotlin + Mordant TUI)
+
+Menu-driven helper for the Azure side: what-if, deploy, image build/push,
+status with auto-delete countdown, Postgres delete, idle-timeout setting, and
+a watchdog ([docs/diesel.svg](docs/diesel.svg) is Diesel, on duty in the header).
+
+```bash
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
+cd hrvctl && mvn -B -q package -DskipTests
+java -jar target/hrvctl.jar          # interactive menu (run from the repo root)
+java -jar target/hrvctl.jar watchdog --dry-run   # one safe watchdog check
+```
+
+State lives in `~/.hrvctl/` (`config`, `last-activity`, `watchdog.log`).
+Every action echoes its `az`/`docker` command before running it; generated
+secrets stay in memory and are masked in the echo.
+
+**Watchdog:** `hrvctl watchdog` (every 60s via the menu's launchd installer)
+deletes only the PostgreSQL server after the idle timeout (default 15 min).
+The Mac must be awake for it to fire — sleep suspends launchd timers, so a
+sleeping Mac neither counts down nor deletes anything.
+Why launchd and not cron: cron is deprecated on macOS and its daemon is
+blocked by Transparency/Consent controls, so user crontabs silently never run;
+launchd (`~/Library/LaunchAgents`) is the supported per-user scheduler.

@@ -1,14 +1,16 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: hrv-backend
 
   datasource:
     hikari:
       initialization-fail-timeout: -1  # starta appen även om DB är nere
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/hrvdb}
-    username: ${DATABASE_USERNAME:postgres}
-    password: ${DATABASE_PASSWORD:postgres}
-    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_URL}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: ${DATABASE_DRIVER:org.postgresql.Driver}
 
   jpa:
     hibernate:
@@ -16,15 +18,15 @@ spring:
     show-sql: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: ${JPA_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
         format_sql: true
 
 server:
-  port: ${PORT:8080}
+  port: ${APP_PORT}
 
 jwt:
-  secret: ${JWT_SECRET:YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY=}
-  expiration-ms: ${JWT_EXPIRATION_MS:86400000}  # 24 hours
+  secret: ${JWT_SECRET}
+  expiration-ms: ${JWT_EXPIRATION_MS}  # 24 hours
 
 springdoc:
   api-docs:
