@@ -50,15 +50,15 @@ needing your decision). Each is a ticket under `tickets/`, prioritized:
 
 | Priority | Ticket | Why |
 |---|---|---|
-| P0 | [Auth intent for `/api/hrv/info/*`](tickets/P0-01-public-hrv-info-auth-intent.md) | Docs say public, `SecurityConfig` requires auth — your call blocks correct behavior |
-| P0 | [End-to-end Azure deploy](tickets/P0-02-azure-end-to-end-deploy.md) | Bicep + pipeline unproven against real Azure until run from your terminal |
-| P1 | [Password policy not enforced on change-password](tickets/P1-01-password-policy-change-password.md) | `@Valid` missing — security inconsistency vs register |
-| P1 | [Expired/malformed JWT likely returns 500, not 401](tickets/P1-02-jwt-filter-401.md) | `extractUsername` throws outside the try-block; needs repro + test |
-| P1 | [Local JDK is 25, project needs 21](tickets/P1-03-local-jdk-21.md) | Local `mvn`/`dev.sh` flow broken; Docker/CI unaffected |
-| P1 | [`dev.sh` kills port 8080 blindly](tickets/P1-04-dev-sh-port-kill.md) | `kill -9` on any 8080 process is dangerous |
-| P1 | [OIDC + CD pipeline setup](tickets/P1-05-oidc-pipeline-setup.md) | Core exam topic, manual steps required |
-| P2 | [Health endpoint ignores DB state](tickets/P2-01-health-db-check.md) | Liveness probe can't see DB outages |
-| P2 | [Binary blob tracked in git](tickets/P2-02-frontend-zip-hygiene.md) | `hrv-frontend-v2.zip` committed; move to releases/LFS |
+| P0 | [Auth intent for `/api/hrv/info/*` (#1)](https://github.com/kizouker/hrv-backend/issues/1) | Docs say public, `SecurityConfig` requires auth — your call blocks correct behavior |
+| P0 | [End-to-end Azure deploy (#2)](https://github.com/kizouker/hrv-backend/issues/2) | Bicep + pipeline unproven against real Azure until run from your terminal |
+| P1 | [Password policy not enforced on change-password (#3)](https://github.com/kizouker/hrv-backend/issues/3) | `@Valid` missing — security inconsistency vs register |
+| P1 | [Expired/malformed JWT likely returns 500, not 401 (#4)](https://github.com/kizouker/hrv-backend/issues/4) | `extractUsername` throws outside the try-block; needs repro + test |
+| P1 | [Local JDK is 25, project needs 21 (#5)](https://github.com/kizouker/hrv-backend/issues/5) | Local `mvn`/`dev.sh` flow broken; Docker/CI unaffected |
+| P1 | [`dev.sh` kills port 8080 blindly (#6)](https://github.com/kizouker/hrv-backend/issues/6) | `kill -9` on any 8080 process is dangerous |
+| P1 | [OIDC + CD pipeline setup (#7)](https://github.com/kizouker/hrv-backend/issues/7) | Core exam topic, manual steps required |
+| P2 | [Health endpoint ignores DB state (#8)](https://github.com/kizouker/hrv-backend/issues/8) | Liveness probe can't see DB outages |
+| P2 | [Binary blob tracked in git (#9)](https://github.com/kizouker/hrv-backend/issues/9) | `hrv-frontend-v2.zip` committed; move to releases/LFS |
 
 ## Before Monday
 
