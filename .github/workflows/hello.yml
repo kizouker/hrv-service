@@ -1,14 +1,7 @@
-name: hello 
-
-on:
-  workflow_dispatch::
-    inputs:
-      name:
-        description: Who to greet
-        default: Rickard
+name: Hello
+on: workflow_dispatch
 jobs:
-  say-hello:
+  hello:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello ${{ inputs.name }}"
-      
+      - run: echo "Hej från GitHub Actions"

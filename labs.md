@@ -1,5 +1,6 @@
 # AZ-401 – 15-minute labs
- 
+ URLs you provide. Learn more in our Webhooks Guide.
+
 One lab = one thing. Everything builds on hrv-backend (github.com/kizouker/hrv-backend) and rg-hrv-dev.
 ★ = do these first if time is short (8 labs, about 2 hours). All 15 take about 4 hours.
  
