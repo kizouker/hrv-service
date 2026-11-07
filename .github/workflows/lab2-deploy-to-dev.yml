@@ -1,0 +1,24 @@
+# hello lab2
+
+name: hello                                                               
+                                                                              
+    on:                                                                       
+      workflow_dispatch:                                                      
+        inputs:                                                               
+          name:                                                               
+            description: Who to greet                                         
+            default: Rickard                                                  
+                                                                              
+    jobs:                                                                     
+      say-hello:                                                              
+        runs-on: ubuntu-latest                                                
+        steps:                                                                
+          - run: echo "Hello ${{ inputs.name }}"                              
+                                                                              
+      deploy:                                                                 
+        needs: say-hello                                                      
+        runs-on: ubuntu-latest                                                
+        environment: dev                                                      
+        steps:                                                                
+          - run: echo "Deploying to dev"                                      
+                                        
