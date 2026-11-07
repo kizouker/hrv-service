@@ -1,6 +1,6 @@
 name: hello 
 on: 
-  workflow_dispatch
+  workflow_dispatch:
     inputs:
       name:
         description: Who to greet
