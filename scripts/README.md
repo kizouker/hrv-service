@@ -24,7 +24,7 @@ Detta repo har **immutable** OIDC (går inte att stänga av). Entra subject mås
 `repo:kizouker@19254086/hrv-service@1319982126:environment:development`
 
 ### Om `az acr build` failar med TasksOperationsNotAllowed
-Prenumerationen tillåter inte ACR Tasks. Workflowet bygger imagen på runnern och pushar med `docker push`. Appen behöver rollen **AcrPush** på resursgruppen. `setup-azure-entra.sh` sätter den. Kör om skriptet, eller:
+Prenumerationen tillåter inte ACR Tasks. CI-jobbet `docker-build` bygger imagen. Deploy laddar den artefakten och pushar med `docker push`. Appen behöver rollen **AcrPush** på resursgruppen. `setup-azure-entra.sh` sätter den. Kör om skriptet, eller:
 
 ```bash
 az role assignment create \

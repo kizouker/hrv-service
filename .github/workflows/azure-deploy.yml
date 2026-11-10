@@ -1,5 +1,5 @@
-# CD: provision/update Azure infra with Bicep, then build, push, and deploy
-# the container image to Azure Container Apps.
+# CD: provision/update Azure infra with Bicep, then push the image CI built
+# and roll the Container App.
 # Exam topics: OIDC federated credentials (no stored secrets), environments +
 # approvals, Bicep deployments, ACR, Container Apps revisions.
 #
@@ -21,6 +21,7 @@ on:
 permissions:
   id-token: write # required for OIDC -> Azure login
   contents: read
+  actions: read # download the image artifact from the CI workflow
 
 env:
   RG: ${{ vars.AZURE_RG }}
@@ -68,14 +69,27 @@ jobs:
             sleep 30
           done
 
-      - name: Build and push image to ACR
+      - name: Push the CI image to ACR
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          # This subscription rejects ACR Tasks (az acr build) with
-          # TasksOperationsNotAllowed. Build on the runner and push with an
-          # Azure AD token instead. Admin user stays disabled.
+          # docker-build in ci.yml already built hrv-service:ci and uploaded it.
+          # ACR Tasks (az acr build) are blocked on this subscription.
+          RUN_ID=$(gh run list \
+            --repo "$GITHUB_REPOSITORY" \
+            --workflow ci.yml \
+            --commit "$GITHUB_SHA" \
+            --status success \
+            --json databaseId \
+            --jq '.[0].databaseId')
+          if [ -z "$RUN_ID" ] || [ "$RUN_ID" = "null" ]; then
+            echo "No successful CI run for $GITHUB_SHA. Wait for the docker-build job, then run this workflow again."
+            exit 1
+          fi
+          gh run download "$RUN_ID" --name hrv-service-image --dir image
+          docker load -i image/hrv-service.tar
           ACR_NAME=$(az acr list -g "$RG" --query "[0].name" -o tsv)
           ACR=$(az acr list -g "$RG" --query "[0].loginServer" -o tsv)
           ACR_ID=$(az acr list -g "$RG" --query "[0].id" -o tsv)
@@ -84,10 +98,8 @@ jobs:
             --role AcrPush \
             --scope "$ACR_ID" \
             --output none || echo "AcrPush was not added in this run; pushing with the roles already on the login."
-          docker build \
-            -t "$ACR/${IMAGE_NAME}:${GITHUB_SHA}" \
-            -t "$ACR/${IMAGE_NAME}:latest" \
-            .
+          docker tag hrv-service:ci "$ACR/${IMAGE_NAME}:${GITHUB_SHA}"
+          docker tag hrv-service:ci "$ACR/${IMAGE_NAME}:latest"
           TOKEN=$(az acr login --name "$ACR_NAME" --expose-token --query accessToken -o tsv)
           echo "$TOKEN" | docker login "$ACR" \
             --username 00000000-0000-0000-0000-000000000000 \

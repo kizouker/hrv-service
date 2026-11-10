@@ -78,8 +78,9 @@ managed identity pulling from ACR with zero stored passwords
 
 ## 3. GitHub Actions with OIDC (core exam topic)
 
-Deploy workflow uses GitHub environment **`development`** and image name
-**`hrv-service`**. One-time setup on your machine:
+CI job `docker-build` builds `hrv-service:ci` and uploads it. The deploy
+workflow only pushes that artifact to ACR. It uses GitHub environment
+**`development`** and image name **`hrv-service`**. One-time setup on your machine:
 
 ```bash
 az login
