@@ -11,13 +11,13 @@ on:
                                                                           
 jobs:                                                                     
   say-hello:                                                              
-    runs-on: ubuntu-latest                                                
+    runs-on: ubuntu-24.04                                                
     steps:                                                                
       - run: echo "Hello ${{ inputs.name }}"                              
                                                                           
   deploy:                                                                 
     needs: say-hello                                                      
-    runs-on: ubuntu-latest                                                
+    runs-on: ubuntu-24.04                                                
     environment: dev                                                      
     steps:                                                                
       - run: echo "Deploying to dev"                                      
