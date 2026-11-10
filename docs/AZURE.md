@@ -81,15 +81,17 @@ Deploy workflow uses GitHub environment **`development`** and image name
 ```bash
 az login
 gh auth login
-./scripts/setup-azure-oidc.sh
+./scripts/setup-azure-entra.sh          # Azure/Entra → writes .env
+./scripts/setup-github-deploy-secrets.sh # reads .env → GitHub secrets/vars
 gh workflow enable "Deploy to Azure"
 gh workflow run "Deploy to Azure"
 ```
 
-The script creates the Entra app, federated credential
-(`repo:kizouker/hrv-service:environment:development`), RG role
-assignments, and GitHub env secrets/vars. Approve the deployment if
-required reviewers are set on `development`.
+`setup-azure-entra.sh` creates the Entra app, federated credential
+(`repo:kizouker/hrv-service:environment:development`), RG roles, and
+stores IDs + `JWT_SECRET` in gitignored `.env`.
+`setup-github-deploy-secrets.sh` pushes those values to GitHub.
+Approve the deployment if required reviewers are set on `development`.
 
 ## 4. Monitoring to look at
 
