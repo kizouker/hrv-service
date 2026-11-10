@@ -118,15 +118,22 @@ Done when: the run stops at "Waiting for review", you approve, and `deploy` runs
 ### [ ] Lab 3 ★ Secret scanning + push protection
 Exam area: Security.
  
-```bash
-open https://github.com/kizouker/hrv-backend/settings/security_analysis
-```
- 
-Turn on Secret Protection and Push protection. Then look at the alerts:
+GitHub renamed the old "Code security and analysis" page. Use **Advanced Security**
+(repo is `hrv-service`, not `hrv-backend`):
  
 ```bash
-open https://github.com/kizouker/hrv-backend/security/secret-scanning
+open https://github.com/kizouker/hrv-service/settings/advanced-security
 ```
+ 
+Or: repo → **Settings** → sidebar **Security and quality** → **Advanced Security**.
+ 
+Turn on **Secret Protection**, then **Push protection**. Then look at the alerts:
+ 
+```bash
+open https://github.com/kizouker/hrv-service/security/secret-scanning
+```
+ 
+Or: repo → **Security and quality** → **Secret scanning**.
  
 Exam point: scanning finds **known token formats** (GitHub, Azure, AWS keys…). Your old random JWT string probably won't show up, because it has no known pattern. That's why you still rotated it by hand.
  
