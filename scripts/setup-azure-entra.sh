@@ -51,7 +51,12 @@ az ad sp show --id "$APP_ID" >/dev/null 2>&1 || az ad sp create --id "$APP_ID" -
 RG_ID=$(az group show --name "$RG" --query id -o tsv)
 
 echo "==> Role assignments on $RG"
+# Contributor: create/update resources (ACR, KV, Container Apps, ...).
 az role assignment create --assignee "$APP_ID" --role Contributor --scope "$RG_ID" >/dev/null || true
+# User Access Administrator: Bicep assigns AcrPull + Key Vault Secrets User
+# to the app managed identity (roleAssignments/write). Contributor alone cannot.
+az role assignment create --assignee "$APP_ID" --role "User Access Administrator" --scope "$RG_ID" >/dev/null || true
+# Key Vault data-plane for jwt-secret writes during deploy if needed.
 az role assignment create --assignee "$APP_ID" --role "Key Vault Secrets Officer" --scope "$RG_ID" >/dev/null || true
 
 # Prefer the classic GitHub OIDC subject Entra UI docs show.

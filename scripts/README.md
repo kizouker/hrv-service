@@ -20,12 +20,19 @@
    Godkänn miljön `development` om required reviewers är på.
 
 ### Om Azure login failar med AADSTS700213
-Subject i Entra måste vara **exakt** det GitHub skickar.
+Detta repo har **immutable** OIDC (går inte att stänga av). Entra subject måste vara:
+`repo:kizouker@19254086/hrv-service@1319982126:environment:development`
 
-Detta repo är satt till **klassisk** subject (immutable av):
-`repo:kizouker/hrv-service:environment:development`
-
-Kör om steg 1 om federated credential saknas/är fel, sedan steg 3 igen.
+### Om Bicep failar med roleAssignments/write
+GitHub-appen behöver **User Access Administrator** på `rg-hrv-dev` (utöver Contributor),
+annars kan den inte ge managed identity `AcrPull` / Key Vault-roller. Kör om steg 1
+eller:
+```bash
+az role assignment create \
+  --assignee "$AZURE_CLIENT_ID" \
+  --role "User Access Administrator" \
+  --scope "$(az group show -n rg-hrv-dev --query id -o tsv)"
+```
 
 ### Wrapper (valfritt)
 `./scripts/setup-azure-oidc.sh` kör steg 1 + 2 i följd.
