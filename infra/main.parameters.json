@@ -3,7 +3,6 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "environmentName": { "value": "hrv-dev" },
-    "dbAdminPassword": { "value": "" },
     "jwtSecret": { "value": "" }
   }
 }

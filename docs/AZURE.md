@@ -75,27 +75,21 @@ managed identity pulling from ACR with zero stored passwords
 
 ## 3. GitHub Actions with OIDC (core exam topic)
 
-One-time setup — federated credential instead of a long-lived secret:
+Deploy workflow uses GitHub environment **`development`** and image name
+**`hrv-service`**. One-time setup on your machine:
 
 ```bash
-APP_ID=$(az ad app create --display-name hrv-backend-gha \
-  --query appId -o tsv)
-SP_ID=$(az ad sp create --id "$APP_ID" --query id -o tsv)
-az role assignment create --assignee "$APP_ID" --role Contributor \
-  --scope "/subscriptions/$(az account show --query id -o tsv)/resourceGroups/$RG"
-az ad app federated-credential create --id "$APP_ID" --parameters '{
-  "name": "gha-main",
-  "issuer": "https://token.actions.githubusercontent.com",
-  "subject": "repo:<owner>/<repo>:ref:refs/heads/main",
-  "audiences": ["api://AzureADTokenExchange"]
-}'
+az login
+gh auth login
+./scripts/setup-azure-oidc.sh
+gh workflow enable "Deploy to Azure"
+gh workflow run "Deploy to Azure"
 ```
 
-Then set GitHub **secrets** `AZURE_CLIENT_ID=$APP_ID`,
-`AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID`, `DB_ADMIN_PASSWORD`,
-`JWT_SECRET`, and **variables** `AZURE_RG=$RG`, `AZURE_LOCATION=$LOC`.
-Push to `main` and watch `Deploy to Azure` run. Add a required reviewer
-on the `production` environment to demo approvals/gates.
+The script creates the Entra app, federated credential
+(`repo:kizouker/hrv-service:environment:development`), RG role
+assignments, and GitHub env secrets/vars. Approve the deployment if
+required reviewers are set on `development`.
 
 ## 4. Monitoring to look at
 
