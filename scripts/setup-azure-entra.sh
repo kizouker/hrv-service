@@ -54,7 +54,13 @@ echo "==> Role assignments on $RG"
 az role assignment create --assignee "$APP_ID" --role Contributor --scope "$RG_ID" >/dev/null || true
 az role assignment create --assignee "$APP_ID" --role "Key Vault Secrets Officer" --scope "$RG_ID" >/dev/null || true
 
-SUBJECT="repo:${REPO}:environment:${ENV_NAME}"
+# Immutable GitHub OIDC subject (repo has use_immutable_subject=true).
+# Format: repo:OWNER@OWNER_ID/REPO@REPO_ID:environment:ENV
+OWNER_LOGIN=$(gh api "repos/${REPO}" --jq .owner.login)
+OWNER_ID=$(gh api "repos/${REPO}" --jq .owner.id)
+REPO_NAME=$(gh api "repos/${REPO}" --jq .name)
+REPO_ID=$(gh api "repos/${REPO}" --jq .id)
+SUBJECT="repo:${OWNER_LOGIN}@${OWNER_ID}/${REPO_NAME}@${REPO_ID}:environment:${ENV_NAME}"
 echo "==> Federated credential subject: $SUBJECT"
 az ad app federated-credential delete --id "$APP_ID" --federated-credential-id "gh-${ENV_NAME}" >/dev/null 2>&1 || true
 az ad app federated-credential create --id "$APP_ID" --parameters "{
@@ -63,6 +69,7 @@ az ad app federated-credential create --id "$APP_ID" --parameters "{
   \"subject\": \"${SUBJECT}\",
   \"audiences\": [\"api://AzureADTokenExchange\"]
 }" >/dev/null
+upsert_env "AZURE_OIDC_SUBJECT" "$SUBJECT"
 
 TENANT_ID=$(az account show --query tenantId -o tsv)
 SUB_ID=$(az account show --query id -o tsv)
