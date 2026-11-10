@@ -172,7 +172,8 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
       scale: { minReplicas: 0, maxReplicas: 1 }
     }
   }
-  dependsOn: [ jwtSecretEntry ]
+  // Role assignments must exist before the app resolves Key Vault secrets / ACR pull.
+  dependsOn: [ jwtSecretEntry, kvSecretsUser, acrPull ]
 }
 
 // Managed identity -> AcrPull: the app pulls images without any stored password.
