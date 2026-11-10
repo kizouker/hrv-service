@@ -1,4 +1,4 @@
-name: hello 
+name: lab1 
 on: 
   workflow_dispatch:
     inputs:
@@ -10,4 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello ${{ inputs.name }}"
-      
+# gh workflow view hello_azure.yml --web
+# gh workflow view = visar en workflow
+# hello_azure.yml = vilken fil
+# --web = öppna den i webbläsaren i stället för i terminalen
+
+#gh workflow list --all PC
+# visar alla workflows som GitHub känner till, med namn, status (active eller disabled) och ID
+
+# gh workflow disable azure-deploy.yml
+
+#gh run list --workflow="hello_azure.yml"
+
+#  gh run view 42394616254 --log

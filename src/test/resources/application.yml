@@ -1,16 +1,50 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: hrv-backend
+
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    hikari:
+      initialization-fail-timeout: -1  # starta appen även om DB är nere
+    url: ${DATABASE_URL}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: ${DATABASE_DRIVER:org.postgresql.Driver}
+
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create-drop  # tester börjar med tom DB; main använder update
+    show-sql: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+        dialect: ${JPA_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
+        format_sql: true
+
+server:
+  port: ${APP_PORT}
 
 jwt:
-  secret: dGVzdC1zZWNyZXQta2V5LXRoYXQtaXMtbG9uZy1lbm91Z2gtZm9yLUhNQUMtU0hBLTI1Ng==
-  expiration-ms: 3600000
+  secret: ${JWT_SECRET}
+  expiration-ms: ${JWT_EXPIRATION_MS}  # 24 hours
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+  info:
+    title: HRV API
+    description: Heart Rate Variability tracking and analytics REST API
+    version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  health:
+    db:
+      enabled: false

@@ -12,6 +12,28 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: hrvdb
+          POSTGRES_USER: hrv_user
+          POSTGRES_PASSWORD: hrv_test_pw
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready -U hrv_user -d hrvdb
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: jdbc:postgresql://localhost:5432
+      POSTGRES_DB: hrvdb
+      POSTGRES_USER: hrv_user
+      POSTGRES_PASSWORD: hrv_test_pw
+      APP_PORT: 8080
+      JWT_SECRET: test-secret-key-that-is-long-enough-for-hs256-0123456789
+      JWT_EXPIRATION_MS: 86400000
     steps:
       - uses: actions/checkout@v4
 

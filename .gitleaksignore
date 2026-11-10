@@ -1,0 +1,7 @@
+#gitleaksignore
+9c19e9ddaa4cf836cf7e68e96889278502ba36af:example.env:generic-api-key:16
+32064eed035701f12cc4b2bd21dcc2e2ba54aa62:docker-compose.yml:generic-api-key:33
+32064eed035701f12cc4b2bd21dcc2e2ba54aa62:src/test/resources/application.yml:generic-api-key:15
+89658c23572fc76c0d021e30e0a3879220a9a58a:doc/jwt-tutorial.md:generic-api-key:131
+89658c23572fc76c0d021e30e0a3879220a9a58a:doc/jwt-tutorial.md:jwt:14
+89658c23572fc76c0d021e30e0a3879220a9a58a:doc/jwt-tutorial.md:jwt:133

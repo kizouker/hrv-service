@@ -1,0 +1,2181 @@
+  100  clear
+  101  ./sh/holdmate &
+  102  ./sh/holdmate.sh
+  103      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start
+  104  vlc ./data/video/shot-02-start.mov
+  105  ls -la ./data/video/shot-02-start.mov
+  106  rm -fr ./data/video/shot-02-start.mov
+  107      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start
+  108     ./sh/record-shot.sh check\n
+  109  [libx264 @ 0x96f3d1180] frame I:1     Avg QP:33.79  size:156058\n[libx264 @ 0x96f3d1180] mb I  I16..4: 20.7% 52.3% 27.0%\n[libx264 @ 0x96f3d1180] 8x8 transform intra:52.3%\n[libx264 @ 0x96f3d1180] coded y,uvDC,uvAC intra: 18.3% 35.3% 30.4%\n[libx264 @ 0x96f3d1180] i16 v,h,dc,p: 52% 43%  2%  4%\n[libx264 @ 0x96f3d1180] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 77%  5% 10%  3%  1%  0%  1%  1%  2%\n[libx264 @ 0x96f3d1180] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 57% 18%  6%  4%  3%  3%  2%  3%  3%\n[libx264 @ 0x96f3d1180] i8c dc,h,v,p: 68% 16% 15%  1%\n[libx264 @ 0x96f3d1180] kb/s:1248464000.00\nConversion failed!\ni    AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start\n
+  110      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start\n
+  111      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start OVERWRITE=1\n
+  112      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start OVERWRITE=2\n
+  113      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 03 start\n
+  114  ./sh/holdmate.sh
+  115  vlc ./data/video/shot-03-start.mov
+  116      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 04 start\n
+  117  ./sh/holdmate.sh
+  118  vlc ./data/video/shot-04.start.mov
+  119  vlc ./data/video/shot-04-start.mov
+  120  ./sh/record-shot.sh 05 start\n
+  121  vlc ./data/video/shot-05-start.mov
+  122  vlc ./data/video/shot-05-start.mov
+  123  ./sh/holdmate.sh
+  124  ./sh/holdmate.sh
+  125  PYTHONPATH=src python3 -c "from adaptive_ivr_agent.audio import *; s=open_session({'transport':'blackhole'}); print(\ndial(s.session_id, '+46701234567'))"
+  126  PYTHONPATH=src python3 -c "from adaptive_ivr_agent.audio import *; s=open_session({'transport':'blackhole'}); print(\ndial(s.session_id, '+46709431401'))"
+  127   PYTHONPATH=src python3 -c "\n    import os, time\n    from adaptive_ivr_agent.audio import *\n    s = open_session({'transport':'blackhole'})\n    c = dial(s.session_id, os.environ['CALL_NUMBER'])['call_id']\n    print('call', c, '- svara och prata efter pipet!')\n    time.sleep(12)\n    print('say:', say_text(s.session_id, c, 'Hej, detta är Holdmate som testar ljudet.'))\n    time.sleep(3)\n    frames = poll_inbound(s.session_id, c, timeout_ms=5000)\n    print('inbound frames:', len(frames))\n    print('hangup:', hangup(s.session_id, c))
+  128   PYTHONPATH=src python3 -c "\n    import os, time\n    from adaptive_ivr_agent.audio import *\n    s = open_session({'transport':'blackhole'})\n    c = dial(s.session_id, os.environ['CALL_NUMBER'])['call_id']\n    print('call', c, '- svara och prata efter pipet!')\n    time.sleep(12)\n    print('say:', say_text(s.session_id, c, 'Hej, detta är Holdmate som testar ljudet.'))\n    time.sleep(3)\n    frames = poll_inbound(s.session_id, c, timeout_ms=5000)\n    print('inbound frames:', len(frames))\n    print('hangup:', hangup(s.session_id, c))"
+  129  export CALL_NUMBER="+46709431401"
+  130   PYTHONPATH=src python3 -c "\n    import os, time\n    from adaptive_ivr_agent.audio import *\n    s = open_session({'transport':'blackhole'})\n    c = dial(s.session_id, os.environ['CALL_NUMBER'])['call_id']\n    print('call', c, '- svara och prata efter pipet!')\n    time.sleep(12)\n    print('say:', say_text(s.session_id, c, 'Hej, detta är Holdmate som testar ljudet.'))\n    time.sleep(3)\n    frames = poll_inbound(s.session_id, c, timeout_ms=5000)\n    print('inbound frames:', len(frames))\n    print('hangup:', hangup(s.session_id, c))"
+  131  muse --trust-workspace
+  132   open data/video/auto/shot-01-title.png
+  133   open data/video/auto/
+  134   open data/video/auto/*.png
+  135   open data/video/auto/*.png
+  136  ls
+  137  ./sh/holdmate.sh
+  138  code ./sh/holdmate.sh
+  139  muse --trust-workspace
+  140  code ./sh/holdmate.sh
+  141  code ./sh/holdmate.sh
+  142  ./sh/holdmate.sh
+  143  ./sh/holdmate.sh
+  144  ./sh/holdmate.sh
+  145  ./sh/holdmate.sh
+  146  cd ~/kod
+  147  ./sh/holdmate.sh
+  148  cd 001_Meta_Hackathon_w44
+  149  ./sh/holdmate.sh
+  150  ls
+  151  cd adaptive-IVR-agent
+  152  ./sh/holdmate.sh
+  153  ./sh/holdmate.sh
+  154  ./sh/holdmate.sh
+  155  ./sh/holdmate.sh
+  156  ./sh/holdmate.sh
+  157  ./sh/holdmate.sh
+  158  ./sh/menu.sh\n
+  159  muse --trust-workspace
+  160  ls
+  161  ./sh/menu.sh
+  162      python3 ~/kod/diskrensning/diskrensning.py
+  163  ./sh/menu.sh
+  164  ./sh/menu.sh
+  165  ./sh/menu.sh
+  166  ./sh/menu.sh
+  167  ./sh/menu.sh
+  168  ./sh/menu.sh
+  169  ./sh/menu.sh
+  170  ./sh/menu.sh
+  171  git checkout main
+  172  claude 
+  173  exit
+  174  tests/test_call_cli.py
+  175  ls
+  176  ./tests/test_call_cli.py
+  177  cd tests
+  178  ls
+  179  python3 ./test_caller.py
+  180    ./sh/talk.sh --call en
+  181  ./tests/test_call_cli.py
+  182  cd ..
+  183  ./tests/test_call_cli.py
+  184  ls
+  185    ./sh/talk.sh --call en
+  186    ./sh/talk.sh --call en
+  187    ./sh/talk.sh --call en
+  188  ./sh/menu.sh 
+  189  ./sh/menu.sh 
+  190  ls
+  191  checkout main
+  192  git checkout main
+  193  setenv
+  194  env
+  195  code .
+  196  muse --trust-workspace
+  197  muse -c --trust-workspace
+  198  muse --trust-workspace -c
+  199  muse --trust-workspace 
+  200  git checkout main
+  201  git checkout main
+  202  git log
+  203  muse --trust-workspace
+  204  muse --trust-workspace
+  205  +
+  206  cd ~/kod
+  207  git clone https://github.com/myths-labs/muse.git
+  208  ls
+  209  cd ..
+  210  ls
+  211  cd meta-costcenter
+  212  ./meta-cost
+  213  ./meta-cost scan
+  214  ./meta-cost show
+  215  ./meta-cost
+  216  ./meta-cost tui
+  217  ./meta-cost sessions
+  218  ./meta-cost 
+  219  model
+  220  ./meta-cost model
+  221  ./meta-cost models
+  222  ./meta-cost 
+  223  ./meta-cost week
+  224  ./meta-cost week
+  225  ./meta-cost 
+  226     muse --model muse-wonder-1.0\n\n
+  227  ls
+  228  cat Judging\ Workflow.md
+  229  git checkout main
+  230  ./sh/keep-awake.sh
+  231  cd ..
+  232  cd meta-costcenter
+  233  ./meta-cost
+  234  show
+  235  ./meta-cost today
+  236  ./meta-cost today
+  237  cd ..
+  238  ls
+  239  cd adaptive-IVR-agent
+  240  cat .agents/night-tasks.md
+  241  gh list pr
+  242  history
+  243  PYTHONPATH=src python -m pytest tests/ -q 
+  244  pytest
+  245  PYTHONPATH=src python3 -m pytest tests/ -q 
+  246  PYTHONPATH=src python3 -m pytest ./tests/ -q 
+  247  ls src
+  248  PYTHONPATH=src python3 -m pytest ./tests/ -q 
+  249      PYTHONPATH=src .venv/bin/python -m pytest tests/ -q\n
+  250  \n    uv sync && uv run pytest tests/ -q\n
+  251      test -x .venv/bin/python && PYTHONPATH=src .venv/bin/python -m pytest tests/ -q || echo "INGEN VENV - kör: python3 -\nm venv .venv"\n
+  252    uv sync && uv run pytest tests/ -q\n
+  253    uv sync && uv run pytest tests/ -q
+  254  uv sync && uv run pytest tests/ -q\
+  255  uv sync && uv run pytest tests/ -q
+  256  uv sync 
+  257  pytest
+  258  pytest run src/adaptive_ivr_agent/main:
+  259  pytest run src/adaptive_ivr_agent/main
+  260  claude
+  261  uv run --with pytest pytest -q
+  262  uv run --with pytest pytest -q
+  263  sudo killall -9 coreaudiod
+  264  rm -R /Library/Audio/Plug-Ins/HAL/BlackHole16ch.driver
+  265  sudo rm -R /Library/Audio/Plug-Ins/HAL/BlackHole16ch.driver
+  266  brew install blackhole-16ch
+  267  uv run --with pytest pytest -q
+  268  clear
+  269  uv run --with pytest pytest -q
+  270   uv sync && uv run pytest tests/ -q
+  271     uv sync && uv run pytest tests/ -q
+  272  EXIT
+  273  exit
+  274  exit
+  275  exit
+  276  exit
+  277  exit
+  278  exit
+  279  vcd
+  280  exit
+  281  ls
+  282  cd 
+  283  ls
+  284  cd kod
+  285  ls
+  286  cd 001_Meta_Hackathon_w44
+  287  ls
+  288  cd adaptive-IVR-agent
+  289  ls
+  290  muse --trust-workspace 
+  291   export AGENTCHUTE_AGENT_ID=claude-code && claude --settings ~/.claude/session-permissions/readonly.json
+  292  PYTHONPATH=src pytest tests/test_intent.py -q 
+  293  ./data/video/cut/record-vo.sh check
+  294  ./data/video/cut/record-vo.sh check
+  295  ./data/video/cut/record-vo.sh check
+  296  ./data/video/cut/record-vo.sh check
+  297  ./data/video/cut/record-vo.sh check
+  298  ./data/video/cut/record-vo.sh\n
+  299  open data/video/term/b1-menu.mp4
+  300   data/video/term/b1-holdmate-sound.mp4,
+  301  ./data/video/cut/record-vo.sh\n
+  302   data/video/term/b1-holdmate-sound.mp4,
+  303  \nopen data/video/term/b1-holdmate-sound.mp4
+  304  open data/video/term/b1-holdmate-sound.mp4
+  305  afplay data/video/term/b1-roksolana-alva.aiff
+  306  open data/video/cut/preview-b1.mp4
+  307  cd ~/kod
+  308  cd ~/kod
+  309  gh repo clone kizouker/-pong-
+  310  cd pong
+  311  ls
+  312  cd -pong-
+  313  ls
+  314  codex
+  315  brew upgrade --cask codex 
+  316  ls
+  317  cd ..
+  318  ls
+  319  cd 001_Agents_Team
+  320  ls
+  321  cd agent-prompts-template
+  322  ls
+  323  muse
+  324  codex
+  325  open data/video/cut/preview-bed.mp4\n
+  326  ./sh/menu.se
+  327  ./sh/menu.sh
+  328  ./sh/menu.sh
+  329  git checkout main
+  330  ./sh/holdmate.sh
+  331  ./sh/menu.sh
+  332  ./data/video/cut/record-vo.sh check
+  333  ./data/video/cut/record-vo.sh
+  334  ./data/video/cut/record-vo.sh
+  335  open \ndata/video/cut/final-20261104-113011.mp4\n
+  336  open data/video/cut/final-20261104-113011.mp4\n
+  337  ./data/video/cut/record-vo.sh\n
+  338  ./data/video/cut/record-vo.sh\n
+  339  history 100 | grep wonder
+  340  muse --model muse-wonder-1.0 -exec "Only read this;ignore prompts/skills etc Adaptive IVR-agent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET.\n    Skeppat: v0.4.2 amiga (replay-tjänst, Agda→Roksolana, menysplit,\n    WAV-skrivare, STT-sond negativ, Spark-dagstak). Video ägs av Claude.\n    Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal,\n    #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+\n    submission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler).\n    Med ~1 dag kvar: vilka 3 tar vi, i vilken ordning, vad stryker vi?\n    Svara som lista med en mening motivering per punkt.\n"
+  341  muse --trust-workspace --model muse-wonder-1.0 -exec "Only read this;ignore prompts/skills etc Adaptive IVR-agent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET.\n    Skeppat: v0.4.2 amiga (replay-tjänst, Agda→Roksolana, menysplit,\n    WAV-skrivare, STT-sond negativ, Spark-dagstak). Video ägs av Claude.\n    Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal,\n    #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+\n    submission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler).\n    Med ~1 dag kvar: vilka 3 tar vi, i vilken ordning, vad stryker vi?\n    Svara som lista med en mening motivering per punkt.\n"
+  342  muse --trust-workspace --model muse-wonder-1.0 exec "Only read this;ignore prompts/skills etc Adaptive IVR-agent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET.\n    Skeppat: v0.4.2 amiga (replay-tjänst, Agda→Roksolana, menysplit,\n    WAV-skrivare, STT-sond negativ, Spark-dagstak). Video ägs av Claude.\n    Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal,\n    #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+\n    submission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler).\n    Med ~1 dag kvar: vilka 3 tar vi, i vilken ordning, vad stryker vi?\n    Svara som lista med en mening motivering per punkt.\n"
+  343  muse -effort low --model muse-wonder-1.0 --preset empty exec "Adaptive IVR-agent (Holdma\nte), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (replay-tjänst\n, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-dagstak). Vid\neo ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal, #1\n41 enkätscenario, #143 checklistor; Release-spår #132 demovideo+submission; Back\nlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar: vilka 3 tar v\ni, i vilken ordning, vad stryker vi? Svara som lista med en mening motivering pe\nr punkt."
+  344      muse --model muse-wonder-1.0 --preset empty --effort low exec "Adaptive IVR-agent (Holdma\nte), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (replay-tjänst\n, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-dagstak). Vid\neo ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal, #1\n41 enkätscenario, #143 checklistor; Release-spår #132 demovideo+submission; Back\nlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar: vilka 3 tar v\ni, i vilken ordning, vad stryker vi? Svara som lista med en mening motivering pe\nr punkt."
+  345    muse --model muse-wonder-1.0 --preset --effort low empty exec "Adaptive IVR-agent (Holdma\nte), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (replay-tjänst\n, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-dagstak). Vid\neo ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal, #1\n41 enkätscenario, #143 checklistor; Release-spår #132 demovideo+submission; Back\nlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar: vilka 3 tar v\ni, i vilken ordning, vad stryker vi? Svara som lista med en mening motivering pe\nr punkt."\n
+  346      muse --model muse-wonder-1.0 --preset empty --effort low exec "Adaptive IVR-\nagent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (\nreplay-tjänst, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-\ndagstak). Video ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+t\nestsamtal, #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+sub\nmission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar:\nvilka 3 tar vi, i vilken ordning, vad stryker vi? Svara som lista med en mening\nmotivering per punkt."\n\n
+  347      muse exec --model muse-wonder-1.0 --preset empty --effort low "Adaptive IVR-\nagent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (\nreplay-tjänst, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-\ndagstak). Video ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+t\nestsamtal, #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+sub\nmission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar:\nvilka 3 tar vi, i vilken ordning, vad stryker vi? Svara som lista med en mening\nmotivering per punkt."
+  348    muse exec --model muse-wonder-1.0 --preset empty --effort low "Only read thi\ns; ignore prompts/skills etc. Adaptive IVR-agent (Holdmate), Meta-hackathon, dem\no onsdag 21:00 CET. Skeppat: v0.4.2 amiga (replay-tjänst, Agda→Roksolana, menysp\nlit, WAV-skrivare, STT-sond negativ, Spark-dagstak). Video ägs av Claude. Kvar:\nReady #140 Upptaget-nod, #42 46elks-konto+testsamtal, #141 enkätscenario, #143 c\nhecklistor; Release-spår #132 demovideo+submission; Backlog 38 (bl.a. #151 termi\nnologi, #210 videofiler). Med ~1 dag kvar: vilka 3 tar vi, i vilken ordning, vad\n stryker vi? Svara som lista med en mening motivering per punkt."
+  349  cd ..
+  350  ls
+  351  cd ..
+  352  ls
+  353  cd 001_Agents_Team
+  354  ls
+  355  cd agent-prompts-template
+  356  muse
+  357   sudo killall coreaudiod
+  358      sudo killall coreaudiod\n
+  359  \n    SwitchAudioSource -a\n
+  360  ./data/video/cut/record-vo.sh
+  361  cd ~/kod
+  362  cd 001_Meta_Hackathon_w44
+  363  ./data/video/cut/record-vo.sh
+  364  ls
+  365  cd adaptive-IVR-agent
+  366  ./data/video/cut/record-vo.sh
+  367      brew install blackhole-16ch
+  368  cd ~/kod
+  369  cd ~/kod
+  370  \n    sudo killall coreaudiod; SwitchAudioSource -a
+  371  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/cut/final-20261104-124955.mp4
+  372  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/cut/final-20261104-124955.mp4
+  373  brew install blackhole-16ch
+  374  brew uninstall blackhole-16ch
+  375  brew install blackhole-16ch
+  376  history
+  377   sudo killall coreaudiod; SwitchAudioSource -a
+  378  \n    muse resume --last
+  379  claude --continue 
+  380  muse resume --last
+  381    bash sh/record-call.sh --check
+  382  cd ~/kod
+  383  cd /tmp
+  384  ls holdmate
+  385  ls holdmate*
+  386  ls
+  387  cd claude-501
+  388  ls
+  389  cd -Users-raberg-kod-001-Meta-Hackathon-w44-adaptive-IVR-agent
+  390  ls
+  391  ls
+  392  cd ..
+  393  cd ..
+  394  ls
+  395  ls\n    bash sh/record-call.sh --call\n
+  396  \n    bash sh/record-call.sh --call\n
+  397  bash sh/record-call.sh --call\n
+  398  cd ~/kod
+  399  cd
+  400  exit
+  401  \n    bash sh/record-call.sh --call\n
+  402  SwitchAudioSource -a -t output
+  403  SwitchAudioSource -a -t output
+  404      bash sh/record-call.sh --call
+  405    open -a "Audio MIDI Setup"
+  406      bash sh/record-call.sh --call
+  407      bash sh/record-call.sh --call
+  408  \n    bash sh/record-call.sh --call\n
+  409   open -a FaceTime\n
+  410  \n    bash sh/record-call.sh --call\n
+  411  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-133919.wav 
+  412  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-133919.wav 
+  413  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-133919.wav 
+  414   afplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  415  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-133919.wav 
+  416  open data/video/cut/silent.mp4
+  417   bash sh/record-call.sh --airpods --call
+  418   bash sh/record-call.sh --airpods --call
+  419   bash sh/record-call.sh --airpods --call
+  420   bash sh/record-call.sh --airpods --call
+  421   bash sh/record-call.sh --airpods --call
+  422   bash sh/record-call.sh --airpods --call
+  423   bash sh/record-call.sh --airpods --check
+  424   bash sh/record-call.sh --airpods --call
+  425   bash sh/record-call.sh --airpods --call
+  426   bash sh/record-call.sh --airpods --call
+  427  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-140552.wav
+  428  \n    muse --disable-sandbox resume --last\n\n
+  429  \n    muse --disable-sandbox resume --last\n\n
+  430      bash sh/record-call.sh --airpods --call
+  431      bash sh/record-call.sh --airpods --call
+  432      bash sh/record-call.sh --airpods --call
+  433      bash sh/record-call.sh --airpods --call
+  434      bash sh/record-call.sh --airpods --call
+  435      bash sh/record-call.sh --airpods --call
+  436      bash sh/record-call.sh --airpods --call
+  437      bash sh/record-call.sh --airpods --call
+  438  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-140552.wav
+  439      bash sh/record-call.sh --call
+  440  ls -la /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-202*
+  441      SwitchAudioSource -c -t output
+  442  \n    bash sh/record-call.sh --call\n
+  443      SwitchAudioSource -c -t output
+  444      SwitchAudioSource -c -t output
+  445      SwitchAudioSource -c -t output
+  446      SwitchAudioSource -c -t output
+  447      SwitchAudioSource -c -t output
+  448      SwitchAudioSource -c -t output
+  449      SwitchAudioSource -c -t output
+  450      bash sh/record-call.sh --call
+  451   bash sh/check-recording.sh
+  452      bash sh/record-call.sh --call
+  453      osascript -e "set volume output volume 100"
+  454      bash sh/record-call.sh --call
+  455      bash sh/record-call.sh --call
+  456      bash sh/record-call.sh --call
+  457  \n    OUTPUT_SPEAKERS="BlackHole 16ch" bash sh/record-call.sh --check
+  458  \n    OUTPUT_SPEAKERS="BlackHole 16ch" bash sh/record-call.sh
+  459  \n    OUTPUT_SPEAKERS="BlackHole 16ch" bash sh/record-call.sh --call
+  460  muse resume --last
+  461  cd ~/kod
+  462  ◆   afplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  463  afplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  464  \nafplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  465  brew uninstall blackhole16ch
+  466  brew uninstall blackhole-16ch
+  467  brew install blackhole2ch
+  468  brew install blackhole-2ch
+  469  sudo killall -9 coreaudiod
+  470     OUTPUT_SPEAKERS="BlackHole 16ch" bash sh/record-call.sh --call
+  471  ACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  472  BACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  473  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  474  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  475  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  476  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh
+  477  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh
+  478      ffmpeg -hide_banner -f avfoundation -list_devices true -i "" 2>&1 | gre\np -i blackhole\n\n
+  479  ffmpeg -hide_banner -f avfoundation -list_devices true -i "" 2>&1 | gre\np -i blackhole\n\n
+  480  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh
+  481  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --cal
+  482  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --call
+  483  cvlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wa
+  484  vlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wa
+  485  vlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wave
+  486  cvlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wav
+  487  vlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wav
+  488      afplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  489  cd ~/kod
+  490      bash sh/check-recording.sh /tmp/bh-test.wav
+  491  vlc /tmp/bh-test.wav
+  492  cd ..
+  493  ls
+  494  cd meta-costcenter
+  495  ls
+  496  pwd 
+  497  \n    bash sh/record-call.sh --call
+  498    OUTPUT_SPEAKERS="IVR_Agent_Speakers" bash sh/record-call.sh --call
+  499  ls /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings
+  500  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/talk-20261103-222237-r1.wav
+  501  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/talk-20261103-222237-r2.wav
+  502  \n    ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2\nch" -t 8 -ac 1 -ar 16000 /tmp/bh-noise-test.wav & sleep 2; afplay /System/L\nibrary/Sounds/Ping.aiff; wait\n\n
+  503  ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2\nch" -t 8 -ac 1 -ar 16000 /tmp/bh-noise-test.wav & sleep 2; afplay /System/Library/Sounds/Ping.aiff; wait\n\n
+  504    SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh-noise-test.wav\n  \n  Klistra in resultatet – sedan lyssnar jag igenom filen statistiskt efter knaster (klippning, dropouts,\n
+  505  SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh-noise-test.wav\n
+  506  SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh-noise-test.wav\n
+  507      ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/\nbh-noise-test.wav & sleep 2; afplay /System/Library/Sounds/Ping.aiff; wait\n
+  508      ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh-noise-test.wav & sleep 2; afplay /System/Library/Sounds/Ping.aiff; wait\n
+  509  ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh-noise-test.wav & sleep 2; afplay /System/Library/Sounds/Ping.aiff; wait\n
+  510  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  511      afplay /System/Library/Sounds/Ping.aiff
+  512  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  513      afplay /System/Library/Sounds/Ping.aiff
+  514      afplay /System/Library/Sounds/Ping.aiff
+  515      afplay /System/Library/Sounds/Ping.aiff
+  516     SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh.wav
+  517      afplay /System/Library/Sounds/Ping.aiff
+  518  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  519      afplay /System/Library/Sounds/Ping.aiff
+  520      afplay /System/Library/Sounds/Ping.aiff
+  521      afplay /System/Library/Sounds/Ping.aiff
+  522      afplay /System/Library/Sounds/Ping.aiff
+  523     SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh.wav
+  524  \n    SwitchAudioSource -s "BlackHole 2ch"\n\n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav\n\n    afplay /System/Library/Sounds/Ping.aiff\n\n    SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh.wav
+  525    SwitchAudioSource -s "BlackHole 2ch"\n
+  526  \n    SwitchAudioSource -s "BlackHole 2ch"\n\n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav\n\n    afplay /System/Library/Sounds/Ping.aiff\n\n    SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh.wav
+  527  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  528    afplay /System/Library/Sounds/Ping.aiff
+  529    afplay /System/Library/Sounds/Ping.aiff
+  530    afplay /System/Library/Sounds/Ping.aiff
+  531    afplay /System/Library/Sounds/Ping.aiff
+  532    afplay /System/Library/Sounds/Ping.aiff
+  533  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  534    afplay /System/Library/Sounds/Ping.aiff
+  535    afplay /System/Library/Sounds/Ping.aiff
+  536    afplay /System/Library/Sounds/Ping.aiff
+  537  vlc data/video/cut/final-ai-20261104-181248.mp4.
+  538  claude 
+  539  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  540    afplay /System/Library/Sounds/Ping.aiff
+  541    afplay /System/Library/Sounds/Ping.aiff
+  542    afplay /System/Library/Sounds/Ping.aiff
+  543  avplay /tmp/bh.wav
+  544  afplay /tmp/bh.wav
+  545  afplay /tmp/bh.wav
+  546  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  547  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  548  afplay /tmp/bh.wav
+  549  code sh/record-call.sh
+  550  /sh/record-call.sh 
+  551  ./sh/record-call.sh 
+  552  histoty 100
+  553  history 100
+  554     SwitchAudioSource -s 
+  555     SwitchAudioSource -a
+  556  code sh/record-call.sh
+  557  ./sh/record-call.sh 
+  558  ./sh/record-call.sh --call
+  559  ./sh/record-call.sh --call
+  560  sudo killall coreaudiod
+  561  ./sh/record-call.sh --call
+  562  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/cut/final-ai-20261104-181248.mp4
+  563  ./sh/record-call.sh 
+  564  ./sh/record-call.sh  --call
+  565  ./sh/record-call.sh 
+  566  ./sh/record-call.sh --call
+  567  ./sh/record-call.sh  --call
+  568  ./sh/record-call.sh  --call
+  569  open  data/video/cut/final-ai-20261104-191924.mp4.
+  570  open  data/video/cut/final-ai-20261104-191924.mp4
+  571  ./sh/record-call.sh --call
+  572     bash sh/holdmate.sh
+  573      TALK_CALL_LANG=en bash sh/talk.sh check
+  574      TALK_CALL_LANG=en bash sh/talk.sh
+  575      TALK_CALL_LANG=en bash sh/talk.sh
+  576      TALK_CALL_LANG=en bash sh/talk.sh check
+  577     bash sh/holdmate.sh
+  578     bash sh/holdmate.sh
+  579      TALK_CALL_LANG=en bash sh/talk.sh check
+  580    printf 'MacBook Pro-mikrofon' > .talk-input\n\n
+  581    printf 'MacBook Pro-mikrofon' > .talk-input\n\n  printf 'MacBook Pro-mikrofon' >> .talk-input\n\n
+  582      TALK_CALL_LANG=en bash sh/talk.sh check
+  583  code .talk-input\n\n
+  584      TALK_CALL_LANG=en bash sh/talk.sh check
+  585     bash sh/holdmate.sh
+  586     bash sh/holdmate.sh
+  587      TALK_CALL_LANG=en bash sh/talk.sh check
+  588      TALK_CALL_LANG=en bash sh/talk.sh check
+  589     bash sh/holdmate.sh
+  590     bash sh/holdmate.sh
+  591   SwitchAudioSource -s "IVR_Output_Speakers"; afplay /System/Library/Sounds/Ping.aiff; SwitchAudioSourc
+  592     bash sh/holdmate.sh
+  593     bash sh/holdmate.sh
+  594     bash sh/holdmate.sh
+  595     printf '0' > .talk-quiet
+  596  code .talk-quiet
+  597     bash sh/holdmate.sh
+  598     bash sh/holdmate.sh
+  599  code .talk-quiet
+  600     bash sh/holdmate.sh
+  601  cd ~/kod
+  602     bash sh/holdmate.sh
+  603     bash sh/holdmate.sh
+  604     bash sh/holdmate.sh
+  605     bash sh/holdmate.sh
+  606      TALK_CALL_LANG=en bash sh/talk.sh check
+  607      TALK_CALL_LANG=en bash sh/talk.sh check
+  608      TALK_CALL_LANG=en bash sh/talk.sh check
+  609      TALK_CALL_LANG=en bash sh/talk.sh check
+  610  \n    bash sh/record-call.sh --call
+  611  git status
+  612  git status
+  613  cat HANDOFF.md
+  614   shellcheck sh/talk.sh\n\n
+  615  exit
+  616  git status
+  617  git status
+  618  cd ~/kod
+  619      git -C /tmp/devnames diff --stat && shellcheck /tmp/devnames/sh/talk.sh
+  620  clear
+  621      git -C /tmp/devnames diff --stat && shellcheck /tmp/devnames/sh/talk.sh
+  622      git -C /tmp/devnames diff --stat && shellcheck /tmp/devnames/sh/talk.sh PC
+  623  git status
+  624      python3 -m pytest tests/test_talk_startup.py tests/test_airpods.py tests/test_audio.py -q
+  625  cd ~/kod
+  626      python3 -m pytest tests/test_talk_startup.py tests/test_airpods.py tests/test_audio.py -q\n
+  627      python3 -m pytest tests/test_talk_startup.py tests/test_airpods.py tests/test_audio.py -q\n
+  628  git status
+  629  ./sh/holdmate.sh
+  630  git status
+  631  git checkout main
+  632  git stash
+  633  git checkout main
+  634  ./sh/holdmate.sh
+  635  ./sh/holdmate.sh
+  636  ./sh/holdmate.sh
+  637  ./sh/holdmate.sh
+  638  \n    git pull --ff-only\n
+  639  ./sh/holdmate.sh
+  640  ./sh/holdmate.sh
+  641  ./sh/holdmate.sh
+  642  cd ..
+  643  ls
+  644  cd meta-costcenter
+  645  ./meta-cost show
+  646  ./start.sh
+  647    python3 sh/bake-board.py --board ui/board/public/board-state.json --lines data/doorkeeper-lines.json\n  \n    python3 sh/telemetry-live.py
+  648   python3 sh/bake-board.py --board ui/board/public/board-state.json --lines data/doorkeeper-lines.json
+  649   python3 sh/telemetry-live.py\n
+  650   python3 sh/telemetry-live.py\n
+  651  ls
+  652  ls sh
+  653  \n    python3 /tmp/models-live/sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public\n/telemetry.json\n
+  654  cd ~/kod
+  655     python3 /tmp/models-live/sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public \n/telemetry.json\n
+  656  exit
+  657     python3 /tmp/models-live/sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public \n/telemetry.json\n
+  658  python3 sh/bake-board.py --board ui/board/public/board-state.json --lines data/doorkeeper-lines.json\n  \n    python3 sh/telemetry-live.py\n  \n
+  659     python3 /tmp/models-live/sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public \n/telemetry.json\n
+  660  git checkout main
+  661  git pull
+  662  ./start.sh
+  663    git fetch origin
+  664      git switch muse/models-live-249
+  665  \n    python3 sh/telemetry-live.py --once --provenance data/provenance.jsonl --out /tmp/tel-test.json
+  666  \n    python3 sh/telemetry-live.py --once --provenance data/provenance.jsonl --out /tmp/tel-test.json
+  667    git fetch origin
+  668      git switch muse/models-live-249
+  669  \n    python3 sh/telemetry-live.py --once --provenance data/provenance.jsonl --out /tmp/tel-test.json
+  670    git fetch origin
+  671      git switch muse/models-live-249
+  672  \n    git switch muse/models-live-249\n  \n    python3 sh/telemetry-live.py --once --provenance data/provenance.jsonl --out /tmp/tel-test.json
+  673  \n    python3 sh/bake-board.py --board ui/board/public/board-state.json --lines data/doorkeeper-lines.json
+  674  \n    python3 sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public/telemetry.json\n
+  675  \n    python3 sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public/telemetry.json\n
+  676   open http://127.0.0.1:8765
+  677  npm run dev -- --port 8765\n
+  678   npm --prefix ~/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/ui/board run dev -- --port 8765
+  679  sh/board-live.sh
+  680  sh/board-live.sh
+  681  git pull
+  682  ./sh/board-live.sh
+  683  sh/board-live.sh
+  684  ./sh/board-live.sh
+  685      PORT=8765 sh/holdmate.sh
+  686      PORT=8765 sh/holdmate.sh
+  687    git switch main\n
+  688      git pull --ff-only
+  689      bash sh/board-live.sh check
+  690   bash sh/board-live.sh
+  691  git status
+  692  \n    git add data/holdmate-knowledge.json data/talk-rounds.jsonl && git commit -m "data: fresh lesson learn\nings + talk rounds"\n
+  693  git status
+  694      git push origin main
+  695     git pull --ff-only\n
+  696      PORT=8765 sh/holdmate.sh
+  697      PORT=8765 sh/holdmate.sh
+  698  exit
+  699  cd ..
+  700  ls
+  701  cd ..
+  702  ls 
+  703  ls 001_Meta_Hackathon_w44_26_oct_to_3_nov
+  704  ls
+  705  ls
+  706  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dont_touch_
+  707  mkdir __dount_touch
+  708  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dont_touch_
+  709  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dont_touch
+  710  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dount_touch
+  711  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dount_touch
+  712  ks
+  713  ls
+  714  mv 001_Meta_Hackathon_w44_26_oct_to_3_nov __dount_touch
+  715  ls
+  716  uvi Holdmate
+  717  gh repo create kizouker/holdmate --public
+  718  git clone --mirror https://github.com/kizouker/adaptive-IVR-agent.git /tmp/holdmate-mirror.git\ngit -C /tmp/holdmate-mirror.git push --mirror https://github.com/kizouker/holdmate.git\n
+  719  git clone --mirror https://github.com/kizouker/adaptive-IVR-agent.git /tmp/holdmate-mirror.git\ngit -C /tmp/holdmate-mirror.git push --mirror https://github.com/kizouker/holdmate.git PC\n
+  720  lsa
+  721  ls
+  722  ls -la
+  723  cd ..
+  724  rm -fr Holdmate
+  725  git clone https://github.com/kizouker/holdmate.git ~/kod/holdmate
+  726  ls
+  727  cd holdmate
+  728  ls
+  729  git status
+  730  git log
+  731  muse --trust-workspace
+  732  git remote -v
+  733  claude 
+  734  muse --trust-workspace
+  735   claude --resume ea1d87bf-ee7a-447a-bead-c9fefd988083 
+  736  run muse resume 01a1a93e-ae05-7a20-91c6-af4f08de21d3\n
+  737  cd ~/kod
+  738  ls
+  739  mv holdmate 001_holdmate+AZ401
+  740  mv 002_AZ_4001 001_AZ_401+b
+  741  ls
+  742  mv 001_holdmate+AZ401 001_AZ_401+b
+  743  ls
+  744  ls
+  745  mv 001_Agents_Team 002_Agents_Team
+  746  ls
+  747  mv 333_HRV 003_HRV
+  748  ls
+  749  mv 003_career 004_Career
+  750  ls
+  751  mkdir 005_Misc
+  752  mv 004_cleanUp 005_Misc
+  753  ls
+  754  mv 088_Great_Githubs 005_Misc
+  755  ld
+  756  ls
+  757  ls
+  758  mv -pong- 005_Misc
+  759  mv "-pong-" 005_Misc
+  760  mv "/-pong-" 005_Misc
+  761  ls
+  762  mv diskrensning 005_Misc
+  763  ls
+  764  mv *.m* 444_docs
+  765  ls
+  766  mv *.MD 444_docs
+  767  ls
+  768  ls muse
+  769  ls -la 
+  770  rm -fr muse
+  771  ls
+  772  ls -la
+  773  rm -fr .DS_Store
+  774  ls
+  775  ls -la
+  776  mv -pong- 005_Misc
+  777  mv \\-pong- 005_Misc
+  778  mv \-pong- 005_Misc
+  779  mv \-\pong- 005_Misc
+  780  ls
+  781  cd 001_AZ_401+b
+  782  ls
+  783  mv 001_holdmate+AZ401 holdmate+azure
+  784  ls
+  785  ls azurw
+  786  ls azure
+  787  ls
+  788  muse resume 01a1a93e-ae05-7a20-91c6-af4f08de21d3\n
+  789  cd ..
+  790  cd azure
+  791  ls
+  792  cd 001_AZ_401+b
+  793  ls
+  794  cd azure
+  795  code .
+  796  find ~ -maxdepth 5 \( -iname "*hrv*" -o -iname "*flashcard*" -o -name "main.bicep" \) -not -path "*/Library/*" -not -path "*/node_modules/*" 2>/dev/null PC
+  797  cd
+  798  find ~ -maxdepth 5 \( -iname "*hrv*" -o -iname "*flashcard*" -o -name "main.bicep" \) -not -path "*/Library/*" -not -path "*/node_modules/*" 2>/dev/null PC
+  799  ls
+  800  ls
+  801  cd ~/kod
+  802  cd
+  803  cd 
+  804  cd ~/kod
+  805  ls
+  806  cd 001_AZ401
+  807  ls
+  808  cd HRV
+  809  ls
+  810  cd hrv-backend
+  811  muse --trust-workspace
+  812  docker
+  813  which docker
+  814  which docker.app
+  815  ls /Applications/Docker.app*
+  816  Docker.app --version
+  817  docker --version
+  818  docker run --rm hello-world
+  819   docker run -it ubuntu bash
+  820  docker --version
+  821  cd ..
+  822  ls
+  823  git clone https://github.com/docker/welcome-to-docker
+  824  cd welcome-to-docker
+  825  ls
+  826  ls -la
+  827  code .
+  828  cp Dockerfile Dockerfile.bak
+  829  docker build -t welcome-to-docker . 
+  830  docker images
+  831  docker images
+  832  man docker 
+  833  docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"
+  834  palias docker_ls='docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"'
+  835  cat ~/.zshrc
+  836  docker_ls
+  837  palias docker_ls='docker images --format "table {{.Repository}}\t{{.Tag}}\;t{{.Size}}"'
+  838  palias docker_ls='docker images --format "table {{.Repository}}\t{{.Tag}}\;{{.Size}}"'
+  839  docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}"'
+  840  docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}"
+  841  palias docker_ls='docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}"'
+  842  cat ~/.zshrc
+  843  docker_ls
+  844  palias docker_images_ls='docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}\t{{.CreatedSince}}"'
+  845  nano ~/.zshrc
+  846  docker ps
+  847  docker list images
+  848  docker images
+  849  docker ps
+  850  docker exec 419e1ce78ce8
+  851  docker exec ps 419e1ce78ce8
+  852  docker exec -it 419e1ce78ce8
+  853  docker exec -it 419e1ce78ce8 sh
+  854  docker run --name postgres \\n  -e POSTGRES_DB=hrv \\n  -e POSTGRES_USER=hrv \\n  -e POSTGRES_PASSWORD=devpass \\n  -p 5432:5432 \\n  -v postgres-data:/var/lib/postgresql \\n  -d postgres:18\n
+  855  ls
+  856  code .
+  857  git status
+  858  pwd
+  859  ps
+  860  pwd
+  861  ls
+  862  docker ps
+  863  docker rm 419e1ce78ce8
+  864  docker stop 419e1ce78ce8
+  865  docker stop 419e1ce78ce8
+  866  docker ps
+  867  docker rm 419e1ce78ce8
+  868  docker ps
+  869  docker ls 5724d1d34aa1c1e1bad9b982e7a14929444021c8666ddd510cee9f6334319120
+  870  docker ps 5724d1d34aa1c1e1bad9b982e7a14929444021c8666ddd510cee9f6334319120
+  871  docker ps -a --filter "name=hrv"
+  872  docker inspect musing_hertz dreamy_volhard postgres --format '{{.Name}} | image={{.Config.Image}} | created={{.Created}} | command={{json .Config.Cmd}} | volumes={{json .Mounts}}'
+  873  docker inspect postgres --format 'labels={{json .Config.Labels}} | ports={{json .NetworkSettings.Ports}}'
+  874  ls -la .env example.env docker-compose.yml
+  875  docker compose config --quiet
+  876  docker compose config 
+  877  openssl rand -base64 48
+  878  docker compose config --quiet
+  879  docker compose config --quiet
+  880  docker compose up -d postgres
+  881  docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Ports}}'
+  882  docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Ports}}'
+  883  lsof -nP -iTCP:5432 -sTCP:LISTEN
+  884  cd ..
+  885  ls
+  886  cd hrv-backend
+  887  docker compose down
+  888  docker compose up -d postgres
+  889  docker compose ps
+  890  docker compose down
+  891  docker compose ps
+  892  docker compose up -d app
+  893  say "Jag kommer strax till kvällsmat"
+  894  say "Jag kommer strax till kvällsmat"
+  895  say "Jag kommer strax till kvällsmat"
+  896  say "Jag kommer strax till kvällsmat"
+  897  docker compose down -v
+  898  az group delete -n $RG --yes --no-wait   # deletes everything
+  899  kubectl create deployment my-app --image=nginx
+  900  kubectl create deployment my-app --image=nginx
+  901  kubectl create deployment my-app --image=nginx
+  902  kubectl
+  903  kubectl --version
+  904  kubectl -version
+  905  kubectl -v
+  906  kubectl --v
+  907  kubectl --help
+  908  kubectl --version
+  909  git remote -v PC
+  910  ls PC
+  911  mkdir -p .github/workflows
+  912  cat > .github/workflows/ci.yml <<'EOF'\nname: CI\non: [push, pull_request]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-java@v4\n        with:\n          distribution: temurin\n          java-version: '21'\n          cache: maven\n      - run: mvn -B verify\nEOF
+  913  cat .github/workflows/ci.yml
+  914  kubectl version --client
+  915  kubectl version
+  916  which kubectl
+  917  brew upgrade kubectl
+  918  ls infra PC
+  919  az account show PC
+  920  ls infra PC
+  921  main.bicep\nmain.parameters.json\ncat infra/main.bicep PC
+  922  // HRV backend infrastructure (resource-group scope).\n// Provisions: Log Analytics, ACR, Key Vault, PostgreSQL Flexible Server,\n// Container Apps Environment + Container App with a managed identity.\n//\n// Exam mapping (AZ-401 / AZ-400 DevOps):\n//   - IaC with Bicep: declarative, idempotent, what-if before deploy\n//   - Secrets in Key Vault, injected as Container App secrets (never in git)\n//   - Managed identity + AcrPull role: no ACR admin credentials\n//   - Log Analytics: centralized container logs for monitoring\ntargetScope = 'resourceGroup'\n\n@description('Name prefix for all resources, e.g. hrv-dev or hrv-prod.')\nparam environmentName string\n\n@description('Azure region for all resources.')\nparam location string = resourceGroup().location\n\n@description('PostgreSQL admin username.')\nparam dbAdminLogin string = 'hrvadmin'\n\n@description('PostgreSQL admin password. Pass via CLI or pipeline secret, never commit it.')\n@secure()\nparam dbAdminPassword string\n\n@description('JWT signing secret (Base64 256-bit). Pass via CLI or pipeline secret.')\n@secure()\nparam jwtSecret string\n\n@description('Container image for the API. Placeholder until the real image is pushed to ACR.')\nparam containerImage string = 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'\n\n@description('PostgreSQL SKU. B1ms burstable is the cheapest learning option.')\nparam postgresSku string = 'Standard_B1ms'\n\n// Globally-unique names for ACR and Key Vault.\nvar acrName = 'acr${uniqueString(resourceGroup().id)}'\nvar kvName = 'kv${uniqueString(resourceGroup().id)}'\n\n// ── Observability ─────────────────────────────────────────────────────────────\nresource logAnalytics 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {\n  name: '${environmentName}-logs'\n  location: location\n  properties: {\n    sku: { name: 'PerGB2018' }\n    retentionInDays: 30\n  }\n}\n\n// ── Container registry (admin user OFF: managed identity pulls instead) ──────\nresource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' = {\n  name: acrName\n  location: location\n  sku: { name: 'Basic' }\n  properties: {\n    adminUserEnabled: false\n  }\n}\n\n// ── Secrets ───────────────────────────────────────────────────────────────────\nresource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {\n  name: kvName\n  location: location\n  properties: {\n    sku: { family: 'A', name: 'standard' }\n    tenantId: subscription().tenantId\n    enableRbacAuthorization: true\n  }\n}\n\nresource dbPasswordSecret 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {\n  parent: kv\n  name: 'db-password'\n  properties: { value: dbAdminPassword }\n}\n\nresource jwtSecretEntry 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {\n  parent: kv\n  name: 'jwt-secret'\n  properties: { value: jwtSecret }\n}\n\n// ── Database ──────────────────────────────────────────────────────────────────\nresource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {\n  name: '${environmentName}-pg'\n  location: location\n  sku: { name: postgresSku, tier: 'Burstable' }\n  properties: {\n    version: '16'\n    administratorLogin: dbAdminLogin\n    administratorLoginPassword: dbAdminPassword\n    storage: { storageSizeGB: 32 }\n    backup: { backupRetentionDays: 7, geoRedundantBackup: 'Disabled' }\n    // Public access is the default when no VNet is delegated.\n    highAvailability: { mode: 'Disabled' }\n  }\n}\n\n// Lets Azure services (incl. Container Apps) reach the database.\n// For production, replace with private networking / tighter firewall rules.\nresource allowAzureServices 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2022-12-01' = {\n  parent: postgres\n  name: 'AllowAzureServices'\n  properties: { startIpAddress: '0.0.0.0', endIpAddress: '0.0.0.0' }\n}\n\nresource database 'Microsoft.DBforPostgreSQL/flexibleServers/databases@2022-12-01' = {\n  parent: postgres\n  name: 'hrvdb'\n  properties: { charset: 'UTF8', collation: 'en_US.utf8' }\n  dependsOn: [ allowAzureServices ]\n}\n\n// ── Container Apps ────────────────────────────────────────────────────────────\nresource cae 'Microsoft.App/managedEnvironments@2024-03-01' = {\n  name: '${environmentName}-cae'\n  location: location\n  properties: {\n    appLogsConfiguration: {\n      destination: 'log-analytics'\n      logAnalyticsConfiguration: {\n        customerId: logAnalytics.properties.customerId\n        sharedKey: logAnalytics.listKeys().primarySharedKey\n      }\n    }\n  }\n}\n\nresource app 'Microsoft.App/containerApps@2024-03-01' = {\n  name: '${environmentName}-api'\n  location: location\n  identity: { type: 'SystemAssigned' }\n  properties: {\n    managedEnvironmentId: cae.id\n    configuration: {\n      activeRevisionsMode: 'Single'\n      ingress: {\n        external: true\n        targetPort: 8080\n        transport: 'http'\n      }\n      registries: [\n        {\n          server: acr.properties.loginServer\n          identity: 'system'\n        }\n      ]\n      // Secrets are read from Key Vault at runtime via the managed identity\n      // (Key Vault Secrets User role below) — they never appear in\n      // deployment outputs or revision definitions.\n      secrets: [\n        {\n          name: 'db-password'\n          keyVaultUrl: '${kv.properties.vaultUri}secrets/db-password'\n          identity: 'system'\n        }\n        {\n          name: 'jwt-secret'\n          keyVaultUrl: '${kv.properties.vaultUri}secrets/jwt-secret'\n          identity: 'system'\n        }\n      ]\n    }\n    template: {\n      containers: [\n        {\n          name: 'api'\n          image: containerImage\n          resources: { cpu: 1, memory: '2Gi' }\n          env: [\n            {\n              name: 'DATABASE_URL'\n              value: 'jdbc:postgresql://${postgres.properties.fullyQualifiedDomainName}:5432/hrvdb?sslmode=require'\n            }\n            {\n              name: 'DATABASE_USERNAME'\n              value: dbAdminLogin\n            }\n            {\n              name: 'DATABASE_PASSWORD'\n              secretRef: 'db-password'\n            }\n            {\n              name: 'JWT_SECRET'\n              secretRef: 'jwt-secret'\n            }\n            {\n              name: 'PORT'\n              value: '8080'\n            }\n          ]\n          probes: [\n            {\n              type: 'Liveness'\n              httpGet: { path: '/actuator/health', port: 8080 }\n              initialDelaySeconds: 30\n              periodSeconds: 30\n            }\n          ]\n        }\n      ]\n      scale: { minReplicas: 0, maxReplicas: 2 }\n    }\n  }\n  dependsOn: [ database, dbPasswordSecret, jwtSecretEntry ]\n}\n\n// Managed identity -> AcrPull: the app pulls images without any stored password.\nresource acrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {\n  name: guid(acr.id, app.id, 'acrpull')\n  scope: acr\n  properties: {\n    roleDefinitionId: subscriptionResourceId(\n      'Microsoft.Authorization/roleDefinitions',\n      '7f951dda-4ed3-4680-a7ca-43fe172d538d'\n    )\n    principalId: app.identity.principalId\n    principalType: 'ServicePrincipal'\n  }\n}\n\n// Managed identity -> Key Vault Secrets User: the app reads its secrets\n// from Key Vault at runtime without any stored credential.\nresource kvSecretsUser 'Microsoft.Authorization/roleAssignments@2022-04-01' = {\n  name: guid(kv.id, app.id, 'kvsecretsuser')\n  scope: kv\n  properties: {\n    roleDefinitionId: subscriptionResourceId(\n      'Microsoft.Authorization/roleDefinitions',\n      '4633458b-17de-408a-b874-0445c86b69e6'\n    )\n    principalId: app.identity.principalId\n    principalType: 'ServicePrincipal'\n  }\n}\n\noutput apiUrl string = 'https://${app.properties.configuration.ingress.fqdn}'\noutput acrLoginServer string = acr.properties.loginServer\noutput keyVaultName string = kv.name\nclear
+  923  clear
+  924  // HRV backend infrastructure (resource-group scope).\n// Provisions: Log Analytics, ACR, Key Vault, PostgreSQL Flexible Server,\n// Container Apps Environment + Container App with a managed identity.\n//\n// Exam mapping (AZ-401 / AZ-400 DevOps):\n//   - IaC with Bicep: declarative, idempotent, what-if before deploy\n//   - Secrets in Key Vault, injected as Container App secrets (never in git)\n//   - Managed identity + AcrPull role: no ACR admin credentials\n//   - Log Analytics: centralized container logs for monitoring\ntargetScope = 'resourceGroup'\n\n@description('Name prefix for all resources, e.g. hrv-dev or hrv-prod.')\nparam environmentName string\n\n@description('Azure region for all resources.')\nparam location string = resourceGroup().location\n\n@description('PostgreSQL admin username.')\nparam dbAdminLogin string = 'hrvadmin'\n\n@description('PostgreSQL admin password. Pass via CLI or pipeline secret, never commit it.')\n@secure()\nparam dbAdminPassword string\n\n@description('JWT signing secret (Base64 256-bit). Pass via CLI or pipeline secret.')\n@secure()\nparam jwtSecret string\n\n@description('Container image for the API. Placeholder until the real image is pushed to ACR.')\nparam containerImage string = 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'\n\n@description('PostgreSQL SKU. B1ms burstable is the cheapest learning option.')\nparam postgresSku string = 'Standard_B1ms'\n\n// Globally-unique names for ACR and Key Vault.\nvar acrName = 'acr${uniqueString(resourceGroup().id)}'\nvar kvName = 'kv${uniqueString(resourceGroup().id)}'\n\n// ── Observability ─────────────────────────────────────────────────────────────\nresource logAnalytics 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {\n  name: '${environmentName}-logs'\n  location: location\n  properties: {\n    sku: { name: 'PerGB2018' }\n    retentionInDays: 30\n  }\n}\n\n// ── Container registry (admin user OFF: managed identity pulls instead) ──────\nresource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' = {\n  name: acrName\n  location: location\n  sku: { name: 'Basic' }\n  properties: {\n    adminUserEnabled: false\n  }\n}\n\n// ── Secrets ───────────────────────────────────────────────────────────────────\nresource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {\n  name: kvName\n  location: location\n  properties: {\n    sku: { family: 'A', name: 'standard' }\n    tenantId: subscription().tenantId\n    enableRbacAuthorization: true\n  }\n}\n\nresource dbPasswordSecret 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {\n  parent: kv\n  name: 'db-password'\n  properties: { value: dbAdminPassword }\n}\n\nresource jwtSecretEntry 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {\n  parent: kv\n  name: 'jwt-secret'\n  properties: { value: jwtSecret }\n}\n\n// ── Database ──────────────────────────────────────────────────────────────────\nresource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {\n  name: '${environmentName}-pg'\n  location: location\n  sku: { name: postgresSku, tier: 'Burstable' }\n  properties: {\n    version: '16'\n    administratorLogin: dbAdminLogin\n    administratorLoginPassword: dbAdminPassword\n    storage: { storageSizeGB: 32 }\n    backup: { backupRetentionDays: 7, geoRedundantBackup: 'Disabled' }\n    // Public access is the default when no VNet is delegated.\n    highAvailability: { mode: 'Disabled' }\n  }\n}\n\n// Lets Azure services (incl. Container Apps) reach the database.\n// For production, replace with private networking / tighter firewall rules.\nresource allowAzureServices 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2022-12-01' = {\n  parent: postgres\n  name: 'AllowAzureServices'\n  properties: { startIpAddress: '0.0.0.0', endIpAddress: '0.0.0.0' }\n}\n\nresource database 'Microsoft.DBforPostgreSQL/flexibleServers/databases@2022-12-01' = {\n  parent: postgres\n  name: 'hrvdb'\n  properties: { charset: 'UTF8', collation: 'en_US.utf8' }\n  dependsOn: [ allowAzureServices ]\n}\n\n// ── Container Apps ────────────────────────────────────────────────────────────\nresource cae 'Microsoft.App/managedEnvironments@2024-03-01' = {\n  name: '${environmentName}-cae'\n  location: location\n  properties: {\n    appLogsConfiguration: {\n      destination: 'log-analytics'\n      logAnalyticsConfiguration: {\n        customerId: logAnalytics.properties.customerId\n        sharedKey: logAnalytics.listKeys().primarySharedKey\n      }\n    }\n  }\n}\n\nresource app 'Microsoft.App/containerApps@2024-03-01' = {\n  name: '${environmentName}-api'\n  location: location\n  identity: { type: 'SystemAssigned' }\n  properties: {\n    managedEnvironmentId: cae.id\n    configuration: {\n      activeRevisionsMode: 'Single'\n      ingress: {\n        external: true\n        targetPort: 8080\n        transport: 'http'\n      }\n      registries: [\n        {\n          server: acr.properties.loginServer\n          identity: 'system'\n        }\n      ]\n      // Secrets are read from Key Vault at runtime via the managed identity\n      // (Key Vault Secrets User role below) — they never appear in\n      // deployment outputs or revision definitions.\n      secrets: [\n        {\n          name: 'db-password'\n          keyVaultUrl: '${kv.properties.vaultUri}secrets/db-password'\n          identity: 'system'\n        }\n        {\n          name: 'jwt-secret'\n          keyVaultUrl: '${kv.properties.vaultUri}secrets/jwt-secret'\n          identity: 'system'\n        }\n      ]\n    }\n    template: {\n      containers: [\n        {\n          name: 'api'\n          image: containerImage\n          resources: { cpu: 1, memory: '2Gi' }\n          env: [\n            {\n              name: 'DATABASE_URL'\n              value: 'jdbc:postgresql://${postgres.properties.fullyQualifiedDomainName}:5432/hrvdb?sslmode=require'\n            }\n            {\n              name: 'DATABASE_USERNAME'\n              value: dbAdminLogin\n            }\n            {\n              name: 'DATABASE_PASSWORD'\n              secretRef: 'db-password'\n            }\n            {\n              name: 'JWT_SECRET'\n              secretRef: 'jwt-secret'\n            }\n            {\n              name: 'PORT'\n              value: '8080'\n            }\n          ]\n          probes: [\n            {\n              type: 'Liveness'\n              httpGet: { path: '/actuator/health', port: 8080 }\n              initialDelaySeconds: 30\n              periodSeconds: 30\n            }\n          ]\n        }\n      ]\n      scale: { minReplicas: 0, maxReplicas: 2 }\n    }\n  }\n  dependsOn: [ database, dbPasswordSecret, jwtSecretEntry ]\n}\n\n// Managed identity -> AcrPull: the app pulls images without any stored password.\nresource acrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {\n  name: guid(acr.id, app.id, 'acrpull')\n  scope: acr\n  properties: {\n    roleDefinitionId: subscriptionResourceId(\n      'Microsoft.Authorization/roleDefinitions',\n      '7f951dda-4ed3-4680-a7ca-43fe172d538d'\n    )\n    principalId: app.identity.principalId\n    principalType: 'ServicePrincipal'\n  }\n}\n\n// Managed identity -> Key Vault Secrets User: the app reads its secrets\n// from Key Vault at runtime without any stored credential.\nresource kvSecretsUser 'Microsoft.Authorization/roleAssignments@2022-04-01' = {\n  name: guid(kv.id, app.id, 'kvsecretsuser')\n  scope: kv\n  properties: {\n    roleDefinitionId: subscriptionResourceId(\n      'Microsoft.Authorization/roleDefinitions',\n      '4633458b-17de-408a-b874-0445c86b69e6'\n    )\n    principalId: app.identity.principalId\n    principalType: 'ServicePrincipal'\n  }\n}\n\noutput apiUrl string = 'https://${app.properties.configuration.ingress.fqdn}'\noutput acrLoginServer string = acr.properties.loginServer\noutput keyVaultName string = kv.name\n// HRV backend infrastructure (resource-group scope).\n// Provisions: Log Analytics, ACR, Key Vault, PostgreSQL Flexible Server,\n// Container Apps Environment + Container App with a managed identity.\n//\n// Exam mapping (AZ-401 / AZ-400 DevOps):\n//   - IaC with Bicep: declarative, idempotent, what-if before deploy\n//   - Secrets in Key Vault, injected as Container App secrets (never in git)\n//   - Managed identity + AcrPull role: no ACR admin credentials\n//   - Log Analytics: centralized container logs for monitoring\ntargetScope = 'resourceGroup'\n\n@description('Name prefix for all resources, e.g. hrv-dev or hrv-prod.')\nparam environmentName string\n\n@description('Azure region for all resources.')\nparam location string = resourceGroup().location\n\n@description('PostgreSQL admin username.')\nparam dbAdminLogin string = 'hrvadmin'\n\n@description('PostgreSQL admin password. Pass via CLI or pipeline secret, never commit it.')\n@secure()\nparam dbAdminPassword string\n\n@description('JWT signing secret (Base64 256-bit). Pass via CLI or pipeline secret.')\n@secure()\nparam jwtSecret string\n\n@description('Container image for the API. Placeholder until the real image is pushed to ACR.')\nparam containerImage string = 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'\n\n@description('PostgreSQL SKU. B1ms burstable is the cheapest learning option.')\nparam postgresSku string = 'Standard_B1ms'\n\n// Globally-unique names for ACR and Key Vault.\nvar acrName = 'acr${uniqueString(resourceGroup().id)}'\nvar kvName = 'kv${uniqueString(resourceGroup().id)}'\n\n// ── Observability ─────────────────────────────────────────────────────────────\nresource logAnalytics 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {\n  name: '${environmentName}-logs'\n  location: location\n  properties: {\n    sku: { name: 'PerGB2018' }\n    retentionInDays: 30\n  }\n}\n\n// ── Container registry (admin user OFF: managed identity pulls instead) ──────\nresource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' = {\n  name: acrName\n  location: location\n  sku: { name: 'Basic' }\n  properties: {\n    adminUserEnabled: false\n  }\n}\n\n// ── Secrets ───────────────────────────────────────────────────────────────────\nresource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {\n  name: kvName\n  location: location\n  properties: {\n    sku: { family: 'A', name: 'standard' }\n    tenantId: subscription().tenantId\n    enableRbacAuthorization: true\n  }\n}\n\nresource dbPasswordSecret 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {\n  parent: kv\n  name: 'db-password'\n  properties: { value: dbAdminPassword }\n}\n\nresource jwtSecretEntry 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {\n  parent: kv\n  name: 'jwt-secret'\n  properties: { value: jwtSecret }\n}\n\n// ── Database ──────────────────────────────────────────────────────────────────\nresource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {\n  name: '${environmentName}-pg'\n  location: location\n  sku: { name: postgresSku, tier: 'Burstable' }\n  properties: {\n    version: '16'\n    administratorLogin: dbAdminLogin\n    administratorLoginPassword: dbAdminPassword\n    storage: { storageSizeGB: 32 }\n    backup: { backupRetentionDays: 7, geoRedundantBackup: 'Disabled' }\n    // Public access is the default when no VNet is delegated.\n    highAvailability: { mode: 'Disabled' }\n  }\n}\n\n// Lets Azure services (incl. Container Apps) reach the database.\n// For production, replace with private networking / tighter firewall rules.\nresource allowAzureServices 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2022-12-01' = {\n  parent: postgres\n  name: 'AllowAzureServices'\n  properties: { startIpAddress: '0.0.0.0', endIpAddress: '0.0.0.0' }\n}\n\nresource database 'Microsoft.DBforPostgreSQL/flexibleServers/databases@2022-12-01' = {\n  parent: postgres\n  name: 'hrvdb'\n  properties: { charset: 'UTF8', collation: 'en_US.utf8' }\n  dependsOn: [ allowAzureServices ]\n}\n\n// ── Container Apps ────────────────────────────────────────────────────────────\nresource cae 'Microsoft.App/managedEnvironments@2024-03-01' = {\n  name: '${environmentName}-cae'\n  location: location\n  properties: {\n    appLogsConfiguration: {\n      destination: 'log-analytics'\n      logAnalyticsConfiguration: {\n        customerId: logAnalytics.properties.customerId\n        sharedKey: logAnalytics.listKeys().primarySharedKey\n      }\n    }\n  }\n}\n\nresource app 'Microsoft.App/containerApps@2024-03-01' = {\n  name: '${environmentName}-api'\n  location: location\n  identity: { type: 'SystemAssigned' }\n  properties: {\n    managedEnvironmentId: cae.id\n    configuration: {\n      activeRevisionsMode: 'Single'\n      ingress: {\n        external: true\n        targetPort: 8080\n        transport: 'http'\n      }\n      registries: [\n        {\n          server: acr.properties.loginServer\n          identity: 'system'\n        }\n      ]\n      // Secrets are read from Key Vault at runtime via the managed identity\n      // (Key Vault Secrets User role below) — they never appear in\n      // deployment outputs or revision definitions.\n      secrets: [\n        {\n          name: 'db-password'\n          keyVaultUrl: '${kv.properties.vaultUri}secrets/db-password'\n          identity: 'system'\n        }\n        {\n          name: 'jwt-secret'\n          keyVaultUrl: '${kv.properties.vaultUri}secrets/jwt-secret'\n          identity: 'system'\n        }\n      ]\n    }\n    template: {\n      containers: [\n        {\n          name: 'api'\n          image: containerImage\n          resources: { cpu: 1, memory: '2Gi' }\n          env: [\n            {\n              name: 'DATABASE_URL'\n              value: 'jdbc:postgresql://${postgres.properties.fullyQualifiedDomainName}:5432/hrvdb?sslmode=require'\n            }\n            {\n              name: 'DATABASE_USERNAME'\n              value: dbAdminLogin\n            }\n            {\n              name: 'DATABASE_PASSWORD'\n              secretRef: 'db-password'\n            }\n            {\n              name: 'JWT_SECRET'\n              secretRef: 'jwt-secret'\n            }\n            {\n              name: 'PORT'\n              value: '8080'\n            }\n          ]\n          probes: [\n            {\n              type: 'Liveness'\n              httpGet: { path: '/actuator/health', port: 8080 }\n              initialDelaySeconds: 30\n              periodSeconds: 30\n            }\n          ]\n        }\n      ]\n      scale: { minReplicas: 0, maxReplicas: 2 }\n    }\n  }\n  dependsOn: [ database, dbPasswordSecret, jwtSecretEntry ]\n}\n\n// Managed identity -> AcrPull: the app pulls images without any stored password.\nresource acrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {\n  name: guid(acr.id, app.id, 'acrpull')\n  scope: acr\n  properties: {\n    roleDefinitionId: subscriptionResourceId(\n      'Microsoft.Authorization/roleDefinitions',\n      '7f951dda-4ed3-4680-a7ca-43fe172d538d'\n    )\n    principalId: app.identity.principalId\n    principalType: 'ServicePrincipal'\n  }\n}\n\n// Managed identity -> Key Vault Secrets User: the app reads its secrets\n// from Key Vault at runtime without any stored credential.\nresource kvSecretsUser 'Microsoft.Authorization/roleAssignments@2022-04-01' = {\n  name: guid(kv.id, app.id, 'kvsecretsuser')\n  scope: kv\n  properties: {\n    roleDefinitionId: subscriptionResourceId(\n      'Microsoft.Authorization/roleDefinitions',\n      '4633458b-17de-408a-b874-0445c86b69e6'\n    )\n    principalId: app.identity.principalId\n    principalType: 'ServicePrincipal'\n  }\n}\n\noutput apiUrl string = 'https://${app.properties.configuration.ingress.fqdn}'\noutput acrLoginServer string = acr.properties.loginServer\noutput keyVaultName string = kv.name\n
+  925  cd ~/kod
+  926  clear
+  927  cat infra/main.bicep PC
+  928  ls
+  929  cd 001_AZ401
+  930  ls
+  931  cd HRV
+  932  cd hrv-backend
+  933  nano ~/.zshrc
+  934  cd ..
+  935  la
+  936  ls
+  937  cd hrv-backend
+  938  ls
+  939  cat infra/main.parameters.json PC
+  940  cat infra/main.bicep PC
+  941  clear
+  942  cat infra/main.bicep PC
+  943  ls
+  944  cat > .github/workflows/hello.yml <<'EOF'\nname: Hello\non: workflow_dispatch\njobs:\n  hello:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo "Hej från GitHub Actions"\nEOF
+  945  git add .github/workflows/hello.yml
+  946  git status
+  947  git diff --stat PC
+  948  git commit -m 'Add CI workflow'
+  949  git status
+  950  osascript -e 'tell application "Terminal" to set current settings of front window to settings set "Homebrew"'
+  951  git diff PC
+  952  grep -n ChronoUnit src/main/java/com/hrv/backend/hrv/HrvService.java PC
+  953  git check-ignore -v .env PC
+  954  git status
+  955  git add Dockerfile .dockerignore
+  956  git commit -m 'Harden Docker image'
+  957  git status
+  958  git status
+  959  git log --stat -1 PC
+  960  cat dev.sh
+  961  ls -la dev.sh
+  962  git add docker-compose.yml dev.sh example.env
+  963  git commit -m 'Move local dev config to .env and use docker compose v2'
+  964  git log --stat -1 PC
+  965  cat docker-compose.yml
+  966  ls -la docker-compose.yml
+  967  git log --stat -1 PC
+  968  git diff docker-compose.yml
+  969  git show HEAD -- docker-compose.yml
+  970  git add src/main/java/com/hrv/backend/hrv/HrvService.java src/main/java/com/hrv/backend/hrv/HrvSyncController.java src/test/java/com/hrv/backend/hrv/HrvSyncControllerTest.java
+  971  git commit -m 'Fix duplicate detection by truncating timestamps to millis'
+  972  git log --stat -1 PC
+  973  git show HEAD --  src/main/java/com/hrv/backend/hrv/HrvService.java
+  974  git log --stat -1 PC
+  975  git show HEAD --   .../com/hrv/backend/hrv/HrvSyncController.java 
+  976  git show HEAD --    .../com/hrv/backend/hrv/HrvSyncControllerTest.java 
+  977  git diff    .../com/hrv/backend/hrv/HrvSyncControllerTest.java 
+  978  git show HEAD --    .../com/hrv/backend/hrv/HrvSyncControllerTest.java 
+  979  git show HEAD -- src/test/java/com/hrv/backend/hrv/HrvSyncControllerTest.java
+  980  git log --stat -1 PC
+  981  git show HEAD -- src/test/java/com/hrv/backend/hrv/HrvSyncControllerTest.java
+  982  git log --stat -1 PC
+  983  git ls-files | grep HrvSync PC
+  984  cat src/main/java/com/hrv/backend/hrv/HrvSyncController.java
+  985  git log --stat -1 PC
+  986  git add src/test/java/com/hrv/backend/auth src/test/java/com/hrv/backend/device src/test/java/com/hrv/backend/security src/test/java/com/hrv/backend/hrv/HrvControllerIntegrationTest.java src/test/java/com/hrv/backend/hrv/HrvInfoControllerTest.java
+  987  git commit -m 'Add tests for auth, device, security and HRV endpoints'
+  988  git status
+  989  git add .github/workflows/ci.yml
+  990  git commit -m 'Add CI workflow'
+  991  git status
+  992  mkdir docs
+  993  mv AZURE.md REPORT.md docs
+  994  git status
+  995   git add --dry-run infra PC
+  996  add 'infra/main.bicep'\nadd 'infra/main.parameters.json'\ngit add infra .github/workflows/azure-deploy.yml AZURE.md
+  997  git add infra .github/workflows/azure-deploy.yml AZURE.md
+  998  ls
+  999  git status
+ 1000  git add infra .github/workflows/azure-deploy.yml docs/AZURE.md
+ 1001  git commit -m 'Add Azure infrastructure and deploy workflow'
+ 1002  git status
+ 1003  cat docs/REPORT.md
+ 1004  git add docs/REPORT.md
+ 1005  git commit -m "Muse Spark analysed the repo 2026-11-06"
+ 1006  git push
+ 1007  git branch
+ 1008  gh issue create -R kizouker/hrv-backend --title "GitHub Action: ta bort PostgreSQL-databasen automatiskt" --body "- Schemalagd workflow (cron) + knapp (workflow_dispatch) som tar bort hrv-dev-pg i rg-hrv-dev\n- Logga in i Azure med OIDC (inga lösenord i GitHub)\n- Ta BARA bort PostgreSQL-servern, aldrig resursgruppen eller Key Vault (soft-delete 90 dagar)\n- Varför: Macen kan somna, då missar den lokala watchdogen\n- AZ-401: schemalagda workflows, OIDC, kostnadskontroll"
+ 1009  gh issue create -R kizouker/az401-my-study-plan --title "Öva: schemalagd GitHub Action som tar bort databasen (hrv-backend)" --body "Se ärendet i kizouker/hrv-backend. Ämnen: schedule-trigger, OIDC, kostnadskontroll."
+ 1010  ls
+ 1011  ls
+ 1012  cd hrvctl
+ 1013  ls
+ 1014  cd ..
+ 1015  ls
+ 1016  cd ..
+ 1017  ls
+ 1018  cd holdmate+azure
+ 1019  claude
+ 1020  cd ..
+ 1021  ls
+ 1022  cd ..
+ 1023  ls
+ 1024  cd 002_Agents_Team
+ 1025  ls
+ 1026  cd agent-prompts-template
+ 1027  ls
+ 1028  muse
+ 1029  /login
+ 1030  claude login
+ 1031  ls
+ 1032  cat README.md
+ 1033  glow README.md
+ 1034  glow
+ 1035                                                                              \n    JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home  \n  mvn -B -q -f ~/kod/001_AZ401/HRV/hrv-backend/hrvctl/pom.xml package     
+ 1036  print -P "%K{blue}Hejk"
+ 1037  printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1038  printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1039     muse resume 01a1b056-a52a-7d93-810f-1237d685cc8f
+ 1040  printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1041  printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1042      claude --session 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1043  claude --session 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1044  muse --session 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1045  ls
+ 1046  muse resume 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1047  claude --resume 89b0acf4-6749-4925-b665-7c9242212709
+ 1048  printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1049  claude --resume 89b0acf4-6749-4925-b665-7c9242212709
+ 1050     ./hrvctl/run.sh check
+ 1051  cd ..
+ 1052     ./hrvctl/run.sh check
+ 1053     ./hrvctl/run.sh
+ 1054      ./hrvctl/run.sh watchdog --dry-run\n  \n
+ 1055  az login
+ 1056  az login --use-device-code
+ 1057  cd ..
+ 1058  ls
+ 1059  cd ..
+ 1060  ls
+ 1061  cd azure
+ 1062  ls
+ 1063  code .
+ 1064  ./01-azure-tree.zsh
+ 1065  az logout
+ 1066  az login --tenant "5a4ba6f9-f531-4f32-9467-398f19e69de4" --scope "https://management.core.windows.net//.default"
+ 1067  az logout\naz login --tenant "5a4ba6f9-f531-4f32-9467-398f19e69de4" --scope "https://management.core.windows.net//.default"
+ 1068  az logout\naz login --tenant "9ffb51ea-66c2-45b1-9732-585052d71c45" --use-device-code
+ 1069  az login --use-device-code
+ 1070  ls
+ 1071  code ./01-azure-tree.zsh
+ 1072  ./01-tenant-show-whoami.sh
+ 1073  ./01-azure-tree.zsh
+ 1074  histor 100 
+ 1075  history 100 
+ 1076   ./hrvctl/run.sh check
+ 1077   ./hrvctl/run.sh 
+ 1078  az deployment group what-if \\n  -g rg-hrv-dev \\n  --template-file infra/main.bicep \\n  --parameters environmentName=hrv-dev dbAdminPassword=what-if-dummy jwtSecret=what-if-dummy
+ 1079*    muse resume 01a1b056-a52a-7d93-810f-1237d685cc8f
+ 1080* claude --resume 89b0acf4-6749-4925-b665-7c9242212709
+ 1081* ls ~/.azure
+ 1082* az account show --query "{subscription:name, user:user.name}" -o table\n
+ 1083* az deployment group list \\n  -g rg-hrv-dev \\n  --query "[].{name:name,state:properties.provisioningState,time:properties.timestamp}" \\n  -o table
+ 1084* az deployment operation group list \\n  -g rg-hrv-dev \\n  -n main \\n  --query "[].{resource:properties.targetResource.resourceName,state:properties.provisioningState,operation:properties.targetResource.resourceType}" \\n  -o table
+ 1085* az deployment operation group list \\n  -g rg-hrv-dev \\n  -n main \\n  --query "[?properties.provisioningState=='Failed'].{resource:properties.targetResource.resourceName,type:properties.targetResource.resourceType,code:properties.statusMessage.error.code,error:properties.statusMessage.error.message}" \\n  -o jsonc
+ 1086* az postgres flexible-server list-skus \\n  --location swedencentral \\n  --query "[?tier=='Burstable'].{name:name,tier:tier}" \\n  -o table
+ 1087* clear
+ 1088* az postgres flexible-server list-skus \\n  --location swedencentral \\n  --query "[?tier=='Burstable'].{name:name,tier:tier}" \\n  -o table
+ 1089* azhrv-help
+ 1090* source ~/.zshrc
+ 1091* azhrv-help
+ 1092* az postgres flexible-server list-skus \\n  --location swedencentral \\n  --query "[].{name:name,tier:tier}" \\n  -o table
+ 1093*   \n    claude --session 01a1ac43-76d5-77b3-bca5-a6670577b774
+ 1094* cd ~/kod
+ 1095* cd  ~/kod/001_AZ401/HRV/hrv-backend 
+ 1096* muse resume 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1097*  ./hrvctl/run.sh 
+ 1098  az deployment group what-if \\n  -g rg-hrv-dev \\n  --template-file infra/main.bicep \\n  --parameters environmentName=hrv-dev dbAdminPassword=what-if-dummy jwtSecret=what-if-dummy
+ 1099  az postgres flexible-server list-skus \\n  --location swedencentral \\n  --query "[].{name:name,tier:tier}" \\n  -o table
+ 1100  git diff -- infra/main.bicep pom.xml src/main/resources/application.yml hrvctl/src/main/kotlin/Azure.kt | pc
+ 1101  git diff -- infra/main.bicep pom.xml src/main/resources/application.yml hrvctl/src/main/kotlin/Azure.kt PC
+ 1102  az deployment group what-if -g rg-hrv-dev --template-file infra/main.bicep --parameters environmentName=hrv-dev jwtSecret=what-if-dummy | pc
+ 1103  az deployment group what-if -g rg-hrv-dev --template-file infra/main.bicep --parameters environmentName=hrv-dev jwtSecret=what-if-dummy PC
+ 1104  az deployment group create -g rg-hrv-dev --name sqlite-retry --template-file infra/main.bicep --parameters environmentName=hrv-dev jwtSecret="$JWT_SECRET" --query properties.outputs -o json | pc
+ 1105* az containerapp show -g rg-hrv-dev -n hrv-dev-api --query "{state:properties.provisioningState,url:properties.configuration.ingress.fqdn,revision:properties.latestRevisionName}" -o yaml PC
+ 1106* te: InProgress\nurl: hrv-dev-api.jollyplant-e88d7c9b.swedencentral.azurecontainerapps.io
+ 1107* cd ~/kod
+ 1108* az containerapp show -g rg-hrv-dev -n hrv-dev-api --query "{state:properties.provisioningState,url:properties.configuration.ingress.fqdn,revision:properties.latestRevisionName}" -o yaml PC
+ 1109  az containerapp logs show -g rg-hrv-dev -n hrv-dev-api --type system --tail 100
+ 1110  az containerapp revision list -g rg-hrv-dev -n hrv-dev-api -o table
+ 1111  az containerapp revision list -g rg-hrv-dev -n hrv-dev-api -o table
+ 1112  az containerapp show -g rg-hrv-dev -n hrv-dev-api --query properties.provisioningState -o tsv
+ 1113  JWT_SECRET="$(openssl rand -base64 32)"
+ 1114  az deployment group create -g rg-hrv-dev --name identity-retry --template-file infra/main.bicep --parameters environmentName=hrv-dev jwtSecret="$JWT_SECRET" --query properties.outputs -o json
+ 1115* az containerapp show -g rg-hrv-dev -n hrv-dev-api --query properties.provisioningState -o tsv
+ 1116  az deployment group create -g rg-hrv-dev --name identity-retry --template-file infra/main.bicep --parameters environmentName=hrv-dev jwtSecret="$JWT_SECRET" --query properties.outputs -o json
+ 1117  az containerapp env show -g rg-hrv-dev -n hrv-dev-cae --query properties.provisioningState -o tsv
+ 1118  docker image ls
+ 1119  cat ~/.zhsrc
+ 1120  cat ~/.zshrc
+ 1121  dpp
+ 1122  docker_images_ls
+ 1123  ls -la
+ 1124  az containerapp env show -g rg-hrv-dev -n hrv-dev-cae --query properties.provisioningState -o tsv
+ 1125  docker buildx build --platform linux/amd64 -t dittkonto/hrv-backend:1.0 --push .
+ 1126  docker buildx build --platform linux/amd64 -t rickardzouk/hrv-backend:1.0 --push .
+ 1127* ls
+ 1128* cat .env
+ 1129* az login
+ 1130*  ./hrvctl/run.sh 
+ 1131* az account list -o table PC
+ 1132* az lock list -o table PC
+ 1133* az account show --query user.name -o tsv PC
+ 1134* az lock list -o table PC
+ 1135* az group list -o table PC
+ 1136* az group delete --name hrv_resursgrupp6_november --yes PC
+ 1137* az group list -o table PC
+ 1138* az webapp list -o table PC
+ 1139* az resource list --resource-group HRV-backend_group_2 -o table PC
+ 1140* az group delete --name HRV-backend_group_2 --yes PC
+ 1141* az group delete --name DefaultResourceGroup-USW3 --yes PC
+ 1142* az webapp list -o table PC
+ 1143* az group list -o table PC
+ 1144* grep -n "param" infra/main.bicep PC
+ 1145  docker buildx build --platform linux/amd64 -t rickardzouk/hrv-backend:1.0 --push .
+ 1146  docker buildx imagetools inspect rickardzouk/hrv-backend:1.0 PC
+ 1147  history
+ 1148  history 100 >> bash_history.txt
+  100      ./sh/demo-queue.sh
+  101    /usr/bin/python3 -c "import tkinter as tk; r=tk.Tk(); r.attributes('-topmost',True); tk.Label(r,\n  text='HELLO',font=('Helvetica',64)).pack(); r.mainloop()"
+  102      ./sh/holdmate.sh\n
+  103      ./sh/demo-queue.sh
+  104   npm run dev --prefix ui/board 
+  105      ./sh/demo-queue.sh
+  106      ./sh/demo-queue.sh
+  107      ./sh/demo-queue.sh
+  108   npm run dev --prefix ui/board
+  109      ./sh/demo-queue.sh
+  110  muse -c\n
+  111  history
+  112  history  -100
+  113  history 100
+  114  history 100
+  115  history 100 | muse
+  116  exit
+  117  history 100 | grep muse
+  118  muse resume 01a1940f-64b5-72b1-9228-402674d9a559
+  119      ./sh/demo-queue.sh
+  120  ls
+  121  cd 
+  122  cd ~/kod
+  123  ls
+  124  cd 001_Meta_Hackathon_w44
+  125  ls
+  126  cd adaptive-IVR-agent
+  127  ./sh/demo-queue.sh
+  128  ./sh/demo-queue.sh
+  129  ./sh/demo-queue.sh
+  130  npm --prefix ui/board exec -- playwright install chromium\n
+  131    npm --prefix ui/board run build\n\n    npm --prefix ui/board run test:e2e
+  132  ./sh/demo-queue.sh
+  133    npm --prefix ui/board run build\n\n    npm --prefix ui/board run test:e2e
+  134  ./sh/demo-queue.sh
+  135  ./sh/demo-queue.sh
+  136  ./sh/demo-queue.sh
+  137  exit
+  138  clear
+  139  ls sh
+  140  history
+  141  history 100
+  142  clear
+  143      BOARD_LAN=1 ; ./sh/holdmate.sh  &&
+  144      BOARD_LAN=1 ; ./sh/holdmate.sh  &
+  145   BOARD_LAN=1 ; /usr/bin/python3 ui/widget/queue_ticket.py 
+  146  ./sh/demo-queue.sh
+  147     BOARD_LAN=1 ; ./sh/demo-queue.sh       
+  148  ./sh/demo-queue.sh
+  149  cd ..
+  150  uvi muse-code-action
+  151  ls
+  152  cd ..
+  153  cd ..
+  154  ls
+  155  cd 001_Agents_Team
+  156  ls
+  157  cd agent-prompts-template
+  158  muse --trus-workspace
+  159  muse --trust-workspace
+  160  ./sh/holdmate.sh 
+  161  ./sh/demo-queue.sh 
+  162  ./sh/demo-queue.sh
+  163  ./sh/demo-queue.sh 
+  164  source ~/.zshrc
+  165  cd ..
+  166  ls
+  167  rm -fr muse-code-action
+  168  uvi muse-code-action
+  169  ls
+  170  muse --trust-workspace
+  171   ./sh/holdmate.sh
+  172      npm run dev --prefix ui/board\n
+  173  ./sh/demo-queue.sh 
+  174  ./sh/demo-queue.sh 
+  175     brew install bats-core
+  176      gh secret set MUSE_API_KEY --repo kizouker/muse-code-action
+  177   gh workflow run muse --repo kizouker/muse-code-action --field prompt="say hi"
+  178   gh workflow run muse --repo kizouker/muse-code-action --field prompt="say hi"
+  179  cd ..
+  180  ls
+  181  cd ..
+  182  ls
+  183  cd 003_career
+  184  ls
+  185  cd 11_swedish_jobs_mcp
+  186  muse --trust-workspace
+  187      ./sh/keep-awake.sh\n\n
+  188  git pull
+  189   docker compose up --build -d
+  190  ls
+  191    git checkout main && git fetch origin && git reset --hard origin/main && ls docker-compose.yml
+  192  exit
+  193    git checkout main && git fetch origin && git reset --hard origin/main && ls docker-compose.yml
+  194  docker compose up --build
+  195  vlc data/video/holdmate-v1.mp4
+  196  ./sh/submission-check.sh check
+  197  cd ~/kod
+  198  \n  PYTHONPATH=src pytest -q 2>&1 | grep FAILED
+  199  docker compose up --build
+  200  \n  PYTHONPATH=src pytest -q 2>&1 | grep FAILED
+  201  cd 001_Meta_Hackathon_w44
+  202  cd adaptive-IVR-agent
+  203   git checkout main && git pull.
+  204   git checkout main && git pull
+  205  git log
+  206   git checkout main
+  207  git pull
+  208  git stach
+  209  git stash
+  210  git pull
+  211  git checkout main
+  212  git pull
+  213  history 100
+  214   ./sh/keep-awake.sh
+  215   ./sh/keep-awake.sh\n
+  216  git pull
+  217  history 100
+  218  docker-compuse up
+  219  docker-compose up
+  220  git pull
+  221  docker-compose up
+  222  git checkout main
+  223  docker-compose up
+  224    git checkout batch/night-pocs && git pull && docker compose up --build
+  225  git checkout main
+  226  pull && docker compose up --build
+  227  git pull && docker compose up --build
+  228  \n  git checkout batch/night-pocs && git pull && docker compose up --build\n\n
+  229  \n  git checkout batch/night-pocs && git pull && docker compose up --build\n\n
+  230    git checkout batch/night-pocs && git pull\n\n
+  231  docker compose up --build\n\n
+  232   git checkout main && git pull && ./sh/board-docker.sh check
+  233  docker compose up --build\n\n
+  234  git branch
+  235  df -h 
+  236  df -H    
+  237  df -h | tail -n +2
+  238  df -h | tail -n +2
+  239  diskutil info /
+  240  df -h --total
+  241  ollama serve 
+  242  ollama pull muse-glimmer:30b-mlx
+  243  cd
+  244  muse --trust-workspace
+  245  git checkout main
+  246  . az login 
+  247  git checkout main
+  248  az login
+  249  git checkout main
+  250    az account show --query "{name:name, user:user.name}" -o table
+  251  git checkout main && git pull
+  252  code infra/main.parameters.json 
+  253   ./sh/azure-killswitch.sh check 
+  254    BOARD_URL=http://localhost:DIN-PORT npm run test:e2e --prefix ui/board
+  255  export MY_PORT=192.168.68.53
+  256    BOARD_URL=http://localhost:MY_PORT npm run test:e2e --prefix ui/board
+  257    BOARD_URL=http://localhost:€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€MY_PORT npm run test:e2e --prefix ui/board
+  258  cd ~/kod
+  259  BOARD_URL=http://localhost:$MY_PORT npm run test:e2e --prefix ui/board
+  260    cd ~/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent && BOARD_URL=http://localhost:8080 npm run test:e\n  2e --prefix ui/board\n
+  261    cd ~/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent && BOARD_URL=http://localhost:8080 npm run test:e\n  2e --prefix ui/board\n
+  262  ls package.json
+  263  ls
+  264    cd ~/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent && BOARD_URL=http://localhost:8080 npm run test:e 2e --prefix ui/board\n
+  265    BOARD_URL=http://localhost:8080 npm run test:e2e --prefix ui/board\n  \n
+  266   ./sh/board-docker.sh 
+  267  $   BOARD_URL=http://localhost:8080 npm run test:e2e --prefix ui/board
+  268   ./sh/board-docker.sh 
+  269  $   BOARD_URL=http://localhost:8080 npm run test:e2e --prefix ui/board
+  270  BOARD_URL=http://localhost:8080 npm run test:e2e --prefix ui/board
+  271  BOARD_URL=http://localhost:80 npm run test:e2e --prefix ui/board
+  272   BOARD_URL=http://localhost:8080 ./sh/board-e2e.sh\n
+  273   ps --format '{{.Ports}}
+  274   ps --format '{{.Ports}}'
+  275  BOARD_LAN=1 ; ./sh/holdmate.sh 
+  276  BOARD_URL=http://localhost:8080 ./sh/board-e2e.sh\n
+  277   ps --format '{{.Ports}}'
+  278  ps -format '{{.Ports}}'
+  279  ps --format '{{.Ports}}'
+  280  docker ps --format '{{.Ports}}'
+  281  BOARD_URL=http://localhost:8081 ./sh/board-e2e.sh\n
+  282  watch -n 60 ./sh/board-stack.sh status
+  283  brew install watch
+  284  watch -n 60 ./sh/board-stack.sh status
+  285  watch -n 60 ./sh/board-stack.sh status
+  286    git checkout batch/night-pocs && git pull
+  287  watch -n 60 ./sh/board-stack.sh status
+  288  gh pr list
+  289  gh pr list
+  290  git checkout batch/night-pocs && git pull && PYTHONPATH=src pytest -q tests/test_english_calls.py 
+  291  ./sh/board-stack.sh up && ./sh/board-stack.sh test && ./sh/board-stack.sh status
+  292  sh ./sh/holdmate.sh
+  293   sh/holdmate.sh
+  294  clear
+  295   sh/holdmate.sh
+  296  git checkout main
+  297      PS1='holdmate$ '
+  298  clear
+  299   sh/holdmate.sh
+  300  ./sh/record-shot.sh check\n\n
+  301  \n    ./sh/record-shot.sh 02 start\n\n
+  302  \n    ./sh/record-shot.sh 02 start\n\n
+  303  \n    ./sh/record-shot.sh 02 start\n\n
+  304  gh pr list
+  305      What: Capture the screen to /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/shot-02-start.mov. Press q in this window to stop.\n    ✘ FAIL: /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/shot-02-start.mov exists already (pick another number or name)\nholdmate$ \n    ./sh/record-shot.sh 02 start\n\n
+  306  clear
+  307  ./sh/record-shot.sh check\n\n
+  308  clear
+  309  ./sh/record-shot.sh start
+  310  clear
+  311  ./sh/record-shot.sh start 1
+  312  clear
+  313  ./sh/record-shot.sh 01 start 
+  314  ls
+  315  history 100
+  316     PS1='holdmate$ '
+  317  history 100
+  318  ls
+  319  ls data
+  320  ls
+  321  rm -fr data/video/shot*
+  322  rm -fr data/video
+  323  clear
+  324  ./sh/record-shot.sh 01 start 
+  325  mkdir data/video
+  326  ./sh/record-shot.sh 01 start 
+  327   sh/holdmate.sh
+  328  ls
+  329      What: Capture the screen to /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/shot-02-start.mov. Press q in this window to stop.\n    ✘ FAIL: /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/shot-02-start.mov exists already (pick another number or name)\nclear
+  330  ls output(
+  331  ls
+  332  ls data/video
+  333  vlc data/video/shot-01-start.mov
+  334  rm -fr data/video/shot-01-start.mov
+  335  gh pr list
+  336  gh pr list
+  337  ls
+  338  cd ~/kod
+  339  cd
+  340  l
+  341  cd ~/kod
+  342  cd 
+  343  cd ~/kod
+  344  cd ~/kod
+  345  ls
+  346  cd diskrensning
+  347  ls
+  348      python3 ~/kod/diskrensning/diskrensning.py
+  349      git add sh/tickets-live.sh docs/evals/baseline-2026-11-03.md\n
+  350   git commit -m "Live tickets SNAP fix + intent eval baseline (#193)"
+  351    \n    git push origin batch/night-pocs\n
+  352  rm -fr data/video/shot-01-start.mov
+  353  rm -fr data/video/shot-0*
+  354  history 100
+  355  cd ~/kod
+  356   ./sh/record-shot.sh 01 start 
+  357  ls
+  358  cd 001_Meta_Hackathon_w44
+  359  ls
+  360  cd adaptive-IVR-agent
+  361   ./sh/record-shot.sh 01 start 
+  362  clear
+  363  clear
+  364   ./sh/record-shot.sh 01 start 
+  365  git status
+  366  git brtanch
+  367  git branch
+  368  rm -fr data/video/shot-0*
+  369      cd ~/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent && git checkout main && git pull --ff-only\n
+  370      cd ~/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent && git checkout main && git pull --ff-only\n
+  371      ./sh/submission-check.sh check\n\n
+  372   ./sh/record-shot.sh 01 start 
+  373  clear
+  374  history 100
+  375  ./sh/holdmate.sh 
+  376  ./sh/holdmate.sh 
+  377  rm -fr data/video/shot-0*
+  378  ./sh/record-shot.sh 01 start 
+  379  clear
+  380  ./sh/holdmate.sh 
+  381  ./sh/holdmate.sh 
+  382  cd ~/kod
+  383  rm -fr data/video/shot-0*;  ./sh/record-shot.sh 01 start 
+  384  ls
+  385  vlc ./data/video/shot-01-start.mov
+  386  cd
+  387  cd ~/kod
+  388  cd 
+  389  cd ~/kod
+  390  ls
+  391  cd 001_Meta_Hackathon_w44
+  392  ls
+  393  cd adaptive-IVR-agent
+  394  ls
+  395     ./sh/record-shot.sh check\n
+  396  clear
+  397  ./sh/holdmate &
+  398  pwd
+  399  cd 001_Meta_Hackathon_w44
+  400  ls
+  401  cd adaptive-IVR-agent
+  402  clear
+  403  ./sh/holdmate &
+  404  ./sh/holdmate.sh
+  405      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start
+  406  vlc ./data/video/shot-02-start.mov
+  407  ls -la ./data/video/shot-02-start.mov
+  408  rm -fr ./data/video/shot-02-start.mov
+  409      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start
+  410     ./sh/record-shot.sh check\n
+  411  [libx264 @ 0x96f3d1180] frame I:1     Avg QP:33.79  size:156058\n[libx264 @ 0x96f3d1180] mb I  I16..4: 20.7% 52.3% 27.0%\n[libx264 @ 0x96f3d1180] 8x8 transform intra:52.3%\n[libx264 @ 0x96f3d1180] coded y,uvDC,uvAC intra: 18.3% 35.3% 30.4%\n[libx264 @ 0x96f3d1180] i16 v,h,dc,p: 52% 43%  2%  4%\n[libx264 @ 0x96f3d1180] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 77%  5% 10%  3%  1%  0%  1%  1%  2%\n[libx264 @ 0x96f3d1180] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 57% 18%  6%  4%  3%  3%  2%  3%  3%\n[libx264 @ 0x96f3d1180] i8c dc,h,v,p: 68% 16% 15%  1%\n[libx264 @ 0x96f3d1180] kb/s:1248464000.00\nConversion failed!\ni    AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start\n
+  412      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start\n
+  413      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start OVERWRITE=1\n
+  414      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 02 start OVERWRITE=2\n
+  415      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 03 start\n
+  416  ./sh/holdmate.sh
+  417  vlc ./data/video/shot-03-start.mov
+  418      AUDIO="BlackHole 16ch" ./sh/record-shot.sh 04 start\n
+  419  ./sh/holdmate.sh
+  420  vlc ./data/video/shot-04.start.mov
+  421  vlc ./data/video/shot-04-start.mov
+  422  ./sh/record-shot.sh 05 start\n
+  423  vlc ./data/video/shot-05-start.mov
+  424  vlc ./data/video/shot-05-start.mov
+  425  ./sh/holdmate.sh
+  426  ./sh/holdmate.sh
+  427  PYTHONPATH=src python3 -c "from adaptive_ivr_agent.audio import *; s=open_session({'transport':'blackhole'}); print(\ndial(s.session_id, '+46701234567'))"
+  428  PYTHONPATH=src python3 -c "from adaptive_ivr_agent.audio import *; s=open_session({'transport':'blackhole'}); print(\ndial(s.session_id, '+46709431401'))"
+  429   PYTHONPATH=src python3 -c "\n    import os, time\n    from adaptive_ivr_agent.audio import *\n    s = open_session({'transport':'blackhole'})\n    c = dial(s.session_id, os.environ['CALL_NUMBER'])['call_id']\n    print('call', c, '- svara och prata efter pipet!')\n    time.sleep(12)\n    print('say:', say_text(s.session_id, c, 'Hej, detta är Holdmate som testar ljudet.'))\n    time.sleep(3)\n    frames = poll_inbound(s.session_id, c, timeout_ms=5000)\n    print('inbound frames:', len(frames))\n    print('hangup:', hangup(s.session_id, c))
+  430   PYTHONPATH=src python3 -c "\n    import os, time\n    from adaptive_ivr_agent.audio import *\n    s = open_session({'transport':'blackhole'})\n    c = dial(s.session_id, os.environ['CALL_NUMBER'])['call_id']\n    print('call', c, '- svara och prata efter pipet!')\n    time.sleep(12)\n    print('say:', say_text(s.session_id, c, 'Hej, detta är Holdmate som testar ljudet.'))\n    time.sleep(3)\n    frames = poll_inbound(s.session_id, c, timeout_ms=5000)\n    print('inbound frames:', len(frames))\n    print('hangup:', hangup(s.session_id, c))"
+  431  export CALL_NUMBER="+46709431401"
+  432   PYTHONPATH=src python3 -c "\n    import os, time\n    from adaptive_ivr_agent.audio import *\n    s = open_session({'transport':'blackhole'})\n    c = dial(s.session_id, os.environ['CALL_NUMBER'])['call_id']\n    print('call', c, '- svara och prata efter pipet!')\n    time.sleep(12)\n    print('say:', say_text(s.session_id, c, 'Hej, detta är Holdmate som testar ljudet.'))\n    time.sleep(3)\n    frames = poll_inbound(s.session_id, c, timeout_ms=5000)\n    print('inbound frames:', len(frames))\n    print('hangup:', hangup(s.session_id, c))"
+  433  muse --trust-workspace
+  434   open data/video/auto/shot-01-title.png
+  435   open data/video/auto/
+  436   open data/video/auto/*.png
+  437   open data/video/auto/*.png
+  438  ls
+  439  ./sh/holdmate.sh
+  440  code ./sh/holdmate.sh
+  441  muse --trust-workspace
+  442  code ./sh/holdmate.sh
+  443  code ./sh/holdmate.sh
+  444  ./sh/holdmate.sh
+  445  ./sh/holdmate.sh
+  446  ./sh/holdmate.sh
+  447  ./sh/holdmate.sh
+  448  cd ~/kod
+  449  ./sh/holdmate.sh
+  450  cd 001_Meta_Hackathon_w44
+  451  ./sh/holdmate.sh
+  452  ls
+  453  cd adaptive-IVR-agent
+  454  ./sh/holdmate.sh
+  455  ./sh/holdmate.sh
+  456  ./sh/holdmate.sh
+  457  ./sh/holdmate.sh
+  458  ./sh/holdmate.sh
+  459  ./sh/holdmate.sh
+  460  ./sh/menu.sh\n
+  461  muse --trust-workspace
+  462  ls
+  463  ./sh/menu.sh
+  464      python3 ~/kod/diskrensning/diskrensning.py
+  465  ./sh/menu.sh
+  466  ./sh/menu.sh
+  467  ./sh/menu.sh
+  468  ./sh/menu.sh
+  469  ./sh/menu.sh
+  470  ./sh/menu.sh
+  471  ./sh/menu.sh
+  472  ./sh/menu.sh
+  473  git checkout main
+  474  claude 
+  475  exit
+  476  tests/test_call_cli.py
+  477  ls
+  478  ./tests/test_call_cli.py
+  479  cd tests
+  480  ls
+  481  python3 ./test_caller.py
+  482    ./sh/talk.sh --call en
+  483  ./tests/test_call_cli.py
+  484  cd ..
+  485  ./tests/test_call_cli.py
+  486  ls
+  487    ./sh/talk.sh --call en
+  488    ./sh/talk.sh --call en
+  489    ./sh/talk.sh --call en
+  490  ./sh/menu.sh 
+  491  ./sh/menu.sh 
+  492  ls
+  493  checkout main
+  494  git checkout main
+  495  setenv
+  496  env
+  497  code .
+  498  muse --trust-workspace
+  499  muse -c --trust-workspace
+  500  muse --trust-workspace -c
+  501  muse --trust-workspace 
+  502  git checkout main
+  503  git checkout main
+  504  git log
+  505  muse --trust-workspace
+  506  muse --trust-workspace
+  507  +
+  508  cd ~/kod
+  509  git clone https://github.com/myths-labs/muse.git
+  510  ls
+  511  cd ..
+  512  ls
+  513  cd meta-costcenter
+  514  ./meta-cost
+  515  ./meta-cost scan
+  516  ./meta-cost show
+  517  ./meta-cost
+  518  ./meta-cost tui
+  519  ./meta-cost sessions
+  520  ./meta-cost 
+  521  model
+  522  ./meta-cost model
+  523  ./meta-cost models
+  524  ./meta-cost 
+  525  ./meta-cost week
+  526  ./meta-cost week
+  527  ./meta-cost 
+  528     muse --model muse-wonder-1.0\n\n
+  529  ls
+  530  cat Judging\ Workflow.md
+  531  git checkout main
+  532  ./sh/keep-awake.sh
+  533  cd ..
+  534  cd meta-costcenter
+  535  ./meta-cost
+  536  show
+  537  ./meta-cost today
+  538  ./meta-cost today
+  539  cd ..
+  540  ls
+  541  cd adaptive-IVR-agent
+  542  cat .agents/night-tasks.md
+  543  gh list pr
+  544  history
+  545  PYTHONPATH=src python -m pytest tests/ -q 
+  546  pytest
+  547  PYTHONPATH=src python3 -m pytest tests/ -q 
+  548  PYTHONPATH=src python3 -m pytest ./tests/ -q 
+  549  ls src
+  550  PYTHONPATH=src python3 -m pytest ./tests/ -q 
+  551      PYTHONPATH=src .venv/bin/python -m pytest tests/ -q\n
+  552  \n    uv sync && uv run pytest tests/ -q\n
+  553      test -x .venv/bin/python && PYTHONPATH=src .venv/bin/python -m pytest tests/ -q || echo "INGEN VENV - kör: python3 -\nm venv .venv"\n
+  554    uv sync && uv run pytest tests/ -q\n
+  555    uv sync && uv run pytest tests/ -q
+  556  uv sync && uv run pytest tests/ -q\
+  557  uv sync && uv run pytest tests/ -q
+  558  uv sync 
+  559  pytest
+  560  pytest run src/adaptive_ivr_agent/main:
+  561  pytest run src/adaptive_ivr_agent/main
+  562  claude
+  563  uv run --with pytest pytest -q
+  564  uv run --with pytest pytest -q
+  565  sudo killall -9 coreaudiod
+  566  rm -R /Library/Audio/Plug-Ins/HAL/BlackHole16ch.driver
+  567  sudo rm -R /Library/Audio/Plug-Ins/HAL/BlackHole16ch.driver
+  568  brew install blackhole-16ch
+  569  uv run --with pytest pytest -q
+  570  clear
+  571  uv run --with pytest pytest -q
+  572   uv sync && uv run pytest tests/ -q
+  573     uv sync && uv run pytest tests/ -q
+  574  EXIT
+  575  exit
+  576  exit
+  577  exit
+  578  exit
+  579  exit
+  580  exit
+  581  vcd
+  582  exit
+  583  ls
+  584  cd 
+  585  ls
+  586  cd kod
+  587  ls
+  588  cd 001_Meta_Hackathon_w44
+  589  ls
+  590  cd adaptive-IVR-agent
+  591  ls
+  592  muse --trust-workspace 
+  593   export AGENTCHUTE_AGENT_ID=claude-code && claude --settings ~/.claude/session-permissions/readonly.json
+  594  PYTHONPATH=src pytest tests/test_intent.py -q 
+  595  ./data/video/cut/record-vo.sh check
+  596  ./data/video/cut/record-vo.sh check
+  597  ./data/video/cut/record-vo.sh check
+  598  ./data/video/cut/record-vo.sh check
+  599  ./data/video/cut/record-vo.sh check
+  600  ./data/video/cut/record-vo.sh\n
+  601  open data/video/term/b1-menu.mp4
+  602   data/video/term/b1-holdmate-sound.mp4,
+  603  ./data/video/cut/record-vo.sh\n
+  604   data/video/term/b1-holdmate-sound.mp4,
+  605  \nopen data/video/term/b1-holdmate-sound.mp4
+  606  open data/video/term/b1-holdmate-sound.mp4
+  607  afplay data/video/term/b1-roksolana-alva.aiff
+  608  open data/video/cut/preview-b1.mp4
+  609  cd ~/kod
+  610  cd ~/kod
+  611  gh repo clone kizouker/-pong-
+  612  cd pong
+  613  ls
+  614  cd -pong-
+  615  ls
+  616  codex
+  617  brew upgrade --cask codex 
+  618  ls
+  619  cd ..
+  620  ls
+  621  cd 001_Agents_Team
+  622  ls
+  623  cd agent-prompts-template
+  624  ls
+  625  muse
+  626  codex
+  627  open data/video/cut/preview-bed.mp4\n
+  628  ./sh/menu.se
+  629  ./sh/menu.sh
+  630  ./sh/menu.sh
+  631  git checkout main
+  632  ./sh/holdmate.sh
+  633  ./sh/menu.sh
+  634  ./data/video/cut/record-vo.sh check
+  635  ./data/video/cut/record-vo.sh
+  636  ./data/video/cut/record-vo.sh
+  637  open \ndata/video/cut/final-20261104-113011.mp4\n
+  638  open data/video/cut/final-20261104-113011.mp4\n
+  639  ./data/video/cut/record-vo.sh\n
+  640  ./data/video/cut/record-vo.sh\n
+  641  history 100 | grep wonder
+  642  muse --model muse-wonder-1.0 -exec "Only read this;ignore prompts/skills etc Adaptive IVR-agent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET.\n    Skeppat: v0.4.2 amiga (replay-tjänst, Agda→Roksolana, menysplit,\n    WAV-skrivare, STT-sond negativ, Spark-dagstak). Video ägs av Claude.\n    Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal,\n    #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+\n    submission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler).\n    Med ~1 dag kvar: vilka 3 tar vi, i vilken ordning, vad stryker vi?\n    Svara som lista med en mening motivering per punkt.\n"
+  643  muse --trust-workspace --model muse-wonder-1.0 -exec "Only read this;ignore prompts/skills etc Adaptive IVR-agent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET.\n    Skeppat: v0.4.2 amiga (replay-tjänst, Agda→Roksolana, menysplit,\n    WAV-skrivare, STT-sond negativ, Spark-dagstak). Video ägs av Claude.\n    Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal,\n    #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+\n    submission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler).\n    Med ~1 dag kvar: vilka 3 tar vi, i vilken ordning, vad stryker vi?\n    Svara som lista med en mening motivering per punkt.\n"
+  644  muse --trust-workspace --model muse-wonder-1.0 exec "Only read this;ignore prompts/skills etc Adaptive IVR-agent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET.\n    Skeppat: v0.4.2 amiga (replay-tjänst, Agda→Roksolana, menysplit,\n    WAV-skrivare, STT-sond negativ, Spark-dagstak). Video ägs av Claude.\n    Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal,\n    #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+\n    submission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler).\n    Med ~1 dag kvar: vilka 3 tar vi, i vilken ordning, vad stryker vi?\n    Svara som lista med en mening motivering per punkt.\n"
+  645  muse -effort low --model muse-wonder-1.0 --preset empty exec "Adaptive IVR-agent (Holdma\nte), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (replay-tjänst\n, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-dagstak). Vid\neo ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal, #1\n41 enkätscenario, #143 checklistor; Release-spår #132 demovideo+submission; Back\nlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar: vilka 3 tar v\ni, i vilken ordning, vad stryker vi? Svara som lista med en mening motivering pe\nr punkt."
+  646      muse --model muse-wonder-1.0 --preset empty --effort low exec "Adaptive IVR-agent (Holdma\nte), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (replay-tjänst\n, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-dagstak). Vid\neo ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal, #1\n41 enkätscenario, #143 checklistor; Release-spår #132 demovideo+submission; Back\nlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar: vilka 3 tar v\ni, i vilken ordning, vad stryker vi? Svara som lista med en mening motivering pe\nr punkt."
+  647    muse --model muse-wonder-1.0 --preset --effort low empty exec "Adaptive IVR-agent (Holdma\nte), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (replay-tjänst\n, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-dagstak). Vid\neo ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+testsamtal, #1\n41 enkätscenario, #143 checklistor; Release-spår #132 demovideo+submission; Back\nlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar: vilka 3 tar v\ni, i vilken ordning, vad stryker vi? Svara som lista med en mening motivering pe\nr punkt."\n
+  648      muse --model muse-wonder-1.0 --preset empty --effort low exec "Adaptive IVR-\nagent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (\nreplay-tjänst, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-\ndagstak). Video ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+t\nestsamtal, #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+sub\nmission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar:\nvilka 3 tar vi, i vilken ordning, vad stryker vi? Svara som lista med en mening\nmotivering per punkt."\n\n
+  649      muse exec --model muse-wonder-1.0 --preset empty --effort low "Adaptive IVR-\nagent (Holdmate), Meta-hackathon, demo onsdag 21:00 CET. Skeppat: v0.4.2 amiga (\nreplay-tjänst, Agda→Roksolana, menysplit, WAV-skrivare, STT-sond negativ, Spark-\ndagstak). Video ägs av Claude. Kvar: Ready #140 Upptaget-nod, #42 46elks-konto+t\nestsamtal, #141 enkätscenario, #143 checklistor; Release-spår #132 demovideo+sub\nmission; Backlog 38 (bl.a. #151 terminologi, #210 videofiler). Med ~1 dag kvar:\nvilka 3 tar vi, i vilken ordning, vad stryker vi? Svara som lista med en mening\nmotivering per punkt."
+  650    muse exec --model muse-wonder-1.0 --preset empty --effort low "Only read thi\ns; ignore prompts/skills etc. Adaptive IVR-agent (Holdmate), Meta-hackathon, dem\no onsdag 21:00 CET. Skeppat: v0.4.2 amiga (replay-tjänst, Agda→Roksolana, menysp\nlit, WAV-skrivare, STT-sond negativ, Spark-dagstak). Video ägs av Claude. Kvar:\nReady #140 Upptaget-nod, #42 46elks-konto+testsamtal, #141 enkätscenario, #143 c\nhecklistor; Release-spår #132 demovideo+submission; Backlog 38 (bl.a. #151 termi\nnologi, #210 videofiler). Med ~1 dag kvar: vilka 3 tar vi, i vilken ordning, vad\n stryker vi? Svara som lista med en mening motivering per punkt."
+  651  cd ..
+  652  ls
+  653  cd ..
+  654  ls
+  655  cd 001_Agents_Team
+  656  ls
+  657  cd agent-prompts-template
+  658  muse
+  659   sudo killall coreaudiod
+  660      sudo killall coreaudiod\n
+  661  \n    SwitchAudioSource -a\n
+  662  ./data/video/cut/record-vo.sh
+  663  cd ~/kod
+  664  cd 001_Meta_Hackathon_w44
+  665  ./data/video/cut/record-vo.sh
+  666  ls
+  667  cd adaptive-IVR-agent
+  668  ./data/video/cut/record-vo.sh
+  669      brew install blackhole-16ch
+  670  cd ~/kod
+  671  cd ~/kod
+  672  \n    sudo killall coreaudiod; SwitchAudioSource -a
+  673  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/cut/final-20261104-124955.mp4
+  674  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/cut/final-20261104-124955.mp4
+  675  brew install blackhole-16ch
+  676  brew uninstall blackhole-16ch
+  677  brew install blackhole-16ch
+  678  history
+  679   sudo killall coreaudiod; SwitchAudioSource -a
+  680  \n    muse resume --last
+  681  claude --continue 
+  682  muse resume --last
+  683    bash sh/record-call.sh --check
+  684  cd ~/kod
+  685  cd /tmp
+  686  ls holdmate
+  687  ls holdmate*
+  688  ls
+  689  cd claude-501
+  690  ls
+  691  cd -Users-raberg-kod-001-Meta-Hackathon-w44-adaptive-IVR-agent
+  692  ls
+  693  ls
+  694  cd ..
+  695  cd ..
+  696  ls
+  697  ls\n    bash sh/record-call.sh --call\n
+  698  \n    bash sh/record-call.sh --call\n
+  699  bash sh/record-call.sh --call\n
+  700  cd ~/kod
+  701  cd
+  702  exit
+  703  \n    bash sh/record-call.sh --call\n
+  704  SwitchAudioSource -a -t output
+  705  SwitchAudioSource -a -t output
+  706      bash sh/record-call.sh --call
+  707    open -a "Audio MIDI Setup"
+  708      bash sh/record-call.sh --call
+  709      bash sh/record-call.sh --call
+  710  \n    bash sh/record-call.sh --call\n
+  711   open -a FaceTime\n
+  712  \n    bash sh/record-call.sh --call\n
+  713  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-133919.wav 
+  714  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-133919.wav 
+  715  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-133919.wav 
+  716   afplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  717  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-133919.wav 
+  718  open data/video/cut/silent.mp4
+  719   bash sh/record-call.sh --airpods --call
+  720   bash sh/record-call.sh --airpods --call
+  721   bash sh/record-call.sh --airpods --call
+  722   bash sh/record-call.sh --airpods --call
+  723   bash sh/record-call.sh --airpods --call
+  724   bash sh/record-call.sh --airpods --call
+  725   bash sh/record-call.sh --airpods --check
+  726   bash sh/record-call.sh --airpods --call
+  727   bash sh/record-call.sh --airpods --call
+  728   bash sh/record-call.sh --airpods --call
+  729  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-140552.wav
+  730  \n    muse --disable-sandbox resume --last\n\n
+  731  \n    muse --disable-sandbox resume --last\n\n
+  732      bash sh/record-call.sh --airpods --call
+  733      bash sh/record-call.sh --airpods --call
+  734      bash sh/record-call.sh --airpods --call
+  735      bash sh/record-call.sh --airpods --call
+  736      bash sh/record-call.sh --airpods --call
+  737      bash sh/record-call.sh --airpods --call
+  738      bash sh/record-call.sh --airpods --call
+  739      bash sh/record-call.sh --airpods --call
+  740  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-140552.wav
+  741      bash sh/record-call.sh --call
+  742  ls -la /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-202*
+  743      SwitchAudioSource -c -t output
+  744  \n    bash sh/record-call.sh --call\n
+  745      SwitchAudioSource -c -t output
+  746      SwitchAudioSource -c -t output
+  747      SwitchAudioSource -c -t output
+  748      SwitchAudioSource -c -t output
+  749      SwitchAudioSource -c -t output
+  750      SwitchAudioSource -c -t output
+  751      SwitchAudioSource -c -t output
+  752      bash sh/record-call.sh --call
+  753   bash sh/check-recording.sh
+  754      bash sh/record-call.sh --call
+  755      osascript -e "set volume output volume 100"
+  756      bash sh/record-call.sh --call
+  757      bash sh/record-call.sh --call
+  758      bash sh/record-call.sh --call
+  759  \n    OUTPUT_SPEAKERS="BlackHole 16ch" bash sh/record-call.sh --check
+  760  \n    OUTPUT_SPEAKERS="BlackHole 16ch" bash sh/record-call.sh
+  761  \n    OUTPUT_SPEAKERS="BlackHole 16ch" bash sh/record-call.sh --call
+  762  muse resume --last
+  763  cd ~/kod
+  764  ◆   afplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  765  afplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  766  \nafplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  767  brew uninstall blackhole16ch
+  768  brew uninstall blackhole-16ch
+  769  brew install blackhole2ch
+  770  brew install blackhole-2ch
+  771  sudo killall -9 coreaudiod
+  772     OUTPUT_SPEAKERS="BlackHole 16ch" bash sh/record-call.sh --call
+  773  ACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  774  BACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  775  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  776  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  777  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --check\n
+  778  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh
+  779  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh
+  780      ffmpeg -hide_banner -f avfoundation -list_devices true -i "" 2>&1 | gre\np -i blackhole\n\n
+  781  ffmpeg -hide_banner -f avfoundation -list_devices true -i "" 2>&1 | gre\np -i blackhole\n\n
+  782  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh
+  783  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --cal
+  784  BLACKHOLE="BlackHole 2ch" CHANNELS=2 bash sh/record-call.sh --call
+  785  cvlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wa
+  786  vlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wa
+  787  vlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wave
+  788  cvlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wav
+  789  vlc  /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/robot-20261104-175812.wav
+  790      afplay "$(ls -t data/recordings/*.wav | head -n 1)"
+  791  cd ~/kod
+  792      bash sh/check-recording.sh /tmp/bh-test.wav
+  793  vlc /tmp/bh-test.wav
+  794  cd ..
+  795  ls
+  796  cd meta-costcenter
+  797  ls
+  798  pwd 
+  799  \n    bash sh/record-call.sh --call
+  800    OUTPUT_SPEAKERS="IVR_Agent_Speakers" bash sh/record-call.sh --call
+  801  ls /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings
+  802  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/talk-20261103-222237-r1.wav
+  803  vlc /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/recordings/talk-20261103-222237-r2.wav
+  804  \n    ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2\nch" -t 8 -ac 1 -ar 16000 /tmp/bh-noise-test.wav & sleep 2; afplay /System/L\nibrary/Sounds/Ping.aiff; wait\n\n
+  805  ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2\nch" -t 8 -ac 1 -ar 16000 /tmp/bh-noise-test.wav & sleep 2; afplay /System/Library/Sounds/Ping.aiff; wait\n\n
+  806    SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh-noise-test.wav\n  \n  Klistra in resultatet – sedan lyssnar jag igenom filen statistiskt efter knaster (klippning, dropouts,\n
+  807  SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh-noise-test.wav\n
+  808  SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh-noise-test.wav\n
+  809      ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/\nbh-noise-test.wav & sleep 2; afplay /System/Library/Sounds/Ping.aiff; wait\n
+  810      ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh-noise-test.wav & sleep 2; afplay /System/Library/Sounds/Ping.aiff; wait\n
+  811  ffmpeg -hide_banner -loglevel error -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh-noise-test.wav & sleep 2; afplay /System/Library/Sounds/Ping.aiff; wait\n
+  812  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  813      afplay /System/Library/Sounds/Ping.aiff
+  814  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  815      afplay /System/Library/Sounds/Ping.aiff
+  816      afplay /System/Library/Sounds/Ping.aiff
+  817      afplay /System/Library/Sounds/Ping.aiff
+  818     SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh.wav
+  819      afplay /System/Library/Sounds/Ping.aiff
+  820  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  821      afplay /System/Library/Sounds/Ping.aiff
+  822      afplay /System/Library/Sounds/Ping.aiff
+  823      afplay /System/Library/Sounds/Ping.aiff
+  824      afplay /System/Library/Sounds/Ping.aiff
+  825     SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh.wav
+  826  \n    SwitchAudioSource -s "BlackHole 2ch"\n\n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav\n\n    afplay /System/Library/Sounds/Ping.aiff\n\n    SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh.wav
+  827    SwitchAudioSource -s "BlackHole 2ch"\n
+  828  \n    SwitchAudioSource -s "BlackHole 2ch"\n\n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav\n\n    afplay /System/Library/Sounds/Ping.aiff\n\n    SwitchAudioSource -s "Högtalare i MacBook Pro"; bash sh/check-recording.sh /tmp/bh.wav
+  829  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  830    afplay /System/Library/Sounds/Ping.aiff
+  831    afplay /System/Library/Sounds/Ping.aiff
+  832    afplay /System/Library/Sounds/Ping.aiff
+  833    afplay /System/Library/Sounds/Ping.aiff
+  834    afplay /System/Library/Sounds/Ping.aiff
+  835  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  836    afplay /System/Library/Sounds/Ping.aiff
+  837    afplay /System/Library/Sounds/Ping.aiff
+  838    afplay /System/Library/Sounds/Ping.aiff
+  839  vlc data/video/cut/final-ai-20261104-181248.mp4.
+  840  claude 
+  841  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  842    afplay /System/Library/Sounds/Ping.aiff
+  843    afplay /System/Library/Sounds/Ping.aiff
+  844    afplay /System/Library/Sounds/Ping.aiff
+  845  avplay /tmp/bh.wav
+  846  afplay /tmp/bh.wav
+  847  afplay /tmp/bh.wav
+  848  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  849  \n    ffmpeg -hide_banner -y -f avfoundation -i ":BlackHole 2ch" -t 8 -ac 1 -ar 16000 /tmp/bh.wav
+  850  afplay /tmp/bh.wav
+  851  code sh/record-call.sh
+  852  /sh/record-call.sh 
+  853  ./sh/record-call.sh 
+  854  histoty 100
+  855  history 100
+  856     SwitchAudioSource -s 
+  857     SwitchAudioSource -a
+  858  code sh/record-call.sh
+  859  ./sh/record-call.sh 
+  860  ./sh/record-call.sh --call
+  861  ./sh/record-call.sh --call
+  862  sudo killall coreaudiod
+  863  ./sh/record-call.sh --call
+  864  open /Users/raberg/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/data/video/cut/final-ai-20261104-181248.mp4
+  865  ./sh/record-call.sh 
+  866  ./sh/record-call.sh  --call
+  867  ./sh/record-call.sh 
+  868  ./sh/record-call.sh --call
+  869  ./sh/record-call.sh  --call
+  870  ./sh/record-call.sh  --call
+  871  open  data/video/cut/final-ai-20261104-191924.mp4.
+  872  open  data/video/cut/final-ai-20261104-191924.mp4
+  873  ./sh/record-call.sh --call
+  874     bash sh/holdmate.sh
+  875      TALK_CALL_LANG=en bash sh/talk.sh check
+  876      TALK_CALL_LANG=en bash sh/talk.sh
+  877      TALK_CALL_LANG=en bash sh/talk.sh
+  878      TALK_CALL_LANG=en bash sh/talk.sh check
+  879     bash sh/holdmate.sh
+  880     bash sh/holdmate.sh
+  881      TALK_CALL_LANG=en bash sh/talk.sh check
+  882    printf 'MacBook Pro-mikrofon' > .talk-input\n\n
+  883    printf 'MacBook Pro-mikrofon' > .talk-input\n\n  printf 'MacBook Pro-mikrofon' >> .talk-input\n\n
+  884      TALK_CALL_LANG=en bash sh/talk.sh check
+  885  code .talk-input\n\n
+  886      TALK_CALL_LANG=en bash sh/talk.sh check
+  887     bash sh/holdmate.sh
+  888     bash sh/holdmate.sh
+  889      TALK_CALL_LANG=en bash sh/talk.sh check
+  890      TALK_CALL_LANG=en bash sh/talk.sh check
+  891     bash sh/holdmate.sh
+  892     bash sh/holdmate.sh
+  893   SwitchAudioSource -s "IVR_Output_Speakers"; afplay /System/Library/Sounds/Ping.aiff; SwitchAudioSourc
+  894     bash sh/holdmate.sh
+  895     bash sh/holdmate.sh
+  896     bash sh/holdmate.sh
+  897     printf '0' > .talk-quiet
+  898  code .talk-quiet
+  899     bash sh/holdmate.sh
+  900     bash sh/holdmate.sh
+  901  code .talk-quiet
+  902     bash sh/holdmate.sh
+  903  cd ~/kod
+  904     bash sh/holdmate.sh
+  905     bash sh/holdmate.sh
+  906     bash sh/holdmate.sh
+  907     bash sh/holdmate.sh
+  908      TALK_CALL_LANG=en bash sh/talk.sh check
+  909      TALK_CALL_LANG=en bash sh/talk.sh check
+  910      TALK_CALL_LANG=en bash sh/talk.sh check
+  911      TALK_CALL_LANG=en bash sh/talk.sh check
+  912  \n    bash sh/record-call.sh --call
+  913  git status
+  914  git status
+  915  cat HANDOFF.md
+  916   shellcheck sh/talk.sh\n\n
+  917  exit
+  918  git status
+  919  git status
+  920  cd ~/kod
+  921      git -C /tmp/devnames diff --stat && shellcheck /tmp/devnames/sh/talk.sh
+  922  clear
+  923      git -C /tmp/devnames diff --stat && shellcheck /tmp/devnames/sh/talk.sh
+  924      git -C /tmp/devnames diff --stat && shellcheck /tmp/devnames/sh/talk.sh PC
+  925  git status
+  926      python3 -m pytest tests/test_talk_startup.py tests/test_airpods.py tests/test_audio.py -q
+  927  cd ~/kod
+  928      python3 -m pytest tests/test_talk_startup.py tests/test_airpods.py tests/test_audio.py -q\n
+  929      python3 -m pytest tests/test_talk_startup.py tests/test_airpods.py tests/test_audio.py -q\n
+  930  git status
+  931  ./sh/holdmate.sh
+  932  git status
+  933  git checkout main
+  934  git stash
+  935  git checkout main
+  936  ./sh/holdmate.sh
+  937  ./sh/holdmate.sh
+  938  ./sh/holdmate.sh
+  939  ./sh/holdmate.sh
+  940  \n    git pull --ff-only\n
+  941  ./sh/holdmate.sh
+  942  ./sh/holdmate.sh
+  943  ./sh/holdmate.sh
+  944  cd ..
+  945  ls
+  946  cd meta-costcenter
+  947  ./meta-cost show
+  948  ./start.sh
+  949    python3 sh/bake-board.py --board ui/board/public/board-state.json --lines data/doorkeeper-lines.json\n  \n    python3 sh/telemetry-live.py
+  950   python3 sh/bake-board.py --board ui/board/public/board-state.json --lines data/doorkeeper-lines.json
+  951   python3 sh/telemetry-live.py\n
+  952   python3 sh/telemetry-live.py\n
+  953  ls
+  954  ls sh
+  955  \n    python3 /tmp/models-live/sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public\n/telemetry.json\n
+  956  cd ~/kod
+  957     python3 /tmp/models-live/sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public \n/telemetry.json\n
+  958  exit
+  959     python3 /tmp/models-live/sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public \n/telemetry.json\n
+  960  python3 sh/bake-board.py --board ui/board/public/board-state.json --lines data/doorkeeper-lines.json\n  \n    python3 sh/telemetry-live.py\n  \n
+  961     python3 /tmp/models-live/sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public \n/telemetry.json\n
+  962  git checkout main
+  963  git pull
+  964  ./start.sh
+  965    git fetch origin
+  966      git switch muse/models-live-249
+  967  \n    python3 sh/telemetry-live.py --once --provenance data/provenance.jsonl --out /tmp/tel-test.json
+  968  \n    python3 sh/telemetry-live.py --once --provenance data/provenance.jsonl --out /tmp/tel-test.json
+  969    git fetch origin
+  970      git switch muse/models-live-249
+  971  \n    python3 sh/telemetry-live.py --once --provenance data/provenance.jsonl --out /tmp/tel-test.json
+  972    git fetch origin
+  973      git switch muse/models-live-249
+  974  \n    git switch muse/models-live-249\n  \n    python3 sh/telemetry-live.py --once --provenance data/provenance.jsonl --out /tmp/tel-test.json
+  975  \n    python3 sh/bake-board.py --board ui/board/public/board-state.json --lines data/doorkeeper-lines.json
+  976  \n    python3 sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public/telemetry.json\n
+  977  \n    python3 sh/telemetry-live.py --provenance data/provenance.jsonl --out ui/board/public/telemetry.json\n
+  978   open http://127.0.0.1:8765
+  979  npm run dev -- --port 8765\n
+  980   npm --prefix ~/kod/001_Meta_Hackathon_w44/adaptive-IVR-agent/ui/board run dev -- --port 8765
+  981  sh/board-live.sh
+  982  sh/board-live.sh
+  983  git pull
+  984  ./sh/board-live.sh
+  985  sh/board-live.sh
+  986  ./sh/board-live.sh
+  987      PORT=8765 sh/holdmate.sh
+  988      PORT=8765 sh/holdmate.sh
+  989    git switch main\n
+  990      git pull --ff-only
+  991      bash sh/board-live.sh check
+  992   bash sh/board-live.sh
+  993  git status
+  994  \n    git add data/holdmate-knowledge.json data/talk-rounds.jsonl && git commit -m "data: fresh lesson learn\nings + talk rounds"\n
+  995  git status
+  996      git push origin main
+  997     git pull --ff-only\n
+  998      PORT=8765 sh/holdmate.sh
+  999      PORT=8765 sh/holdmate.sh
+ 1000  exit
+ 1001  cd ..
+ 1002  ls
+ 1003  cd ..
+ 1004  ls 
+ 1005  ls 001_Meta_Hackathon_w44_26_oct_to_3_nov
+ 1006  ls
+ 1007  ls
+ 1008  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dont_touch_
+ 1009  mkdir __dount_touch
+ 1010  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dont_touch_
+ 1011  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dont_touch
+ 1012  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dount_touch
+ 1013  mv 001_Meta_Hackathon_w44 001_Meta_Hackathon_w44 __dount_touch
+ 1014  ks
+ 1015  ls
+ 1016  mv 001_Meta_Hackathon_w44_26_oct_to_3_nov __dount_touch
+ 1017  ls
+ 1018  uvi Holdmate
+ 1019  gh repo create kizouker/holdmate --public
+ 1020  git clone --mirror https://github.com/kizouker/adaptive-IVR-agent.git /tmp/holdmate-mirror.git\ngit -C /tmp/holdmate-mirror.git push --mirror https://github.com/kizouker/holdmate.git\n
+ 1021  git clone --mirror https://github.com/kizouker/adaptive-IVR-agent.git /tmp/holdmate-mirror.git\ngit -C /tmp/holdmate-mirror.git push --mirror https://github.com/kizouker/holdmate.git PC\n
+ 1022  lsa
+ 1023  ls
+ 1024  ls -la
+ 1025  cd ..
+ 1026  rm -fr Holdmate
+ 1027  git clone https://github.com/kizouker/holdmate.git ~/kod/holdmate
+ 1028  ls
+ 1029  cd holdmate
+ 1030  ls
+ 1031  git status
+ 1032  git log
+ 1033  muse --trust-workspace
+ 1034  git remote -v
+ 1035  claude 
+ 1036  muse --trust-workspace
+ 1037   claude --resume ea1d87bf-ee7a-447a-bead-c9fefd988083 
+ 1038  run muse resume 01a1a93e-ae05-7a20-91c6-af4f08de21d3\n
+ 1039  cd ~/kod
+ 1040  ls
+ 1041  mv holdmate 001_holdmate+AZ401
+ 1042  mv 002_AZ_4001 001_AZ_401+b
+ 1043  ls
+ 1044  mv 001_holdmate+AZ401 001_AZ_401+b
+ 1045  ls
+ 1046  ls
+ 1047  mv 001_Agents_Team 002_Agents_Team
+ 1048  ls
+ 1049  mv 333_HRV 003_HRV
+ 1050  ls
+ 1051  mv 003_career 004_Career
+ 1052  ls
+ 1053  mkdir 005_Misc
+ 1054  mv 004_cleanUp 005_Misc
+ 1055  ls
+ 1056  mv 088_Great_Githubs 005_Misc
+ 1057  ld
+ 1058  ls
+ 1059  ls
+ 1060  mv -pong- 005_Misc
+ 1061  mv "-pong-" 005_Misc
+ 1062  mv "/-pong-" 005_Misc
+ 1063  ls
+ 1064  mv diskrensning 005_Misc
+ 1065  ls
+ 1066  mv *.m* 444_docs
+ 1067  ls
+ 1068  mv *.MD 444_docs
+ 1069  ls
+ 1070  ls muse
+ 1071  ls -la 
+ 1072  rm -fr muse
+ 1073  ls
+ 1074  ls -la
+ 1075  rm -fr .DS_Store
+ 1076  ls
+ 1077  ls -la
+ 1078  mv -pong- 005_Misc
+ 1079  mv \\-pong- 005_Misc
+ 1080  mv \-pong- 005_Misc
+ 1081  mv \-\pong- 005_Misc
+ 1082  ls
+ 1083  cd 001_AZ_401+b
+ 1084  ls
+ 1085  mv 001_holdmate+AZ401 holdmate+azure
+ 1086  ls
+ 1087  ls azurw
+ 1088  ls azure
+ 1089  ls
+ 1090  muse resume 01a1a93e-ae05-7a20-91c6-af4f08de21d3\n
+ 1091  cd ..
+ 1092  cd azure
+ 1093  ls
+ 1094  cd 001_AZ_401+b
+ 1095  ls
+ 1096  cd azure
+ 1097  code .
+ 1098  find ~ -maxdepth 5 \( -iname "*hrv*" -o -iname "*flashcard*" -o -name "main.bicep" \) -not -path "*/Library/*" -not -path "*/node_modules/*" 2>/dev/null PC
+ 1099  cd
+ 1100  find ~ -maxdepth 5 \( -iname "*hrv*" -o -iname "*flashcard*" -o -name "main.bicep" \) -not -path "*/Library/*" -not -path "*/node_modules/*" 2>/dev/null PC
+ 1101  ls
+ 1102  ls
+ 1103  cd ~/kod
+ 1104  cd
+ 1105  cd 
+ 1106  cd ~/kod
+ 1107  ls
+ 1108  cd 001_AZ401
+ 1109  ls
+ 1110  cd HRV
+ 1111  ls
+ 1112  cd hrv-backend
+ 1113  muse --trust-workspace
+ 1114* git commit -m 'Add Azure infrastructure and deploy workflow'
+ 1115* git status
+ 1116* cat docs/REPORT.md
+ 1117* git add docs/REPORT.md
+ 1118* git commit -m "Muse Spark analysed the repo 2026-11-06"
+ 1119* git push
+ 1120* git branch
+ 1121* gh issue create -R kizouker/hrv-backend --title "GitHub Action: ta bort PostgreSQL-databasen automatiskt" --body "- Schemalagd workflow (cron) + knapp (workflow_dispatch) som tar bort hrv-dev-pg i rg-hrv-dev\n- Logga in i Azure med OIDC (inga lösenord i GitHub)\n- Ta BARA bort PostgreSQL-servern, aldrig resursgruppen eller Key Vault (soft-delete 90 dagar)\n- Varför: Macen kan somna, då missar den lokala watchdogen\n- AZ-401: schemalagda workflows, OIDC, kostnadskontroll"
+ 1122* gh issue create -R kizouker/az401-my-study-plan --title "Öva: schemalagd GitHub Action som tar bort databasen (hrv-backend)" --body "Se ärendet i kizouker/hrv-backend. Ämnen: schedule-trigger, OIDC, kostnadskontroll."
+ 1123* ls
+ 1124* cd hrvctl
+ 1125* ls
+ 1126* cd ..
+ 1127* ls
+ 1128* cd ..
+ 1129* ls
+ 1130* cd holdmate+azure
+ 1131* claude
+ 1132* cd ..
+ 1133* ls
+ 1134* cd ..
+ 1135* ls
+ 1136* cd 002_Agents_Team
+ 1137* ls
+ 1138* cd agent-prompts-template
+ 1139* ls
+ 1140* muse
+ 1141* /login
+ 1142* claude login
+ 1143* ls
+ 1144* cat README.md
+ 1145* glow README.md
+ 1146* glow
+ 1147*                                                                             \n    JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home  \n  mvn -B -q -f ~/kod/001_AZ401/HRV/hrv-backend/hrvctl/pom.xml package     
+ 1148* print -P "%K{blue}Hejk"
+ 1149* printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1150*    muse resume 01a1b056-a52a-7d93-810f-1237d685cc8f
+ 1151* printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1152  printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1153      claude --session 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1154  claude --session 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1155  muse --session 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1156  ls
+ 1157  muse resume 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1158* claude --resume 89b0acf4-6749-4925-b665-7c9242212709
+ 1159* printf '\e]11;#000000\a\e]10;#00ff00\a'
+ 1160* claude --resume 89b0acf4-6749-4925-b665-7c9242212709
+ 1161*    ./hrvctl/run.sh check
+ 1162* cd ..
+ 1163*    ./hrvctl/run.sh check
+ 1164*    ./hrvctl/run.sh
+ 1165*     ./hrvctl/run.sh watchdog --dry-run\n  \n
+ 1166* az login
+ 1167* az login --use-device-code
+ 1168* cd ..
+ 1169* ls
+ 1170* cd ..
+ 1171* ls
+ 1172* cd azure
+ 1173* ls
+ 1174* code .
+ 1175* ./01-azure-tree.zsh
+ 1176* az logout
+ 1177* az login --tenant "5a4ba6f9-f531-4f32-9467-398f19e69de4" --scope "https://management.core.windows.net//.default"
+ 1178* az logout\naz login --tenant "5a4ba6f9-f531-4f32-9467-398f19e69de4" --scope "https://management.core.windows.net//.default"
+ 1179* az logout\naz login --tenant "9ffb51ea-66c2-45b1-9732-585052d71c45" --use-device-code
+ 1180* az login --use-device-code
+ 1181* ls
+ 1182* code ./01-azure-tree.zsh
+ 1183* ./01-tenant-show-whoami.sh
+ 1184* ./01-azure-tree.zsh
+ 1185* histor 100 
+ 1186* history 100 
+ 1187*  ./hrvctl/run.sh check
+ 1188*  ./hrvctl/run.sh 
+ 1189* az deployment group what-if \\n  -g rg-hrv-dev \\n  --template-file infra/main.bicep \\n  --parameters environmentName=hrv-dev dbAdminPassword=what-if-dummy jwtSecret=what-if-dummy
+ 1190*    muse resume 01a1b056-a52a-7d93-810f-1237d685cc8f
+ 1191* claude --resume 89b0acf4-6749-4925-b665-7c9242212709
+ 1192* ls ~/.azure
+ 1193* az account show --query "{subscription:name, user:user.name}" -o table\n
+ 1194* az deployment group list \\n  -g rg-hrv-dev \\n  --query "[].{name:name,state:properties.provisioningState,time:properties.timestamp}" \\n  -o table
+ 1195* az deployment operation group list \\n  -g rg-hrv-dev \\n  -n main \\n  --query "[].{resource:properties.targetResource.resourceName,state:properties.provisioningState,operation:properties.targetResource.resourceType}" \\n  -o table
+ 1196* az deployment operation group list \\n  -g rg-hrv-dev \\n  -n main \\n  --query "[?properties.provisioningState=='Failed'].{resource:properties.targetResource.resourceName,type:properties.targetResource.resourceType,code:properties.statusMessage.error.code,error:properties.statusMessage.error.message}" \\n  -o jsonc
+ 1197* az postgres flexible-server list-skus \\n  --location swedencentral \\n  --query "[?tier=='Burstable'].{name:name,tier:tier}" \\n  -o table
+ 1198* clear
+ 1199* az postgres flexible-server list-skus \\n  --location swedencentral \\n  --query "[?tier=='Burstable'].{name:name,tier:tier}" \\n  -o table
+ 1200* azhrv-help
+ 1201* source ~/.zshrc
+ 1202* azhrv-help
+ 1203* az postgres flexible-server list-skus \\n  --location swedencentral \\n  --query "[].{name:name,tier:tier}" \\n  -o table
+ 1204    \n    claude --session 01a1ac43-76d5-77b3-bca5-a6670577b774
+ 1205  cd ~/kod
+ 1206  cd  ~/kod/001_AZ401/HRV/hrv-backend 
+ 1207  muse resume 01a1ac43-76d5-77b3-bca5-a6670577b774\n
+ 1208* az containerapp show -g rg-hrv-dev -n hrv-dev-api --query "{state:properties.provisioningState,url:properties.configuration.ingress.fqdn,revision:properties.latestRevisionName}" -o yaml PC
+ 1209* te: InProgress\nurl: hrv-dev-api.jollyplant-e88d7c9b.swedencentral.azurecontainerapps.io
+ 1210* cd ~/kod
+ 1211* az containerapp show -g rg-hrv-dev -n hrv-dev-api --query "{state:properties.provisioningState,url:properties.configuration.ingress.fqdn,revision:properties.latestRevisionName}" -o yaml PC
+ 1212* az containerapp logs show -g rg-hrv-dev -n hrv-dev-api --type system --tail 100
+ 1213* az containerapp revision list -g rg-hrv-dev -n hrv-dev-api -o table
+ 1214* az containerapp show -g rg-hrv-dev -n hrv-dev-api --query properties.provisioningState -o tsv
+ 1215* JWT_SECRET="$(openssl rand -base64 32)"
+ 1216* az deployment group create -g rg-hrv-dev --name identity-retry --template-file infra/main.bicep --parameters environmentName=hrv-dev jwtSecret="$JWT_SECRET" --query properties.outputs -o json
+ 1217* az containerapp show -g rg-hrv-dev -n hrv-dev-api --query properties.provisioningState -o tsv
+ 1218* az deployment group create -g rg-hrv-dev --name identity-retry --template-file infra/main.bicep --parameters environmentName=hrv-dev jwtSecret="$JWT_SECRET" --query properties.outputs -o json
+ 1219* az containerapp env show -g rg-hrv-dev -n hrv-dev-cae --query properties.provisioningState -o tsv
+ 1220* docker image ls
+ 1221* cat ~/.zhsrc
+ 1222* cat ~/.zshrc
+ 1223* dpp
+ 1224* docker_images_ls
+ 1225* ls -la
+ 1226* az containerapp env show -g rg-hrv-dev -n hrv-dev-cae --query properties.provisioningState -o tsv
+ 1227* docker buildx build --platform linux/amd64 -t dittkonto/hrv-backend:1.0 --push .
+ 1228* docker buildx build --platform linux/amd64 -t rickardzouk/hrv-backend:1.0 --push .
+ 1229  ls
+ 1230  cat .env
+ 1231  history 100

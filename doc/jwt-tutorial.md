@@ -11,7 +11,7 @@ JWT är ett sätt att bevisa vem du är utan att servern behöver komma ihåg di
 En JWT ser ut så här:
 
 ```
-eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzg1NzYxNzcyfQ.itfwLmuHIlvx04wnU1wLb8Gqfo6QdFE9L2h_HlBIZto
+<din-token-här>
 ```
 
 Det är tre Base64-kodade delar separerade med `.`:
@@ -32,7 +32,7 @@ Berättar vilken algoritm som använts för att signera.
 ### Payload (Claims)
 ```json
 {
-  "sub": "test@test.com",
+  "sub": "19254086+kizouker@users.noreply.github.com",
   "iat": 1785761772,
   "exp": 1785848172
 }

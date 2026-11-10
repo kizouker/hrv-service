@@ -1,12 +1,12 @@
 # Local dev: app + PostgreSQL. Values can be overridden via a .env file
-# (see .env.example) — compose loads it automatically.
+# (see example.env) — compose loads it automatically.
 services:
   postgres:
     image: postgres:16-alpine
     container_name: hrv-postgres
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER} 
+      POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "${POSTGRES_PORT}:5432"
@@ -26,9 +26,8 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: ${DATABASE_URL}/${POSTGRES_DB}
-      DATABASE_USERNAME: ${POSTGRES_USER}
-      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      # Container-nätverkets JDBC-bas; POSTGRES_* kommer via env_file (.env).
+      DATABASE_URL: jdbc:postgresql://postgres:5432
       # Change before any non-local deploy; in Azure this comes from Key Vault.
       JWT_SECRET: ${JWT_SECRET:?JWT_SECRET Has to be defined in .env}
       JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS}

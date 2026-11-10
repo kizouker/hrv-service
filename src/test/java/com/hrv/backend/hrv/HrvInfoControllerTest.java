@@ -25,7 +25,7 @@ class HrvInfoControllerTest {
 
     @BeforeEach
     void setUp() {
-        // H2 is shared across tests: unique email per registration.
+        // Test DB is shared across tests: unique email per registration.
         token = authService.register(new RegisterRequest("Info User",
                 "info" + System.nanoTime() + "@hrv.com", "Str0ngP@ssword!")).token();
     }
