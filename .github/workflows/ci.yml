@@ -32,7 +32,8 @@ jobs:
       POSTGRES_USER: hrv_user
       POSTGRES_PASSWORD: hrv_test_pw
       APP_PORT: 8080
-      JWT_SECRET: test-secret-key-that-is-long-enough-for-hs256-0123456789
+      # JwtUtil expects a Base64-encoded 256-bit+ secret (see JwtUtilTest).
+      JWT_SECRET: dGVzdC1zZWNyZXQta2V5LXRoYXQtaXMtbG9uZy1lbm91Z2gtZm9yLUhNQUMtU0hBLTI1Ng==
       JWT_EXPIRATION_MS: 86400000
     steps:
       - uses: actions/checkout@v4
