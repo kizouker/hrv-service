@@ -20,10 +20,12 @@
    Godkänn miljön `development` om required reviewers är på.
 
 ### Om Azure login failar med AADSTS700213
-Entra-federated credential måste matcha GitHubs **immutable** subject, t.ex.:
-`repo:kizouker@19254086/hrv-service@1319982126:environment:development`
+Subject i Entra måste vara **exakt** det GitHub skickar.
 
-Kör om steg 1 (scriptet sätter rätt subject), sedan steg 3 igen.
+Detta repo är satt till **klassisk** subject (immutable av):
+`repo:kizouker/hrv-service:environment:development`
+
+Kör om steg 1 om federated credential saknas/är fel, sedan steg 3 igen.
 
 ### Wrapper (valfritt)
 `./scripts/setup-azure-oidc.sh` kör steg 1 + 2 i följd.
