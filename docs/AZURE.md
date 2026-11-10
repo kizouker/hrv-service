@@ -55,11 +55,14 @@ DEPLOY=$(az deployment group create -g $RG --template-file infra/main.bicep \
   --query properties.outputs -o json)
 ACR=$(echo "$DEPLOY" | python3 -c "import json,sys; print(json.load(sys.stdin)['acrLoginServer']['value'])")
 
-# Build + push the image in Azure (no local Docker daemon needed)
-az acr build -r "$ACR" -t hrv-backend:latest .
+# Build on the runner and push. az acr build uses ACR Tasks, which this
+# subscription rejects with TasksOperationsNotAllowed.
+docker build -t "$ACR/hrv-service:latest" .
+az acr login --name "${ACR%%.azurecr.io}"
+docker push "$ACR/hrv-service:latest"
 
 # Point the app at the real image (first deploy used a placeholder)
-az containerapp update -n hrv-dev-api -g $RG -i "$ACR/hrv-backend:latest"
+az containerapp update -n hrv-dev-api -g $RG -i "$ACR/hrv-service:latest"
 
 # Smoke test
 FQDN=$(az containerapp show -n hrv-dev-api -g $RG \
@@ -69,7 +72,7 @@ curl -s "https://$FQDN/swagger-ui.html" -o /dev/null -w "%{http_code}\n"
 ```
 
 What to learn from each step: resource group scoping, Bicep `what-if`,
-`az acr build` (cloud build), `az containerapp update` (new revision),
+`docker build` + `docker push` (ACR Tasks are blocked here), `az containerapp update` (new revision),
 managed identity pulling from ACR with zero stored passwords
 (`adminUserEnabled: false` + `AcrPull` role in `main.bicep`).
 
@@ -118,7 +121,7 @@ Re-deploy from scratch next session — repetition is the exam prep.
 
 - [ ] `docker compose up` works and you can explain every Dockerfile line
 - [ ] Manual Bicep deploy works; you can explain each resource block
-- [ ] `az acr build` + `az containerapp update` works; smoke test green
+- [ ] `docker build` + `docker push` + `az containerapp update` works; smoke test green
 - [ ] OIDC federated credential set up; pipeline deploys on push to main
 - [ ] You can query logs and list revisions from the CLI
 - [ ] Resource group deleted; re-deploy once more from memory

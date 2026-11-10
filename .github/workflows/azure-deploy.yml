@@ -68,10 +68,33 @@ jobs:
             sleep 30
           done
 
-      - name: Build and push image to ACR (cloud build)
+      - name: Build and push image to ACR
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         run: |
+          set -euo pipefail
+          # This subscription rejects ACR Tasks (az acr build) with
+          # TasksOperationsNotAllowed. Build on the runner and push with an
+          # Azure AD token instead. Admin user stays disabled.
+          ACR_NAME=$(az acr list -g "$RG" --query "[0].name" -o tsv)
           ACR=$(az acr list -g "$RG" --query "[0].loginServer" -o tsv)
-          az acr build -r "$ACR" -t "${IMAGE_NAME}:${{ github.sha }}" -t "${IMAGE_NAME}:latest" .
+          ACR_ID=$(az acr list -g "$RG" --query "[0].id" -o tsv)
+          az role assignment create \
+            --assignee "$AZURE_CLIENT_ID" \
+            --role AcrPush \
+            --scope "$ACR_ID" \
+            --output none || echo "AcrPush was not added in this run; pushing with the roles already on the login."
+          docker build \
+            -t "$ACR/${IMAGE_NAME}:${GITHUB_SHA}" \
+            -t "$ACR/${IMAGE_NAME}:latest" \
+            .
+          TOKEN=$(az acr login --name "$ACR_NAME" --expose-token --query accessToken -o tsv)
+          echo "$TOKEN" | docker login "$ACR" \
+            --username 00000000-0000-0000-0000-000000000000 \
+            --password-stdin
+          unset TOKEN
+          docker push "$ACR/${IMAGE_NAME}:${GITHUB_SHA}"
+          docker push "$ACR/${IMAGE_NAME}:latest"
 
       - name: Update Container App to new image
         run: |

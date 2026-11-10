@@ -58,6 +58,9 @@ az role assignment create --assignee "$APP_ID" --role Contributor --scope "$RG_I
 az role assignment create --assignee "$APP_ID" --role "User Access Administrator" --scope "$RG_ID" >/dev/null || true
 # Key Vault data-plane for jwt-secret writes during deploy if needed.
 az role assignment create --assignee "$APP_ID" --role "Key Vault Secrets Officer" --scope "$RG_ID" >/dev/null || true
+# AcrPush: the workflow builds the image on the runner and docker-pushes it.
+# az acr build is blocked on this subscription (TasksOperationsNotAllowed).
+az role assignment create --assignee "$APP_ID" --role AcrPush --scope "$RG_ID" >/dev/null || true
 
 # Prefer the classic GitHub OIDC subject Entra UI docs show.
 # If the repo later enables immutable subjects, rebuild as:
