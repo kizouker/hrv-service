@@ -26,12 +26,11 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      # Container-nätverkets JDBC-bas; POSTGRES_* kommer via env_file (.env).
-      DATABASE_URL: jdbc:postgresql://postgres:5432
-      # Change before any non-local deploy; in Azure this comes from Key Vault.
+      # Full JDBC URL inside the compose network.
+      DATABASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
       JWT_SECRET: ${JWT_SECRET:?JWT_SECRET Has to be defined in .env}
       JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS}
-      PORT: 8080
+      APP_PORT: 8080
     ports:
       - "${APP_PORT}:8080"
     restart: unless-stopped

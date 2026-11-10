@@ -14,9 +14,14 @@ out/
 # VS Code
 .vscode/
 
-# Environment / secrets
+# Environment / secrets (local Azure/OIDC + app config — never commit)
 .env
+.env.*
+!.env.example
+!example.env
 *.env.local
+azure-secrets.env
+**/azure-secrets.env
 
 # Logs
 *.log

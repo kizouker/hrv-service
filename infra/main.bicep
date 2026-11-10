@@ -124,6 +124,7 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
           image: containerImage
           resources: { cpu: 1, memory: '2Gi' }
           env: [
+            // Full JDBC URL (application.yml uses ${DATABASE_URL} as-is).
             {
               name: 'DATABASE_URL'
               value: 'jdbc:sqlite:/tmp/hrv.sqlite'
@@ -137,12 +138,24 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
               value: 'org.hibernate.community.dialect.SQLiteDialect'
             }
             {
-              name: 'JWT_SECRET'
-              secretRef: 'jwt-secret'
+              name: 'POSTGRES_USER'
+              value: 'sa'
             }
             {
-              name: 'PORT'
+              name: 'POSTGRES_PASSWORD'
+              value: 'sa'
+            }
+            {
+              name: 'APP_PORT'
               value: '8080'
+            }
+            {
+              name: 'JWT_EXPIRATION_MS'
+              value: '86400000'
+            }
+            {
+              name: 'JWT_SECRET'
+              secretRef: 'jwt-secret'
             }
           ]
           probes: [
@@ -159,7 +172,8 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
       scale: { minReplicas: 0, maxReplicas: 1 }
     }
   }
-  dependsOn: [ jwtSecretEntry ]
+  // Role assignments must exist before the app resolves Key Vault secrets / ACR pull.
+  dependsOn: [ jwtSecretEntry, kvSecretsUser, acrPull ]
 }
 
 // Managed identity -> AcrPull: the app pulls images without any stored password.
