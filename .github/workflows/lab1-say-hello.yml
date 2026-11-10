@@ -7,7 +7,7 @@ on:
         default: Rickard
 jobs:
   say-hello:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - run: echo "Hello ${{ inputs.name }}"
 # gh workflow view hello_azure.yml --web

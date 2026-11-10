@@ -176,9 +176,14 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
   dependsOn: [ jwtSecretEntry, kvSecretsUser, acrPull ]
 }
 
+// The name has to be known before deployment starts, so it cannot include
+// principalId. Azure also refuses to change principal, tenant, or scope on an
+// existing assignment (RoleAssignmentUpdateNotPermitted). The previous name,
+// guid(..., 'acrpull'), already points at another principal. 'acrpull-v2'
+// creates a new assignment for the current identity.
 // Managed identity -> AcrPull: the app pulls images without any stored password.
 resource acrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(acr.id, appIdentity.id, 'acrpull')
+  name: guid(acr.id, appIdentity.id, 'acrpull-v2')
   scope: acr
   properties: {
     roleDefinitionId: subscriptionResourceId(
@@ -193,7 +198,7 @@ resource acrPull 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
 // Managed identity -> Key Vault Secrets User: the app reads its secrets
 // from Key Vault at runtime without any stored credential.
 resource kvSecretsUser 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(kv.id, appIdentity.id, 'kvsecretsuser')
+  name: guid(kv.id, appIdentity.id, 'kvsecretsuser-v2')
   scope: kv
   properties: {
     roleDefinitionId: subscriptionResourceId(

@@ -29,13 +29,13 @@ env:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: development
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Azure login (OIDC)
-        uses: azure/login@v2
+        uses: azure/login@v3
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -46,13 +46,27 @@ jobs:
           az group create --name "$RG" --location "$LOCATION" --output none
 
       - name: Deploy infrastructure (Bicep)
-        uses: azure/arm-deploy@v2
-        with:
-          resourceGroupName: ${{ env.RG }}
-          template: infra/main.bicep
-          parameters: >
-            environmentName=hrv-dev
-            jwtSecret=${{ secrets.JWT_SECRET }}
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        run: |
+          set -euo pipefail
+          # azure/arm-deploy@v2 still targets Node.js 20. Azure CLI deploys the
+          # same template without that action.
+          for attempt in 1 2 3; do
+            if az deployment group create \
+              --resource-group "$RG" \
+              --name main \
+              --mode Incremental \
+              --template-file infra/main.bicep \
+              --parameters environmentName=hrv-dev jwtSecret="$JWT_SECRET"; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              exit 1
+            fi
+            echo "Deployment attempt ${attempt} failed; retrying in 30s so Key Vault RBAC can propagate."
+            sleep 30
+          done
 
       - name: Build and push image to ACR (cloud build)
         run: |
