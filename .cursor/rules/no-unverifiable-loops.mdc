@@ -1,0 +1,11 @@
+---
+description: Stop endless retries when something cannot be verified
+alwaysApply: true
+---
+
+# No unverifiable loops
+
+- Never loop endlessly probing unverifiable URLs, pages, or endpoints.
+- After one quick check (or a couple of clear candidates), if you still cannot verify: say so plainly, give manual steps, and stop.
+- Do not keep retrying the same failing approach dozens of times.
+- Prefer a short honest answer over long tool loops when the blocker is login, permissions, or missing access.
