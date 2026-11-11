@@ -45,6 +45,34 @@ class AuthAccountTest {
     }
 
     @Test
+    void changePassword_weakNewPassword_returns400() throws Exception {
+        String token = authService.register(
+                new RegisterRequest("Pw User", "pweak@hrv.com", "Str0ngP@ssword!")).token();
+
+        mockMvc.perform(put("/api/auth/password")
+                        .header("Authorization", "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(
+                                new ChangePasswordRequest("Str0ngP@ssword!", "short"))))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message.newPassword").exists());
+
+        mockMvc.perform(put("/api/auth/password")
+                        .header("Authorization", "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(
+                                new ChangePasswordRequest("Str0ngP@ssword!", "alllowercase1!"))))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message.newPassword").exists());
+
+        mockMvc.perform(post("/api/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(
+                                new LoginRequest("pweak@hrv.com", "Str0ngP@ssword!"))))
+                .andExpect(status().isOk());
+    }
+
+    @Test
     void changePassword_wrongCurrent_returns400() throws Exception {
         String token = authService.register(
                 new RegisterRequest("Pw User", "pwrong@hrv.com", "Str0ngP@ssword!")).token();
