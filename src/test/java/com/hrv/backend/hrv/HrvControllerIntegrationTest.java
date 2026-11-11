@@ -15,6 +15,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -116,12 +118,15 @@ class HrvControllerIntegrationTest {
     @Test
     void summaryAndTrend_returnStats() throws Exception {
         String token = register();
-        for (int i = 0; i < 2; i++) {
+        // Yesterday at 10:00 and 11:00 UTC is one UTC day, already in the past,
+        // and inside the 30-day window at any time of day.
+        LocalDate day = LocalDate.now(ZoneOffset.UTC).minusDays(1);
+        for (int hour : new int[] {10, 11}) {
             mockMvc.perform(post("/api/hrv")
                             .header("Authorization", "Bearer " + token)
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(objectMapper.writeValueAsString(
-                                    reading(Instant.now().minusSeconds(i * 3600)))))
+                                    reading(day.atTime(hour, 0).toInstant(ZoneOffset.UTC)))))
                     .andExpect(status().isCreated());
         }
 
@@ -139,6 +144,7 @@ class HrvControllerIntegrationTest {
                         .param("days", "30"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1))
+                .andExpect(jsonPath("$[0].date").value(day.toString()))
                 .andExpect(jsonPath("$[0].avgRmssd").value(55.3));
     }
 

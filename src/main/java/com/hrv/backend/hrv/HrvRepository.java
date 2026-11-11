@@ -24,13 +24,16 @@ public interface HrvRepository extends JpaRepository<HrvReading, Long> {
               AND h.measuredAt >= :from
             """)
     List<Object[]> aggregateStats(@Param("userId") Long userId, @Param("from") Instant from);
+    // UTC date, not the database session TimeZone. CAST(timestamptz AS date)
+    // follows that session zone and can split one hour across two days.
     @Query("""
-            SELECT CAST(h.measuredAt AS date), AVG(h.rmssd), AVG(h.sdnn), AVG(h.meanHr)
+            SELECT CAST(FUNCTION('timezone', 'UTC', h.measuredAt) AS date),
+                   AVG(h.rmssd), AVG(h.sdnn), AVG(h.meanHr)
             FROM HrvReading h
             WHERE h.user.id = :userId
               AND h.measuredAt BETWEEN :from AND :to
-            GROUP BY CAST(h.measuredAt AS date)
-            ORDER BY CAST(h.measuredAt AS date) ASC
+            GROUP BY CAST(FUNCTION('timezone', 'UTC', h.measuredAt) AS date)
+            ORDER BY CAST(FUNCTION('timezone', 'UTC', h.measuredAt) AS date) ASC
             """)
     List<Object[]> dailyAverages(
             @Param("userId") Long userId,
