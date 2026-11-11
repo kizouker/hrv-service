@@ -1,0 +1,33 @@
+# Lab 4. Sign in to Azure with a GitHub OIDC token. No client secret in the repo.
+# The handout says azure/login@v2 and ubuntu-latest. Those warn in 2026,
+# so this file uses v3 and ubuntu-24.04.
+#
+# This repo uses immutable OIDC subjects. The federated credential subject is:
+#   repo:kizouker@19254086/hrv-service@1319982126:environment:dev
+# Create the GitHub environment "dev" first (Lab 2), then the app registration,
+# and store AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID as variables.
+name: lab4-oidc
+
+on: workflow_dispatch
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "Hello from lab 4"
+
+  show-resource-group:
+    needs: say-hello
+    runs-on: ubuntu-24.04
+    environment: dev
+    steps:
+      - uses: azure/login@v3
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - run: az group show --name rg-hrv-dev --output table
