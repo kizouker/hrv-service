@@ -41,7 +41,7 @@ public class AuthController {
     @Operation(summary = "Change password")
     public ResponseEntity<Void> changePassword(
             @AuthenticationPrincipal User user,
-            @RequestBody ChangePasswordRequest req) {
+            @Valid @RequestBody ChangePasswordRequest req) {
         authService.changePassword(user, req.currentPassword(), req.newPassword());
         return ResponseEntity.ok().build();
     }
