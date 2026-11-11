@@ -1,0 +1,4 @@
+// Lab 8. Paste into hrv-dev-logs → Logs. Not a shell command.
+AppServiceHTTPLogs
+| where TimeGenerated > ago(1h)
+| summarize count() by ScStatus

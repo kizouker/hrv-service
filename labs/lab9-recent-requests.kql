@@ -1,0 +1,4 @@
+// Lab 9. Condition for the alert rule: number of results greater than 0,
+// checked every 5 minutes. Delete the rule after the email arrives.
+AppServiceHTTPLogs
+| where TimeGenerated > ago(10m)
