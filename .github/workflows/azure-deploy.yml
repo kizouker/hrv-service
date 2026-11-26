@@ -47,7 +47,6 @@ jobs:
           template: infra/main.bicep
           parameters: >
             environmentName=hrv-prod
-            dbAdminPassword=${{ secrets.DB_ADMIN_PASSWORD }}
             jwtSecret=${{ secrets.JWT_SECRET }}
 
       - name: Build and push image to ACR (cloud build)
